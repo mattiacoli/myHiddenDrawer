@@ -49,11 +49,6 @@
 - categoriy_id FK
 - product_id FK
 
-# Image_product
-- id PK - INT - AI
-- image_id FK
-- product_id FK
-
 # Product_tag
 - id PK - INT - AI
 - product_id FK
