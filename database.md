@@ -41,6 +41,27 @@
 - created_at DATETIME
 - update_at DATETIME
 
+# Customers
+- id PK - INT - AI
+- name VARCHAR (255) - NN
+- lastname VARCHAR (255) - NN
+- phone_number VARCHAR(20) - N
+- email VARCHAR(100) - NN
+- address VARCHAR(100) - NN
+- cap MEDIUM INT - UN - NN
+- city VARCHAR(100) - NN
+- province VARCHAR(100) - NN
+- country VARCHAR(100) - NN
+- created_at DATETIME
+- update_at DATETIME
+
+# Orders
+- id PK - INT - AI
+- customer_id FK
+- order_number INT - AI - UN
+- created_at DATETIME
+- update_at DATETIME
+
 
 # Pivot
 
@@ -53,3 +74,10 @@
 - id PK - INT - AI
 - product_id FK
 - tag_id FK
+
+# Order_product
+- id PK - INT - AI
+- order_id FK
+- product_id FK
+- total_price DECIMAL(7,2)
+- quantity SMALLINT
