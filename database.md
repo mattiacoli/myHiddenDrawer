@@ -48,7 +48,7 @@
 - phone_number VARCHAR(20) - N
 - email VARCHAR(100) - NN
 - address VARCHAR(100) - NN
-- cap MEDIUM INT - UN - NN
+- post_code MEDIUM INT - UN - NN
 - city VARCHAR(100) - NN
 - province VARCHAR(100) - NN
 - country VARCHAR(100) - NN
