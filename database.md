@@ -29,7 +29,7 @@
 - id PK - INT - AI
 - name VARCHAR (255) - NN
 - created_at DATETIME
-- update_at DATETIME
+- updated_at DATETIME
 
 # Reviews
 - id PK - INT - AI
@@ -39,7 +39,7 @@
 - author VARCHAR(100)
 - product_id FK
 - created_at DATETIME
-- update_at DATETIME
+- updated_at DATETIME
 
 # Customers
 - id PK - INT - AI
@@ -48,26 +48,26 @@
 - phone_number VARCHAR(20) - N
 - email VARCHAR(100) - NN
 - address VARCHAR(100) - NN
-- post_code MEDIUM INT - UN - NN
+- post_code VARCHAR(10) - UN - NN
 - city VARCHAR(100) - NN
 - province VARCHAR(100) - NN
 - country VARCHAR(100) - NN
 - created_at DATETIME
-- update_at DATETIME
+- updated_at DATETIME
 
 # Orders
 - id PK - INT - AI
 - customer_id FK
 - order_number INT - AI - UN
 - created_at DATETIME
-- update_at DATETIME
+- updated_at DATETIME
 
 
 # Pivot
 
 # Category_product
 - id PK - INT - AI
-- categoriy_id FK
+- category_id FK
 - product_id FK
 
 # Product_tag
