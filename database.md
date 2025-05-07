@@ -31,7 +31,7 @@
 - created_at DATETIME
 - updated_at DATETIME
 
-# Reviews
+<!-- # Reviews
 - id PK - INT - AI
 - title VARCHAR (255) - NN
 - vote TINYINT (5) - UN - NN
@@ -39,7 +39,7 @@
 - author VARCHAR(100)
 - product_id FK
 - created_at DATETIME
-- updated_at DATETIME
+- updated_at DATETIME -->
 
 # Customers
 - id PK - INT - AI
@@ -59,14 +59,17 @@
 - id PK - INT - AI
 - customer_id FK
 - order_number INT - AI - UN
+- price DECIMAL(6,2) - NN
+- spedition_price DECIMAL(6,2) - NN
+- total_price DECIMAL(6,2) - NN
 - created_at DATETIME
 - updated_at DATETIME
 
-# Wishlist 
+<!-- # Wishlist 
 - id PK - INT - AI
 - customer_id FK
-- created_at DATETIME
-
+- created_at DATETIME -->
+ 
 
 # Pivot
 
@@ -84,11 +87,10 @@
 - id PK - INT - AI
 - order_id FK
 - product_id FK
-- total_price DECIMAL(7,2)
 - quantity SMALLINT 
 
-# Product_wishlist
+<!-- # Product_wishlist
 - id PK - INT - AI
 - product_id FK
 - wishlist_id FK
-- created_at DATETIME
+- created_at DATETIME -->
