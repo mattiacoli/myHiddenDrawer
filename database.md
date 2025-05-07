@@ -17,6 +17,7 @@
 - image_url VARCHAR (255) - N
 - alt_text VARCHAR (255) - N
 - created_at DATETIME
+- updated_at DATETIME
 
 # Tags
 - id PK - INT - AI
@@ -60,7 +61,7 @@
 - customer_id FK
 - order_number INT - AI - UN
 - price DECIMAL(6,2) - NN
-- spedition_price DECIMAL(6,2) - NN
+- shipping_price DECIMAL(6,2) - NN
 - total_price DECIMAL(6,2) - NN
 - created_at DATETIME
 - updated_at DATETIME
