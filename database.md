@@ -62,6 +62,11 @@
 - created_at DATETIME
 - updated_at DATETIME
 
+# Wishlist 
+- id PK - INT - AI
+- customer_id FK
+- created_at DATETIME
+
 
 # Pivot
 
@@ -80,4 +85,10 @@
 - order_id FK
 - product_id FK
 - total_price DECIMAL(7,2)
-- quantity SMALLINT
+- quantity SMALLINT 
+
+# Product_wishlist
+- id PK - INT - AI
+- product_id FK
+- wishlist_id FK
+- created_at DATETIME
