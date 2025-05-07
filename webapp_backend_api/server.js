@@ -4,6 +4,7 @@ const port = 3000;
 const cors = require('cors');
 const errorHandler = require('./middlewares/serverError');
 const notFound = require('./middlewares/notFound');
+const productRouter = require('./routes/products')
 
 // Middleware
 app.use(cors(
@@ -22,9 +23,13 @@ app.get('/', (req, res) => {
     res.json({ message: 'Welcome to the API!' });
 })
 
+// Product router
+app.use('/api/v1/products', productRouter)
+
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 })
+
 
 app.use(errorHandler)
 
