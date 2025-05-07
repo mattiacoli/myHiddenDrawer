@@ -10,8 +10,8 @@ function index(req, res) {
 }
 
 function show(req, res) {
-    const slug = req.params.name.toLowerCase().replaceAll(' ', '-');
-    const sql = 'SELECT * FROM products WHERE slug=?'
+    const slug = req.params.slug
+    const sql = 'SELECT * FROM products WHERE slug = ?';
 
     connection.query(sql, [slug], (err, results) => {
         if (err) return res.status(500).json({ err: "Database query failed" });
