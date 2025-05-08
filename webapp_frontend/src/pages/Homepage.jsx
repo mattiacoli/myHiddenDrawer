@@ -68,13 +68,13 @@ export default function Homepage() {
           <h2>Ultimi Arrivi</h2>
           <div className="contanier">
 
-            <div className="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6 gy-4 ">
+            <div className="row row-cols-sm-2 row-cols-md-4 gy-4 ">
 
               {products.slice(0, 8).map(item => (
                 <div key={item.id} className="col">
 
                   <div className="card h-100">
-                    <div className="card-header ">
+                    <div className="card-header " style={{ height: '5rem' }}>
                       <h4>{item.name}</h4>
                     </div>
                     <div className="card-body">
@@ -97,16 +97,16 @@ export default function Homepage() {
           <h2>Più venduti</h2>
           <div className="contanier">
 
-            <div className="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6 gy-4 ">
+            <div className="row row-cols-sm-2 row-cols-md-4 gy-4 ">
 
               {products.slice(9, 17).map(item => (
-                <div key={item.id} className="col">
+                <div key={item.id} className="col" >
 
                   <div className="card h-100">
-                    <div className="card-header h-40">
+                    <div className="card-header " style={{ height: '5rem' }}>
                       <h4>{item.name}</h4>
                     </div>
-                    <div className="card-body h-60">
+                    <div className="card-body">
                       <p>
                         {item.description}
                       </p>
