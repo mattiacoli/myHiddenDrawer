@@ -6,6 +6,7 @@ const errorHandler = require('./middlewares/serverError');
 const notFound = require('./middlewares/notFound');
 const productRouter = require('./routes/products')
 const orderRouter = require('./routes/orders');
+const customerRouter = require('./routes/customers')
 
 // Middleware
 app.use(cors(
@@ -29,6 +30,9 @@ app.use('/api/v1/products', productRouter)
 
 // Order router
 app.use('/api/v1/orders', orderRouter)
+
+// Customer router
+app.use('/api/v1/customers', customerRouter)
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
