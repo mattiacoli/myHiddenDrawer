@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const productController = require('../controllers/ProductController')
+const productController = require('../controllers/productController')
 
 
 // Index
