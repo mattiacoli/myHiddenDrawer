@@ -33,3 +33,17 @@ body {
   sans-serif;
 
 }
+
+header {
+  background-color: var(--mhd-primary-soft);
+
+}
+
+footer {
+  background-color: var(--mhd-primary-soft);
+
+  a,
+  h5 {
+    color: var(--mhd-primary);
+  }
+}
