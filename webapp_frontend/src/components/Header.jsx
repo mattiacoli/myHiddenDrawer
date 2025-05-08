@@ -57,8 +57,6 @@ export default function Header() {
 
         </div>
       </nav>
-
-      <h1>Header</h1>
     </>
 
   )
