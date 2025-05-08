@@ -8,16 +8,28 @@
   box-sizing: border-box;
 }
 
+:root {
+  --mhd-dark: rgb(49, 48, 48);
+  --mhd-darker: black;
+  --mhd-light: rgba(255, 255, 255, 0.792);
+  --mhd-lighter: white;
+  --mhd-primary: #e85d75;
+  --mhd-primary-soft: #f7c59f;
+  --mhd-secondary: #20a39e;
+  --mhd-accent: #3185fc;
+}
+
 
 body {
-  h1 {
+
+  h1,
+  h2,
+  h3 {
     font-family: 'Lexend Deca Variable', sans-serif;
     font-weight: 500;
   }
 
-  p {
+  font-family: 'Red Hat Text Variable',
+  sans-serif;
 
-    font-family: 'Red Hat Text Variable', sans-serif;
-
-  }
 }
