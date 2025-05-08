@@ -15,7 +15,7 @@ function show(req, res) {
     const id = req.params.id
 
     // Validation ID
-    if (!id || isNaN(id) || parseInt(id) <= 0) {
+    if (!id || isNaN(id) || Number(id) <= 0) {
         return res.status(400).json({ error: "Invalid order ID" });
     }
 
@@ -36,10 +36,10 @@ function store(req, res) {
     const errors = [];
 
     // Validate input fields
-    if (!customer_id || isNaN(customer_id) || parseInt(customer_id) <= 0) {
+    if (!customer_id || isNaN(customer_id) || Number(customer_id) <= 0) {
         errors.push("Invalid customer ID");
     }
-    if (!order_number || isNaN(order_number) || parseInt(order_number) <= 0) {
+    if (!order_number || isNaN(order_number) || Number(order_number) <= 0) {
         errors.push("Invalid order number");
     }
     if (!price || isNaN(price) || Number(price) < 0) {
