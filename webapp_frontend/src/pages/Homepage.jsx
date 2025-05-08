@@ -1,15 +1,31 @@
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 
 export default function Homepage() {
+
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:3000/api/v1/products')
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        setProducts(data)
+      })
+      .catch(err => console.error(err))
+  }, [])
+
+
+
   return (
     <>
 
       {/* Jumbotron */}
-      <div class="p-5 mb-4 bg-light rounded-3">
-        <div class="container-fluid py-5">
-          <h1 class="display-5 fw-bold">Custom jumbotron</h1>
-          <p class="col-md-8 fs-4">
+      <div className="p-5 mb-4 bg-light rounded-3">
+        <div className="container-fluid py-5">
+          <h1 className="display-5 fw-bold">Custom jumbotron</h1>
+          <p className="col-md-8 fs-4">
             Using a series of utilities, you can create this jumbotron, just
             like the one in previous versions of Bootstrap. Check out the
             examples below for how you can remix and restyle it to your liking.
@@ -50,7 +66,28 @@ export default function Homepage() {
         {/* Last Products */}
         <section className="last_products mt-4">
           <h2>Ultimi Arrivi</h2>
+          <div className="contanier">
 
+            <div className="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6 gy-4 ">
+
+              {products.slice(0, 8).map(item => (
+                <div key={item.id} className="col">
+
+                  <div className="card h-100">
+                    <div className="card-header ">
+                      <h4>{item.name}</h4>
+                    </div>
+                    <div className="card-body">
+                      <p>
+                        {item.description}
+                      </p>
+                      <p>{item.price}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
 
@@ -58,6 +95,30 @@ export default function Homepage() {
         {/* best sellers */}
         <section className='best_sellers mt-4'>
           <h2>Più venduti</h2>
+          <div className="contanier">
+
+            <div className="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6 gy-4 ">
+
+              {products.slice(9, 17).map(item => (
+                <div key={item.id} className="col">
+
+                  <div className="card h-100">
+                    <div className="card-header h-40">
+                      <h4>{item.name}</h4>
+                    </div>
+                    <div className="card-body h-60">
+                      <p>
+                        {item.description}
+                      </p>
+                      <p>{item.price}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+
+            </div>
+          </div>
         </section>
 
 
