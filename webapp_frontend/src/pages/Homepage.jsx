@@ -48,8 +48,16 @@ export default function Homepage() {
 
 
         {/* Last Products */}
-        <section className="last_products">
+        <section className="last_products mt-4">
+          <h2>Ultimi Arrivi</h2>
 
+        </section>
+
+
+
+        {/* best sellers */}
+        <section className='best_sellers mt-4'>
+          <h2>Più venduti</h2>
         </section>
 
 
