@@ -22,7 +22,33 @@ function show(req, res) {
     })
 }
 
+function store(req, res) {
+    const { name, lastname, phone_number, email, address, postcode, city, province, country } = req.body
+
+    if (!name || !lastname || !phone_number || !email || !address || !postcode || !city || !province || !country) {
+        return res.status(400).json({ err: "All fields are required" })
+    }
+
+    const created_at = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    const updated_at = created_at;
+
+    const sql = 'INSERT INTO customers (name, lastname, phone_number, email, address, postcode, city, province, country, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+
+    const values = [name, lastname, phone_number, email, address, postcode, city, province, country, created_at, updated_at]
+
+    connection.query(sql, values, err => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ err: "Database query failed" })
+        }
+
+        res.status(201).json({ message: 'Customers added successfully' });
+    })
+
+}
+
 module.exports = {
     index,
-    show
+    show,
+    store
 }
