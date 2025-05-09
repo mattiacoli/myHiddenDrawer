@@ -4,18 +4,32 @@ import { useEffect, useState } from 'react'
 
 export default function Homepage() {
 
-  const [products, setProducts] = useState([])
+  const [latest, setLatest] = useState([])
+  const [promo, setPromo] = useState([])
 
   const imageUrl = `http://localhost:3000/images`
 
+  const productUrl = 'http://localhost:3000/api/v1/products'
+
   useEffect(() => {
-    fetch('http://localhost:3000/api/v1/products')
+    fetch(`${productUrl}/latest`)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
-        setProducts(data)
+
+        setLatest(data)
       })
       .catch(err => console.error(err))
+
+    fetch(`${productUrl}`)
+      .then(res => res.json())
+      .then(data => {
+        if (!data.promotion === 0) {
+          return false;
+        }
+        setPromo(data)
+      })
+
+
   }, [])
 
 
@@ -72,10 +86,10 @@ export default function Homepage() {
 
             <div className="row row-cols-sm-2 row-cols-md-4 gy-4 ">
 
-              {products.slice(0, 8).map(item => (
+              {latest.slice(0, 8).map(item => (
                 <div key={item.id} className="col">
 
-                  <div className="card h-100">
+                  <div className="card h-100 shadow">
                     <div className="card-header bg-white ">
                       <img src={`${imageUrl}/${item.cover_image}`} alt="" className='card-img-top' />
                     </div>
@@ -97,15 +111,15 @@ export default function Homepage() {
 
         {/* best sellers */}
         <section className='best_sellers mt-4'>
-          <h2>Più venduti</h2>
+          <h2>In Offerta</h2>
           <div className="contanier">
 
             <div className="row row-cols-sm-2 row-cols-md-4 gy-4 ">
 
-              {products.slice(9, 17).map(item => (
+              {promo.slice(0, 8).map(item => (
                 <div key={item.id} className="col" >
 
-                  <div className="card h-100">
+                  <div className="card h-100 " style={{ boxShadow: '0 0 5px var(--mhd-primary)' }}>
                     <div className="card-header bg-white">
                       <img src={`${imageUrl}/${item.cover_image}`} alt="" className='card-img-top' />
                     </div>
