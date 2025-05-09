@@ -3,6 +3,7 @@ import DefaultLayout from "./layouts/DefaultLayouts"
 
 //pages
 import Homepage from "./pages/Homepage"
+import Product from "./pages/Product"
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
           <Route Component={DefaultLayout}>
 
             <Route path="/" Component={Homepage} />
+            <Route path="/products/:slug" Component={Product} />
 
 
 
