@@ -30,7 +30,7 @@ function show(req, res) {
 
 // Store new order
 function store(req, res) {
-    const { customer_id, order_number, price, shipping_price, total_price } = req.body;
+    let { customer_id, order_number, price, shipping_price } = req.body;
 
     // Array to collect any validation errors
     const errors = [];
@@ -45,16 +45,23 @@ function store(req, res) {
     if (!price || isNaN(price) || Number(price) < 0) {
         errors.push("Invalid price");
     }
-    if (!shipping_price || isNaN(shipping_price) || Number(shipping_price) < 0) {
-        errors.push("Invalid shipping price");
-    }
-    if (!total_price || isNaN(total_price) || Number(total_price) < 0) {
-        errors.push("Invalid total price");
+
+    let freeShippingApplied = false;
+    if (price >= 50) {
+        shipping_price = 0;
+        freeShippingApplied = true;
+
+    } else {
+        if (!shipping_price || isNaN(shipping_price) || Number(shipping_price) < 0) {
+            shipping_price = 9.90;
+        }
     }
 
     if (errors.length > 0) {
         return res.status(400).json({ error: "Validation Error", messages: errors });
     }
+
+    const total_price = price + shipping_price;
 
     // Create/update timestamps
     const created_at = new Date().toISOString().slice(0, 19).replace('T', ' ');
@@ -71,8 +78,12 @@ function store(req, res) {
             return res.status(500).json({ error: "Database query failed" })
         }
 
+
+        const message = freeShippingApplied
+            ? "Ordine aggiunto correttamente. Spedizione gratuita applicata 🎉"
+            : "Ordine aggiunto correttamente";
         // Response in case of success
-        res.status(201).json({ message: 'Order added successfully' });
+        res.status(201).json({ message });
     });
 }
 
