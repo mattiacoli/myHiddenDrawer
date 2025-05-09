@@ -42,13 +42,8 @@ export default function Homepage() {
 
       {/* Jumbotron */}
       <div className="p-5 mb-4 bg-light rounded-3 jumbotron">
-        <div className="container-fluid py-5">
-          <h1 className="display-5 fw-bold">Custom jumbotron</h1>
-          <p className="col-md-8 fs-4">
-            Using a series of utilities, you can create this jumbotron, just
-            like the one in previous versions of Bootstrap. Check out the
-            examples below for how you can remix and restyle it to your liking.
-          </p>
+        <div className="container-fluid py-5 text-center">
+
         </div>
       </div>
 
@@ -56,7 +51,7 @@ export default function Homepage() {
 
         {/* Our Products */}
 
-        <section className="products_category d-flex flex-column justify-content-center">
+        <section className="products_category d-flex flex-column justify-content-center my-3">
           <h3 className='text-center'>I nostri Prodotti</h3>
 
 
@@ -83,7 +78,7 @@ export default function Homepage() {
 
 
         {/* Last Products */}
-        <section className="last_products mt-4">
+        <section className="last_products my-4">
           <h2>Ultimi Arrivi</h2>
           <div className="contanier">
 
@@ -98,15 +93,17 @@ export default function Homepage() {
 
 
 
-        {/* best sellers */}
-        <section className='best_sellers mt-4'>
+        {/* promo products */}
+        <section className='best_sellers my-4'>
           <h2>In Offerta</h2>
           <div className="contanier">
 
             <div className="row row-cols-sm-2 row-cols-md-4 gy-4 ">
 
               {promo.slice(0, 8).map(item => (
-                <ProductCard item={item} imageUrl={imageUrl} key={item.id} />
+                <Link to={`/product/${item.slug}`}>
+                  <ProductCard item={item} imageUrl={imageUrl} key={item.id} />
+                </Link>
               ))}
 
 
