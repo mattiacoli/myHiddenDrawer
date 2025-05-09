@@ -9,6 +9,7 @@ function index(req, res) {
         GROUP BY products.id`
 
     connection.query(sql, (err, results) => {
+
         if (err) return res.status(500).json({ err: "Database query failed" });
         res.json(results);
     })
