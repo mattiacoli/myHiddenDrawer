@@ -2,9 +2,14 @@ const connection = require('../data/db.js')
 
 // Index all products
 function index(req, res) {
-    const sql = 'SELECT * FROM products';
+    const sql = `SELECT products.* , GROUP_CONCAT(categories.name) as categories
+        FROM products
+        LEFT JOIN category_product ON products.id = category_product.product_id
+        LEFT JOIN categories ON category_product.category_id = categories.id
+        GROUP BY products.id`
 
     connection.query(sql, (err, results) => {
+
         if (err) return res.status(500).json({ err: "Database query failed" });
         res.json(results);
     })
