@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
+// Component for Product Card
+import ProductCard from '../components/ProductCard'
+
 
 export default function Homepage() {
 
@@ -87,21 +90,7 @@ export default function Homepage() {
             <div className="row row-cols-sm-2 row-cols-md-4 gy-4 ">
 
               {latest.slice(0, 8).map(item => (
-                <div key={item.id} className="col">
-
-                  <div className="card h-100 shadow">
-                    <div className="card-header bg-white ">
-                      <img src={`${imageUrl}/${item.cover_image}`} alt="" className='card-img-top' />
-                    </div>
-                    <div className="card-body">
-                      <h4>{item.name}</h4>
-                      <p>
-                        {item.description}
-                      </p>
-                      <p className='text-end fs-4'><strong>{item.price}</strong></p>
-                    </div>
-                  </div>
-                </div>
+                <ProductCard item={item} imageUrl={imageUrl} key={item.id} />
               ))}
             </div>
           </div>
@@ -117,21 +106,7 @@ export default function Homepage() {
             <div className="row row-cols-sm-2 row-cols-md-4 gy-4 ">
 
               {promo.slice(0, 8).map(item => (
-                <div key={item.id} className="col" >
-
-                  <div className="card h-100 " style={{ boxShadow: '0 0 5px var(--mhd-primary)' }}>
-                    <div className="card-header bg-white">
-                      <img src={`${imageUrl}/${item.cover_image}`} alt="" className='card-img-top' />
-                    </div>
-                    <div className="card-body">
-                      <h4>{item.name}</h4>
-                      <p >
-                        {item.description}
-                      </p>
-                      <p className='text-end fs-4'><strong>{item.price}</strong></p>
-                    </div>
-                  </div>
-                </div>
+                <ProductCard item={item} imageUrl={imageUrl} key={item.id} />
               ))}
 
 

@@ -1,4 +1,4 @@
-export default function ProductCard({ item }) {
+export default function ProductCard({ item, imageUrl }) {
   return (
     <div key={item.id} className="col">
 
