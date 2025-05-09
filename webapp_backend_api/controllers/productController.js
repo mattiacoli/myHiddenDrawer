@@ -22,20 +22,46 @@ function latestProduct(req, res) {
 
 // Show single product
 function show(req, res) {
-    const slug = req.params.slug
+    const slug = req.params.slug; // Ottieni lo slug dalla richiesta
+    const sqlProduct = 'SELECT * FROM products WHERE slug = ?'; // Cerca il prodotto usando lo slug
+    const sqlImages = 'SELECT * FROM images WHERE product_id = ?'; // Cerca le immagini usando product_id
+    const sqlCategories = `
+    SELECT c.*
+    FROM categories c
+    INNER JOIN category_product cp ON c.id = cp.category_id
+    WHERE cp.product_id = ?
+  `; // Cerca le categorie tramite la tabella pivot
+    const sqlTags = `
+    SELECT t.*
+    FROM tags t
+    INNER JOIN product_tag tp ON t.id = tp.tag_id
+    WHERE tp.product_id = ?
+  `; // Cerca i tag tramite la tabella pivot
+    // Prima query: trova il prodotto usando lo slug
+    connection.query(sqlProduct, [slug], (err, results) => {
+        if (err) return res.status(500).json('Server Error');
+        if (results.length === 0) return res.status(404).json({ error: 'Product not found' });
+        const product = results[0]; // Ottieni il prodotto trovato (incluso il suo id)
+        // Seconda query: trova le immagini usando product_id
+        connection.query(sqlImages, [product.id], (err, images) => {
+            if (err) return res.status(500).json('Server Error');
+            product.images = images; // Aggiungi le immagini al prodotto
+            // Terza query: trova le categorie tramite la tabella pivot
+            connection.query(sqlCategories, [product.id], (err, categories) => {
+                if (err) return res.status(500).json('Server Error');
+                product.categories = categories; // Aggiungi le categorie al prodotto
+                // Quarta query: trova i tag tramite la tabella pivot
+                connection.query(sqlTags, [product.id], (err, tags) => {
+                    if (err) return res.status(500).json('Server Error');
+                    product.tags = tags; // Aggiungi i tag al prodotto
+                    // Rispondi con il prodotto, immagini, categorie e tag
+                    res.json(product);
+                });
+            });
+        });
+    });
 
-    // Validation slug
-    if (!slug || typeof slug !== 'string' || slug.trim().length === 0) {
-        return res.status(400).json({ error: "Invalid product slug" });
-    }
 
-    const sql = 'SELECT * FROM products WHERE slug = ?';
-
-    connection.query(sql, [slug], (err, results) => {
-        if (err) return res.status(500).json({ err: "Database query failed" });
-        if (results.length === 0) return res.status(404).json({ err: "Product not found" });
-        res.json(results[0])
-    })
 }
 
 
