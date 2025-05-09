@@ -79,7 +79,6 @@ function search(req, res) {
         JOIN categories c ON cp.category_id = c.id
         WHERE 1 = 1
         `
-
     const params = [];
 
     if (name) {
