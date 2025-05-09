@@ -72,7 +72,8 @@ function search(req, res) {
         FROM products p
         JOIN category_product cp ON p.id = cp.product_id
         JOIN categories c ON cp.category_id = c.id
-        WHERE 1 = 1`
+        WHERE 1 = 1
+        `
 
     const params = [];
 
