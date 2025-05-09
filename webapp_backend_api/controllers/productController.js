@@ -94,6 +94,10 @@ function search(req, res) {
         params.push(`%${categoryTerm}%`);
     }
 
+    if (promotion === 'true') {
+        query += " AND p.promotion = 1";
+    }
+
     connection.query(query, params, (err, results) => {
         if (err) return res.status(500).json({ error: 'Server Error' });
         if (results.length === 0) return res.status(404).json({ message: 'No products found' });
