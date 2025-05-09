@@ -85,7 +85,9 @@ export default function Homepage() {
             <div className="row row-cols-sm-2 row-cols-md-4 gy-4 ">
 
               {latest.slice(0, 8).map(item => (
-                <ProductCard item={item} imageUrl={imageUrl} key={item.id} />
+                <Link to={`/products/${item.slug}`} className='text-decoration-none'>
+                  <ProductCard item={item} imageUrl={imageUrl} key={item.id} />
+                </Link>
               ))}
             </div>
           </div>
@@ -101,7 +103,7 @@ export default function Homepage() {
             <div className="row row-cols-sm-2 row-cols-md-4 gy-4 ">
 
               {promo.slice(0, 8).map(item => (
-                <Link to={`/product/${item.slug}`}>
+                <Link to={`/products/${item.slug}`} className='text-decoration-none'>
                   <ProductCard item={item} imageUrl={imageUrl} key={item.id} />
                 </Link>
               ))}
