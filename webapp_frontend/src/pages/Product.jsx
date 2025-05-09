@@ -20,7 +20,7 @@ export default function Product() {
     return (
         <>
             {/* Product Jumbotron */}
-            <div className="p-5 mb-4 bg-light rounded-3">
+            <div className="jumbotron-product p-5 mb-4 rounded-3">
                 <div className="container-fluid py-5">
 
                     <div className="row g-4" >
@@ -30,12 +30,12 @@ export default function Product() {
                         </div>
 
 
-                        <div className="col-md-12 col-lg-8">
+                        <div className="d-flex col-md-12 col-lg-8 flex-column justify-content-end align-items-start">
                             <h1 className="display-5 fw-bold">{product.name}</h1>
                             <p className="fs-4">
                                 {product.description}
                             </p>
-                            <button className="btn btn-primary btn-lg" type="button">
+                            <button className="btn btn-primary btn-lg add-to-cart" type="button">
                                 Aggiungi al carrello
                             </button>
                         </div>
@@ -73,7 +73,7 @@ export default function Product() {
                     <div className="col-md-12 col-lg-4 sticky-details">
                         <h4>
                             {product.categories?.map((cat, index) => (
-                                <span key={index} className="badge bg-danger badge-categoria me-1">
+                                <span key={index} className="badge badge-category me-1">
                                     {cat.name}
                                 </span>
                             ))}
@@ -94,7 +94,7 @@ export default function Product() {
                             <li><i className="bi bi-tree"></i> Materiali certificati</li>
                             <li><i className="bi bi-shield-lock"></i> Pagamento sicuro</li>
                         </ul>
-                        <button className="btn btn-primary btn-lg mt-5" type="button">
+                        <button className="btn btn-primary btn-lg mt-5 add-to-cart" type="button">
                             Aggiungi al carrello
                         </button>
                     </div>

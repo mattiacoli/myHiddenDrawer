@@ -35,9 +35,29 @@ body {
 
 }
 
-header {
-  background-color: var(--mhd-primary-soft);
 
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+header.scrolled {
+  background-color: var(--mhd-primary-soft);
+}
+
+.jumbotron-product {
+  margin-top: -80px;
+  /* compensazione dell'header sticky */
+  padding-top: 120px;
+  /* evita che il contenuto venga tagliato */
+  min-height: 600px;
+  background-color: var(--mhd-primary-soft);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right 30% bottom 20%;
 }
 
 footer {
@@ -61,10 +81,16 @@ main {
 
 }
 
+.add-to-cart {
+  background-color: var(--mhd-secondary);
+}
+
+.badge-category {
+  background-color: var(--mhd-primary);
+}
+
 .sticky-details {
   position: sticky;
   top: 80px;
-  /* o l'altezza del tuo header/navbar */
   align-self: flex-start;
-  /* per assicurarsi che si allinei in alto */
 }
