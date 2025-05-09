@@ -68,21 +68,24 @@ function show(req, res) {
 function search(req, res) {
     const { name, category } = req.query;
     let query = `
-        SELECT p.*, c.name AS category
+        SELECT DISTINCT p.*, c.name AS category
         FROM products p
         JOIN category_product cp ON p.id = cp.product_id
         JOIN categories c ON cp.category_id = c.id
-        WHERE 1 = 1`;
+        WHERE 1 = 1`
+
     const params = [];
 
     if (name) {
-        query += " AND p.name LIKE ?";
-        params.push(`%${name}%`);
+        query += " AND REPLACE(LOWER(p.name), ' ', '') LIKE ?";
+        const searchTerm = name.toLowerCase().replace(/\s+/g, '');
+        params.push(`%${searchTerm}%`);
     }
 
     if (category) {
-        query += " AND c.name = ?";
-        params.push(category);
+        query += " AND REPLACE(LOWER(c.name), ' ', '') LIKE ?";
+        const categoryTerm = category.toLowerCase().replace(/\s+/g, '');
+        params.push(`%${categoryTerm}%`);
     }
 
     connection.query(query, params, (err, results) => {
