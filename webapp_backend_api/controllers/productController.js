@@ -64,12 +64,37 @@ function show(req, res) {
 
 }
 
+// Search
+function search(req, res) {
+    const { name, category } = req.query;
+    let query = `
+        SELECT p.*, c.name AS category
+        FROM products p
+        JOIN category_product cp ON p.id = cp.product_id
+        JOIN categories c ON cp.category_id = c.id
+        WHERE 1 = 1`;
+    const params = [];
 
+    if (name) {
+        query += " AND p.name LIKE ?";
+        params.push(`%${name}%`);
+    }
 
+    if (category) {
+        query += " AND c.name = ?";
+        params.push(category);
+    }
 
+    connection.query(query, params, (err, results) => {
+        if (err) return res.status(500).json({ error: 'Server Error' });
+        if (results.length === 0) return res.status(404).json({ message: 'No products found' });
+        res.json(results);
+    });
+}
 
 module.exports = {
     index,
     show,
-    latestProduct
+    latestProduct,
+    search
 }
