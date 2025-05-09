@@ -47,3 +47,12 @@ footer {
     color: var(--mhd-primary);
   }
 }
+
+main {
+  .jumbotron {
+    min-height: 600px;
+    background-image: url(https://img.freepik.com/free-photo/close-up-sex-toys_23-2149151774.jpg?t=st=1746789614~exp=1746793214~hmac=d0366e7a6bc74b66808139758c92ebd7a7f238da3ee1b357d6ca002002fbc4c9&w=1380);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}

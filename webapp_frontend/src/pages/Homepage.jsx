@@ -38,7 +38,7 @@ export default function Homepage() {
     <>
 
       {/* Jumbotron */}
-      <div className="p-5 mb-4 bg-light rounded-3">
+      <div className="p-5 mb-4 bg-light rounded-3 jumbotron">
         <div className="container-fluid py-5">
           <h1 className="display-5 fw-bold">Custom jumbotron</h1>
           <p className="col-md-8 fs-4">
