@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 // Component for Product Card
-import ProductCard from '../components/ProductCard'
+import ProductCard from '../components/Card/ProductCard'
 
 
 export default function Homepage() {
@@ -82,7 +82,7 @@ export default function Homepage() {
           <h2>Ultimi Arrivi</h2>
           <div className="contanier">
 
-            <div className="row row-cols-sm-2 row-cols-md-4 gy-4 ">
+            <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gy-4 ">
 
               {latest.slice(0, 8).map(item => (
                 <Link to={`/products/${item.slug}`} className='text-decoration-none' key={item.id}>
