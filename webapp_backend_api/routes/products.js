@@ -9,9 +9,11 @@ router.get('/', productController.index)
 // Latest Product
 router.get('/latest', productController.latestProduct)
 
-// SHow
-router.get('/:slug', productController.show)
+// Search
+router.get('/search', productController.search)
 
+// Show
+router.get('/:slug', productController.show)
 
 
 module.exports = router

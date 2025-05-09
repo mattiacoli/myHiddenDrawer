@@ -64,12 +64,41 @@ function show(req, res) {
 
 }
 
+// Search
+function search(req, res) {
+    const { name, category } = req.query;
+    let query = `
+        SELECT DISTINCT p.*, c.name AS category
+        FROM products p
+        JOIN category_product cp ON p.id = cp.product_id
+        JOIN categories c ON cp.category_id = c.id
+        WHERE 1 = 1
+        `
 
+    const params = [];
 
+    if (name) {
+        query += " AND REPLACE(LOWER(p.name), ' ', '') LIKE ?";
+        const searchTerm = name.toLowerCase().replace(/\s+/g, '');
+        params.push(`%${searchTerm}%`);
+    }
 
+    if (category) {
+        query += " AND REPLACE(LOWER(c.name), ' ', '') LIKE ?";
+        const categoryTerm = category.toLowerCase().replace(/\s+/g, '');
+        params.push(`%${categoryTerm}%`);
+    }
+
+    connection.query(query, params, (err, results) => {
+        if (err) return res.status(500).json({ error: 'Server Error' });
+        if (results.length === 0) return res.status(404).json({ message: 'No products found' });
+        res.json(results);
+    });
+}
 
 module.exports = {
     index,
     show,
-    latestProduct
+    latestProduct,
+    search
 }
