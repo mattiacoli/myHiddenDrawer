@@ -36,7 +36,7 @@ export default function Header() {
             </div>
 
             {/* Logo */}
-            <a className="navbar-brand" href="#"><img src="images/my_hidden_drawer_logo.png" alt="logo" className="logo" style={{ width: "300px" }} /></a>
+            <a className="navbar-brand" href="#"><img src="/logo/my_hidden_drawer_logo.png" alt="logo" className="logo" style={{ width: "300px" }} /></a>
 
             {/* Icons: Search, Cart, Wishlist */}
             <div className="collapse navbar-collapse justify-content-end " id="collapsibleNavId">
