@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom"
+
 export default function Header() {
   return (
     <>
@@ -36,7 +38,7 @@ export default function Header() {
             </div>
 
             {/* Logo */}
-            <a className="navbar-brand" href="#"><img src="/logo/my_hidden_drawer_logo.png" alt="logo" className="logo" style={{ width: "300px" }} /></a>
+            <NavLink className="navbar-brand" to="/"><img src="/logo/my_hidden_drawer_logo.png" alt="logo" className="logo" style={{ width: "300px" }} /></NavLink>
 
             {/* Icons: Search, Cart, Wishlist */}
             <div className="collapse navbar-collapse justify-content-end " id="collapsibleNavId">
