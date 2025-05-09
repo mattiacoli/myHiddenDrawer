@@ -30,7 +30,7 @@ function show(req, res) {
 
 // Store new order
 function store(req, res) {
-    let { customer_id, order_number, price, shipping_price } = req.body;
+    let { customer_id, order_number, price } = req.body;
 
     // Array to collect any validation errors
     const errors = [];
@@ -46,22 +46,13 @@ function store(req, res) {
         errors.push("Invalid price");
     }
 
-    let freeShippingApplied = false;
-    if (price >= 50) {
-        shipping_price = 0;
-        freeShippingApplied = true;
-
-    } else {
-        if (!shipping_price || isNaN(shipping_price) || Number(shipping_price) < 0) {
-            shipping_price = 9.90;
-        }
-    }
-
     if (errors.length > 0) {
         return res.status(400).json({ error: "Validation Error", messages: errors });
     }
 
-    const total_price = price + shipping_price;
+    // Check if shipping price is provided, otherwise set to 0
+    const shipping_price = price >= 50 ? 0 : 4.99;
+    const total_price = (price + shipping_price).toFixed(2);
 
     // Create/update timestamps
     const created_at = new Date().toISOString().slice(0, 19).replace('T', ' ');
@@ -78,12 +69,15 @@ function store(req, res) {
             return res.status(500).json({ error: "Database query failed" })
         }
 
-
-        const message = freeShippingApplied
-            ? "Ordine aggiunto correttamente. Spedizione gratuita applicata 🎉"
-            : "Ordine aggiunto correttamente";
         // Response in case of success
-        res.status(201).json({ message });
+        res.status(201).json({
+            message: 'Ordine aggiunto correttamente',
+            shipping_price,
+            total_price,
+            shipping_message: shipping_price === 0
+                ? 'Spedizione gratuita applicata!'
+                : 'Spese di spedizione: €' + shipping_price.toFixed(2)
+        });
     });
 }
 
