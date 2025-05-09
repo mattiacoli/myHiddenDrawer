@@ -59,13 +59,4 @@ main {
 
   }
 
-  .card {
-    box-shadow: 3px 3px 4px 0px #d7bebe;
-
-    &:hover {
-      cursor: pointer;
-      box-shadow: 3px 3px 7px 4px var(--mhd-primary-soft);
-    }
-  }
-
 }
