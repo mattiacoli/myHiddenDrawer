@@ -1,19 +1,38 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
+// Component for Product Card
+import ProductCard from '../components/ProductCard'
+
 
 export default function Homepage() {
 
-  const [products, setProducts] = useState([])
+  const [latest, setLatest] = useState([])
+  const [promo, setPromo] = useState([])
+
+  const imageUrl = `http://localhost:3000/images`
+
+  const productUrl = 'http://localhost:3000/api/v1/products'
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/v1/products')
+    fetch(`${productUrl}/latest`)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
-        setProducts(data)
+
+        setLatest(data)
       })
       .catch(err => console.error(err))
+
+    fetch(`${productUrl}`)
+      .then(res => res.json())
+      .then(data => {
+        if (!data.promotion === 0) {
+          return false;
+        }
+        setPromo(data)
+      })
+
+
   }, [])
 
 
@@ -22,14 +41,9 @@ export default function Homepage() {
     <>
 
       {/* Jumbotron */}
-      <div className="p-5 mb-4 bg-light rounded-3">
-        <div className="container-fluid py-5">
-          <h1 className="display-5 fw-bold">Custom jumbotron</h1>
-          <p className="col-md-8 fs-4">
-            Using a series of utilities, you can create this jumbotron, just
-            like the one in previous versions of Bootstrap. Check out the
-            examples below for how you can remix and restyle it to your liking.
-          </p>
+      <div className="p-5 mb-4 bg-light rounded-3 jumbotron">
+        <div className="container-fluid py-5 text-center">
+
         </div>
       </div>
 
@@ -37,7 +51,7 @@ export default function Homepage() {
 
         {/* Our Products */}
 
-        <section className="products_category d-flex flex-column justify-content-center">
+        <section className="products_category d-flex flex-column justify-content-center my-3">
           <h3 className='text-center'>I nostri Prodotti</h3>
 
 
@@ -64,27 +78,16 @@ export default function Homepage() {
 
 
         {/* Last Products */}
-        <section className="last_products mt-4">
+        <section className="last_products my-4">
           <h2>Ultimi Arrivi</h2>
           <div className="contanier">
 
             <div className="row row-cols-sm-2 row-cols-md-4 gy-4 ">
 
-              {products.slice(0, 8).map(item => (
-                <div key={item.id} className="col">
-
-                  <div className="card h-100">
-                    <div className="card-header " style={{ height: '5rem' }}>
-                      <h4>{item.name}</h4>
-                    </div>
-                    <div className="card-body">
-                      <p>
-                        {item.description}
-                      </p>
-                      <p>{item.price}</p>
-                    </div>
-                  </div>
-                </div>
+              {latest.slice(0, 8).map(item => (
+                <Link to={`/products/${item.slug}`} className='text-decoration-none'>
+                  <ProductCard item={item} imageUrl={imageUrl} key={item.id} />
+                </Link>
               ))}
             </div>
           </div>
@@ -92,28 +95,17 @@ export default function Homepage() {
 
 
 
-        {/* best sellers */}
-        <section className='best_sellers mt-4'>
-          <h2>Più venduti</h2>
+        {/* promo products */}
+        <section className='best_sellers my-4'>
+          <h2>In Offerta</h2>
           <div className="contanier">
 
             <div className="row row-cols-sm-2 row-cols-md-4 gy-4 ">
 
-              {products.slice(9, 17).map(item => (
-                <div key={item.id} className="col" >
-
-                  <div className="card h-100">
-                    <div className="card-header " style={{ height: '5rem' }}>
-                      <h4>{item.name}</h4>
-                    </div>
-                    <div className="card-body">
-                      <p>
-                        {item.description}
-                      </p>
-                      <p>{item.price}</p>
-                    </div>
-                  </div>
-                </div>
+              {promo.slice(0, 8).map(item => (
+                <Link to={`/products/${item.slug}`} className='text-decoration-none'>
+                  <ProductCard item={item} imageUrl={imageUrl} key={item.id} />
+                </Link>
               ))}
 
 
