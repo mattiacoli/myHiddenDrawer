@@ -10,6 +10,16 @@ function index(req, res) {
     })
 }
 
+// Get latest product
+function latestProduct(req, res) {
+    const sql = 'SELECT * FROM products ORDER BY updated_at DESC';
+
+    connection.query(sql, (err, results) => {
+        if (err) return res.status(500).json({ error: 'Database query failed' })
+        res.json(results);
+    })
+}
+
 // Show single product
 function show(req, res) {
     const slug = req.params.slug
@@ -28,7 +38,12 @@ function show(req, res) {
     })
 }
 
+
+
+
+
 module.exports = {
     index,
-    show
+    show,
+    latestProduct
 }
