@@ -56,7 +56,7 @@ function store(req, res) {
         return res.status(400).json({ error: "Validation Error", messages: errors });
     }
 
-    // Creation/update timestamps
+    // Create/update timestamps
     const created_at = new Date().toISOString().slice(0, 19).replace('T', ' ');
     const updated_at = created_at;
 
