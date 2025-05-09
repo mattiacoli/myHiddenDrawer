@@ -6,6 +6,8 @@ export default function Homepage() {
 
   const [products, setProducts] = useState([])
 
+  const imageUrl = `http://localhost:3000/images`
+
   useEffect(() => {
     fetch('http://localhost:3000/api/v1/products')
       .then(res => res.json())
@@ -74,14 +76,15 @@ export default function Homepage() {
                 <div key={item.id} className="col">
 
                   <div className="card h-100">
-                    <div className="card-header " style={{ height: '5rem' }}>
-                      <h4>{item.name}</h4>
+                    <div className="card-header bg-white ">
+                      <img src={`${imageUrl}/${item.cover_image}`} alt="" className='card-img-top' />
                     </div>
                     <div className="card-body">
+                      <h4>{item.name}</h4>
                       <p>
                         {item.description}
                       </p>
-                      <p>{item.price}</p>
+                      <p className='text-end fs-4'><strong>{item.price}</strong></p>
                     </div>
                   </div>
                 </div>
@@ -103,14 +106,15 @@ export default function Homepage() {
                 <div key={item.id} className="col" >
 
                   <div className="card h-100">
-                    <div className="card-header " style={{ height: '5rem' }}>
-                      <h4>{item.name}</h4>
+                    <div className="card-header bg-white">
+                      <img src={`${imageUrl}/${item.cover_image}`} alt="" className='card-img-top' />
                     </div>
                     <div className="card-body">
-                      <p>
+                      <h4>{item.name}</h4>
+                      <p >
                         {item.description}
                       </p>
-                      <p>{item.price}</p>
+                      <p className='text-end fs-4'><strong>{item.price}</strong></p>
                     </div>
                   </div>
                 </div>
