@@ -50,27 +50,24 @@ export default function Homepage() {
 
         {/* Our Products */}
 
-        <section className="products_category d-flex flex-column justify-content-center my-3">
-          <h3 className='text-center'>I nostri Prodotti</h3>
+        <section className="products_category d-flex flex-column justify-content-center gap-3">
+          <h3 className='text-center fs-1'>I nostri Prodotti</h3>
 
 
-          <div className=' mt-4 d-flex gap-2 justify-content-center'>
-            <Link to='#' className='card text-decoration-none p-2'>
+          <div className=' mt-4 d-flex gap-2 justify-content-center gap-5'>
+            <Link to='#' className='icon_category text-decoration-none text-black '>
 
               <img src="http://localhost:3000/images/xxl_comfort.jpg" alt="" className='card-img-top' style={{ width: '80px', scale: '1' }} />
-
-              <div className="card-body ">
-                Condom
-              </div>
+              <p >Condom</p>
             </Link>
 
-            <Link to='' className='card text-decoration-none p-2 text-cente'>
+            <Link to='' className=' icon_category text-decoration-none text-center text-black'>
 
               <img src="http://localhost:3000/images/all_nigth_long.jpg" alt="" className='card-img-top' style={{ width: '80px' }} />
 
-              <div className="card-body ">
-                Sex Toys
-              </div>
+              <p >Sex Toys</p>
+
+
             </Link>
           </div>
         </section>

@@ -79,6 +79,17 @@ main {
 
   }
 
+  .icon_category {
+    border: 3px solid transparent;
+
+    &:hover {
+      border-bottom: 3px solid #20a39e;
+      color: #20a39e;
+      font-weight: 500;
+      font-size: 18px;
+    }
+  }
+
   .card {
 
     .discount {
