@@ -1,4 +1,5 @@
   .card {
+
     height: 500px;
 
     box-shadow: 3px 3px 4px 0px #d7bebe;
@@ -8,14 +9,12 @@
       box-shadow: 3px 3px 7px 4px var(--mhd-primary-soft);
 
       img {
-        scale: 1.12
+        scale: 1.05;
       }
     }
 
     img {
       aspect-ratio: 1;
     }
-
-
 
   }

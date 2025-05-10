@@ -26,11 +26,10 @@ export default function Homepage() {
     fetch(`${productUrl}`)
       .then(res => res.json())
       .then(data => {
-        if (!data.promotion === 0) {
-          return false;
-        }
-        setPromo(data)
+        const discountedProducts = data.filter(product => product.discount_percentage !== '0.00');
+        setPromo(discountedProducts);
       })
+      .catch(err => console.error(err));
 
 
   }, [])
@@ -51,27 +50,24 @@ export default function Homepage() {
 
         {/* Our Products */}
 
-        <section className="products_category d-flex flex-column justify-content-center my-3">
-          <h3 className='text-center'>I nostri Prodotti</h3>
+        <section className="products_category d-flex flex-column justify-content-center gap-3">
+          <h3 className='text-center fs-1'>I nostri Prodotti</h3>
 
 
-          <div className=' mt-4 d-flex gap-2 justify-content-center'>
-            <Link to='#' className='card text-decoration-none'>
+          <div className=' mt-4 d-flex gap-2 justify-content-center gap-5'>
+            <Link to='#' className='icon_category text-decoration-none text-black'>
 
-              <img src="#" alt="" className='card-img-top' />
-
-              <div className="card-body ">
-                Condom
-              </div>
+              <img src="http://localhost:3000/images/xxl_comfort.jpg" alt="" className='card-img-top' style={{ width: '80px', scale: '1' }} />
+              <p >Condom</p>
             </Link>
 
-            <Link to='#' className='card text-decoration-none'>
+            <Link to='' className=' icon_category text-decoration-none text-center text-black'>
 
-              <img src="#" alt="" className='card-img-top' />
+              <img src="http://localhost:3000/images/all_nigth_long.jpg" alt="" className='card-img-top' style={{ width: '80px' }} />
 
-              <div className="card-body ">
-                Sex Toys
-              </div>
+              <p >Sex Toys</p>
+
+
             </Link>
           </div>
         </section>
