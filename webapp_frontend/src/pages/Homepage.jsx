@@ -26,11 +26,10 @@ export default function Homepage() {
     fetch(`${productUrl}`)
       .then(res => res.json())
       .then(data => {
-        if (!data.promotion === 0) {
-          return false;
-        }
-        setPromo(data)
+        const discountedProducts = data.filter(product => product.discount_percentage !== '0.00');
+        setPromo(discountedProducts);
       })
+      .catch(err => console.error(err));
 
 
   }, [])
@@ -56,18 +55,18 @@ export default function Homepage() {
 
 
           <div className=' mt-4 d-flex gap-2 justify-content-center'>
-            <Link to='#' className='card text-decoration-none'>
+            <Link to='#' className='card text-decoration-none p-2'>
 
-              <img src="#" alt="" className='card-img-top' />
+              <img src="http://localhost:3000/images/xxl_comfort.jpg" alt="" className='card-img-top' style={{ width: '80px', scale: '1' }} />
 
               <div className="card-body ">
                 Condom
               </div>
             </Link>
 
-            <Link to='#' className='card text-decoration-none'>
+            <Link to='' className='card text-decoration-none p-2 text-cente'>
 
-              <img src="#" alt="" className='card-img-top' />
+              <img src="http://localhost:3000/images/all_nigth_long.jpg" alt="" className='card-img-top' style={{ width: '80px' }} />
 
               <div className="card-body ">
                 Sex Toys
