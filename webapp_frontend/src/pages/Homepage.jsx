@@ -13,8 +13,6 @@ export default function Homepage() {
 
   const { products = [] } = useGlobalContext()
 
-  const imageUrl = `http://localhost:3000/images`
-
   const productUrl = 'http://localhost:3000/api/v1/products'
 
   useEffect(() => {
@@ -53,13 +51,13 @@ export default function Homepage() {
 
 
           <div className=' mt-4 d-flex gap-2 justify-content-center gap-5'>
-            <Link to='#' className='icon_category text-decoration-none text-black'>
+            <Link to='/products/condom' className='icon_category text-decoration-none text-black'>
 
               <img src="http://localhost:3000/images/xxl_comfort.jpg" alt="" className='card-img-top' style={{ width: '80px', scale: '1' }} />
               <p >Condom</p>
             </Link>
 
-            <Link to='' className=' icon_category text-decoration-none text-center text-black'>
+            <Link to='/products/sextoys' className=' icon_category text-decoration-none text-center text-black'>
 
               <img src="http://localhost:3000/images/all_nigth_long.jpg" alt="" className='card-img-top' style={{ width: '80px' }} />
 
@@ -79,9 +77,9 @@ export default function Homepage() {
             <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 ">
 
               {latest.slice(0, 8).map(item => (
-                <Link to={`/products/${item.slug}`} className='text-decoration-none' key={item.id}>
-                  <ProductCard item={item} imageUrl={imageUrl} />
-                </Link>
+
+                <ProductCard item={item} />
+
               ))}
             </div>
           </div>
@@ -97,9 +95,9 @@ export default function Homepage() {
             <div className="row row-cols-sm-1 row-cols-md-2  row-cols-lg-4 gy-4  ">
 
               {promo.slice(0, 8).map(item => (
-                <Link to={`/products/${item.slug}`} className='text-decoration-none' key={item.id}>
-                  <ProductCard item={item} imageUrl={imageUrl} />
-                </Link>
+
+                <ProductCard item={item} />
+
               ))}
 
 

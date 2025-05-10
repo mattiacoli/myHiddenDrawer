@@ -1,8 +1,14 @@
 import style from './ProductCard.module.css'
+import { Link } from 'react-router-dom'
 
-export default function ProductCard({ item, imageUrl }) {
+export default function ProductCard({ item }) {
+
+
+  const imageUrl = `http://localhost:3000/images`
+
+
   return (
-    <div key={item.id} className="col">
+    <Link to={`/products/${item.slug}`} className='col text-decoration-none' key={item.id} >
 
       <div className={`card ${style.card}`}>
 
@@ -42,6 +48,6 @@ export default function ProductCard({ item, imageUrl }) {
           )
         }
       </div>
-    </div>
+    </Link>
   )
 }
