@@ -55,7 +55,7 @@ export default function Homepage() {
 
 
           <div className=' mt-4 d-flex gap-2 justify-content-center gap-5'>
-            <Link to='#' className='icon_category text-decoration-none text-black '>
+            <Link to='#' className='icon_category text-decoration-none text-black'>
 
               <img src="http://localhost:3000/images/xxl_comfort.jpg" alt="" className='card-img-top' style={{ width: '80px', scale: '1' }} />
               <p >Condom</p>
