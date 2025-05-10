@@ -78,7 +78,7 @@ export default function Homepage() {
 
               {latest.slice(0, 8).map(item => (
 
-                <ProductCard item={item} />
+                <ProductCard item={item} key={item.id} />
 
               ))}
             </div>
@@ -96,7 +96,7 @@ export default function Homepage() {
 
               {promo.slice(0, 8).map(item => (
 
-                <ProductCard item={item} />
+                <ProductCard item={item} key={item.id} />
 
               ))}
 

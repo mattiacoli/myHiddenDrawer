@@ -23,7 +23,7 @@ export default function SexToysPage() {
       <div className=" row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4  mt-4">
 
         {sextoys.map(item => (
-          <ProductCard item={item} />
+          <ProductCard item={item} key={item.id} />
         ))}
       </div>
 
