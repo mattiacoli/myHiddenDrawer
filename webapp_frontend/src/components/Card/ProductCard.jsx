@@ -1,8 +1,14 @@
 import style from './ProductCard.module.css'
+import { Link } from 'react-router-dom'
 
-export default function ProductCard({ item, imageUrl }) {
+export default function ProductCard({ item }) {
+
+
+  const imageUrl = `http://localhost:3000/images`
+
+
   return (
-    <div key={item.id} className="col">
+    <Link to={`/products/${item.slug}`} className='col text-decoration-none' >
 
       <div className={`card ${style.card}`}>
 
@@ -12,7 +18,7 @@ export default function ProductCard({ item, imageUrl }) {
             <>
               <div className="card-header bg-white">
                 <div className='discount badge text-bg-danger fs-5'>{parseFloat(item.discount_percentage).toFixed(0)}%</div>
-                <img src={`${imageUrl}/${item.cover_image}`} alt="" className='card-img-top' />
+                <img src={item.cover_image.length > 0 ? `${imageUrl}/${item.cover_image}` : `${imageUrl}/placeholder.jpg`} alt="" className='card-img-top' />
               </div>
               <div className="card-body d-flex flex-column justify-content-between">
                 <h4>{item.name}</h4>
@@ -42,6 +48,6 @@ export default function ProductCard({ item, imageUrl }) {
           )
         }
       </div>
-    </div>
+    </Link>
   )
 }
