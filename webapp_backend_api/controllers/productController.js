@@ -27,47 +27,102 @@ function latestProduct(req, res) {
 
 // Show single product
 function show(req, res) {
-    const slug = req.params.slug; // Ottieni lo slug dalla richiesta
-    const sqlProduct = 'SELECT * FROM products WHERE slug = ?'; // Cerca il prodotto usando lo slug
-    const sqlImages = 'SELECT * FROM images WHERE product_id = ?'; // Cerca le immagini usando product_id
+    const slug = req.params.slug;
+
+    const sqlProduct = 'SELECT * FROM products WHERE slug = ?';
+    const sqlImages = 'SELECT * FROM images WHERE product_id = ?';
     const sqlCategories = `
-    SELECT c.*
-    FROM categories c
+    SELECT c.* FROM categories c
     INNER JOIN category_product cp ON c.id = cp.category_id
     WHERE cp.product_id = ?
-  `; // Cerca le categorie tramite la tabella pivot
+  `;
     const sqlTags = `
-    SELECT t.*
-    FROM tags t
+    SELECT t.* FROM tags t
     INNER JOIN product_tag tp ON t.id = tp.tag_id
     WHERE tp.product_id = ?
-  `; // Cerca i tag tramite la tabella pivot
-    // Prima query: trova il prodotto usando lo slug
+  `;
+
     connection.query(sqlProduct, [slug], (err, results) => {
-        if (err) return res.status(500).json('Server Error');
-        if (results.length === 0) return res.status(404).json({ error: 'Product not found' });
-        const product = results[0]; // Ottieni il prodotto trovato (incluso il suo id)
-        // Seconda query: trova le immagini usando product_id
+        if (err) {
+            console.error('Errore nella query sqlProduct:', err);
+            return res.status(500).json('Server Error');
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+
+        const product = results[0];
+
         connection.query(sqlImages, [product.id], (err, images) => {
-            if (err) return res.status(500).json('Server Error');
-            product.images = images; // Aggiungi le immagini al prodotto
-            // Terza query: trova le categorie tramite la tabella pivot
+            if (err) {
+                console.error('Errore nella query sqlImages:', err);
+                return res.status(500).json('Server Error');
+            }
+
+            product.images = images;
+
             connection.query(sqlCategories, [product.id], (err, categories) => {
-                if (err) return res.status(500).json('Server Error');
-                product.categories = categories; // Aggiungi le categorie al prodotto
-                // Quarta query: trova i tag tramite la tabella pivot
+                if (err) {
+                    console.error('Errore nella query sqlCategories:', err);
+                    return res.status(500).json('Server Error');
+                }
+
+                product.categories = categories;
+
                 connection.query(sqlTags, [product.id], (err, tags) => {
-                    if (err) return res.status(500).json('Server Error');
-                    product.tags = tags; // Aggiungi i tag al prodotto
-                    // Rispondi con il prodotto, immagini, categorie e tag
-                    res.json(product);
+                    if (err) {
+                        console.error('Errore nella query sqlTags:', err);
+                        return res.status(500).json('Server Error');
+                    }
+
+                    product.tags = tags;
+
+                    // ---- QUERY PRODOTTI CORRELATI PER TAG ----
+                    const sqlRelated = `
+            SELECT p.*, 
+                   GROUP_CONCAT(DISTINCT i.image_url) AS image_urls,
+                   GROUP_CONCAT(DISTINCT c.name) AS categories,
+                   GROUP_CONCAT(DISTINCT t.name) AS tags
+            FROM products p
+            LEFT JOIN images i ON p.id = i.product_id
+            LEFT JOIN category_product cp ON p.id = cp.product_id
+            LEFT JOIN categories c ON cp.category_id = c.id
+            LEFT JOIN product_tag pt ON p.id = pt.product_id
+            LEFT JOIN tags t ON pt.tag_id = t.id
+            WHERE pt.tag_id IN (
+              SELECT tag_id FROM product_tag WHERE product_id = ?
+            )
+            AND p.id != ?
+            GROUP BY p.id
+            LIMIT 4
+          `;
+
+                    connection.query(sqlRelated, [product.id, product.id], (err, relatedProducts) => {
+                        if (err) {
+                            console.error('Errore nella query sqlRelated:', err);
+                            return res.status(500).json('Server Error');
+                        }
+
+                        const formattedRelated = relatedProducts.map(prod => ({
+                            ...prod,
+                            image_urls: prod.image_urls ? prod.image_urls.split(',') : [],
+                            categories: prod.categories ? prod.categories.split(',') : [],
+                            tags: prod.tags ? prod.tags.split(',') : [],
+                        }));
+
+                        res.json({
+                            ...product,
+                            related_products: formattedRelated,
+                        });
+                    });
                 });
             });
         });
     });
-
-
 }
+
+
 
 // Search
 function search(req, res) {
