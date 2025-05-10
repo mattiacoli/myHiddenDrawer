@@ -17,15 +17,4 @@
       aspect-ratio: 1;
     }
 
-    .discount {
-      position: absolute;
-      right: 1rem;
-
-    }
-
-    .final_price {
-      color: red !important;
-    }
-
-
   }
