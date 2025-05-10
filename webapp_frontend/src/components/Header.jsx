@@ -37,13 +37,11 @@ export default function Header() {
             <div className="collapse navbar-collapse" id="collapsibleNavId">
               <ul className="navbar-nav me-auto mt-2 mt-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link active" href="#" aria-current="page"
-                  >Condom
-                    <span className="visually-hidden">(current)</span></a
-                  >
+                  <NavLink className="nav-link active" to="/products/condom" aria-current="page">Condom</NavLink>
+
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">Sex Toys</a>
+                  <NavLink className="nav-link active" to="/products/sextoys" aria-current="page">Sex Toys</NavLink>
                 </li>
 
               </ul>
