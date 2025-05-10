@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { useGlobalContext } from '../contexts/GlobalContext'
 
 // Component for Product Card
 import ProductCard from '../components/Card/ProductCard'
@@ -10,9 +11,16 @@ export default function Homepage() {
   const [latest, setLatest] = useState([])
   const [promo, setPromo] = useState([])
 
+  const { products = [] } = useGlobalContext()
+
   const imageUrl = `http://localhost:3000/images`
 
   const productUrl = 'http://localhost:3000/api/v1/products'
+
+  useEffect(() => {
+    const discountedProducts = products.filter(product => product.discount_percentage !== '0.00')
+    setPromo(discountedProducts)
+  }, [products])
 
   useEffect(() => {
     fetch(`${productUrl}/latest`)
@@ -22,16 +30,6 @@ export default function Homepage() {
         setLatest(data)
       })
       .catch(err => console.error(err))
-
-    fetch(`${productUrl}`)
-      .then(res => res.json())
-      .then(data => {
-        const discountedProducts = data.filter(product => product.discount_percentage !== '0.00');
-        setPromo(discountedProducts);
-      })
-      .catch(err => console.error(err));
-
-
   }, [])
 
 

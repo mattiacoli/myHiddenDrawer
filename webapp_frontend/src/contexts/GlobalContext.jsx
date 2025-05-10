@@ -8,7 +8,7 @@ function GlobalProvider({ children }) {
 
   const productUrl = 'http://localhost:3000/api/v1/products'
 
-  const [products, setProducts] = useState()
+  const [products, setProducts] = useState([])
 
 
   useEffect(() => {
@@ -21,11 +21,8 @@ function GlobalProvider({ children }) {
   }, [])
 
 
-
-
-
   return (
-    <GlobalContext.Provider value={products}>
+    <GlobalContext.Provider value={{ products }}>
       {children}
     </GlobalContext.Provider>
   )
