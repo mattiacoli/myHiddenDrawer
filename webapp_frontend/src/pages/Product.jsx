@@ -47,30 +47,39 @@ export default function Product() {
 
             {/* Product */}
             <div className="container">
-                {/* Tags */}
-                <div className="p-2">
-                    {product.tags?.map((tag, index) => (
-                        <span key={index} className="badge bg-primary me-1 text-center">
-                            {tag.name}
-                        </span>
-                    ))}
-                </div>
+
                 <div className="row align-items-start">
                     {/* Product images */}
                     <div className="col-md-12 col-lg-8" >
                         {
                             product.images?.map(image => (
                                 <div key={image.id}>
-                                    <img src={`http://localhost:3000/images/${image.image_url}`} alt={image.alt_text} />
+                                    <img className='mt-3' src={`http://localhost:3000/images/${image.image_url}`} alt={image.alt_text} />
                                 </div>
 
 
                             ))
 
                         }
+
+                        {/* Tags */}
+                        <div className="pt-2">
+                            {product.tags?.map((tag, index) => (
+                                <span key={index} className="badge bg-primary me-1 text-center">
+                                    {tag.name}
+                                </span>
+                            ))}
+                        </div>
                     </div>
-                    {/* Product details & buy */}
-                    <div className="col-md-12 col-lg-4 sticky-details">
+
+
+
+                    {/* Sticky card price */}
+
+
+                    <div className="col-md-12 col-lg-4 sticky-details p-5">
+
+                        {/* Product details & buy */}
                         <h4>
                             {product.categories?.map((cat, index) => (
                                 <span key={index} className="badge badge-category me-1">
@@ -80,7 +89,21 @@ export default function Product() {
                         </h4>
                         <h2>{product.name}</h2>
                         <p>{product.description}</p>
-                        <div className='fw-bold fs-3'>{product.price}€</div>
+
+                        {product.discount_percentage != 0 ? (
+                            <>
+                                <div className="price d-flex align-items-center gap-3">
+                                    <p className='final_price fs-4 fw-bold '>{product.final_price} &#8364;</p>
+                                    <p className='old_price fs-6 text-secondary'><s>{product.price} &#8364;</s></p>
+                                    <p className='discount badge text-bg-danger fs-6'>{parseFloat(product.discount_percentage).toFixed(0)}%</p>
+                                </div>
+
+                            </>
+                        ) : (
+                            <>
+                                <div className='fw-bold fs-3'>{product.price}€</div>
+                            </>
+                        )}
                         <div>
                             {product.available === 1 ? (
                                 <span>Prodotto disponibile <i className="bi bi-hand-thumbs-up-fill text-success"></i></span>
