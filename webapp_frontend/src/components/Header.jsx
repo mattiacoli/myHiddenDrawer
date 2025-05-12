@@ -5,7 +5,7 @@ import { useGlobalContext } from "../contexts/GlobalContext"
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
-  const { cart } = useGlobalContext()
+  const { cart, wishlist } = useGlobalContext()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +17,9 @@ export default function Header() {
   }, [])
   return (
     <>
+      <div className="shipping-banner text-center py-2">
+        🚚 Spedizione gratuita per ordini superiori a 50€!
+      </div>
       <header className={scrolled ? "scrolled" : ""}>
         <nav
           className="navbar navbar-expand-sm navbar-light"
@@ -74,8 +77,21 @@ export default function Header() {
                     )}
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/wishlist"><i className="bi bi-heart"></i></NavLink>
+                <li className="nav-item position-relative wishlist-icon">
+                  <NavLink className="nav-link" to="/wishlist">
+                    <i className="bi bi-heart"></i>
+                    {wishlist.length > 0 && (
+                      <span className="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle d-flex justify-content-center align-items-center" style={{
+                        width: '20px',
+                        height: '20px',
+                        fontSize: '12px',
+                        color: 'white'
+                      }}>
+                        {wishlist.length}
+                        <span className="visually-hidden">Articoli nella wishlist</span>
+                      </span>
+                    )}
+                  </NavLink>
                 </li>
               </ul>
             </div>

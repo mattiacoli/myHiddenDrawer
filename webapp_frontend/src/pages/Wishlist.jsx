@@ -13,7 +13,7 @@ export default function Wishlist() {
 
             {/* Se non ci sono prodotti nella wishlist */}
             {wishedProducts.length === 0 ? (
-                <p className="text-center">Nessun prodotto nella tua lista dei desideri.</p>
+                <p className="text-center">Ops! La tua lista dei desideri è vuota... È il momento di riempirla! 🔥</p>
             ) : (
                 <div className="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
                     {/* Mappa ogni prodotto che è nella wishlist */}
