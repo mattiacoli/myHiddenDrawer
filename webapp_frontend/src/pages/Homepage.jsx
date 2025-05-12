@@ -37,9 +37,14 @@ export default function Homepage() {
 
       {/* Jumbotron */}
       <div className="p-5 mb-4 bg-light rounded-3 jumbotron">
-        <div className="container-fluid py-5 text-center">
+        <div className="container-fluid py-5 ">
+          <div className="row justify-content-center">
+            <div className="col" style={{ maxWidth: '800px' }}>
 
-          <Searchbar />
+              <Searchbar />
+            </div>
+          </div>
+
 
 
         </div>

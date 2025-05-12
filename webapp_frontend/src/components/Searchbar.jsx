@@ -13,7 +13,7 @@ export default function Searchbar() {
   }
 
   return (
-    <div className="mt-4">
+    <div className="mt-4" >
       <form onSubmit={handleSubmit} className='d-flex bg-white rounded-5 p-2 gap-2' >
         <input
           type="text"
