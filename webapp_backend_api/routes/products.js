@@ -6,6 +6,9 @@ const productController = require('../controllers/productController')
 // Index
 router.get('/', productController.index)
 
+// Related
+router.get('/:slug/related', productController.related)
+
 // Latest Product
 router.get('/latest', productController.latestProduct)
 

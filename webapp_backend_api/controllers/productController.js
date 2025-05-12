@@ -69,6 +69,43 @@ function show(req, res) {
 
 }
 
+function related(req, res) {
+
+    const { slug } = req.params;
+
+    const relatedSql = `
+    SELECT DISTINCT p.*, cp.category_id, GROUP_CONCAT(DISTINCT pt.tag_id) AS tag_ids
+    FROM products p
+    JOIN category_product cp ON cp.product_id = p.id
+    JOIN product_tag pt ON pt.product_id = p.id
+    WHERE cp.category_id = (
+        SELECT cp.category_id
+        FROM category_product cp
+        JOIN products pr ON pr.id = cp.product_id
+        WHERE pr.slug = ?
+    )
+    AND pt.tag_id IN (
+        SELECT pt.tag_id
+        FROM product_tag pt
+        JOIN products pr ON pr.id = pt.product_id
+        WHERE pr.slug = ?
+    )
+    AND p.id != (
+        SELECT id FROM products WHERE slug = ?
+    )
+    GROUP BY p.id, cp.category_id;
+  `;
+
+    connection.query(relatedSql, [slug, slug, slug], (err, results) => {
+        if (err) {
+            console.error('Errore nella query dei correlati:', err);
+            return res.status(500).json({ message: 'Errore del server' });
+        }
+
+        res.status(200).json(results);
+    });
+};
+
 // Search
 function search(req, res) {
     const { name, category, minPrice, maxPrice, createdAfter, createdBefore } = req.query;
@@ -125,5 +162,6 @@ module.exports = {
     index,
     show,
     latestProduct,
-    search
+    search,
+    related
 }
