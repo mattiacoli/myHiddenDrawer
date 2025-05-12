@@ -8,7 +8,7 @@ export default function Checkout() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        navigate('/conferma-ordine')
+        navigate('/order-confirmation')
     }
 
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0)
