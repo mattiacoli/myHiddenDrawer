@@ -71,7 +71,7 @@ function show(req, res) {
 
 // Search
 function search(req, res) {
-    const { name, category } = req.query;
+    const { name, category, minPrice, maxPrice } = req.query;
     let query = `
         SELECT DISTINCT p.*, c.name AS category
         FROM products p
@@ -92,6 +92,11 @@ function search(req, res) {
         query += " AND REPLACE(LOWER(c.name), ' ', '') LIKE ?";
         const categoryTerm = category.toLowerCase().replace(/\s+/g, '');
         params.push(`%${categoryTerm}%`);
+    }
+
+    if (minPrice) {
+        query += "AND p.price <= ?"
+        params.push(minPrice);
     }
 
     connection.query(query, params, (err, results) => {
