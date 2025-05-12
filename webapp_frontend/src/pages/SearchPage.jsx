@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react'
-import { useGlobalContext } from '../contexts/GlobalContext'
+import { useSearchParams } from 'react-router-dom'
 import ProductCard from '../components/Card/ProductCard'
 
 
 
 export default function SearchPage() {
 
+  const [searchParams] = useSearchParams()
 
-  const { products = [] } = useGlobalContext()
+  const [filteredProducts, setFilteredProducts] = useState([])
 
-  const [filteredProducts, setFilteredProducts] = useState([...products])
-
-  const [searchQuery, setSearchQuery] = useState('')
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '')
 
   const searchEndPoint = `http://localhost:3000/api/v1/products/search?name=${searchQuery}`
 
@@ -23,10 +22,11 @@ export default function SearchPage() {
           console.log(data);
           setFilteredProducts(data)
         })
+        .catch(error => console.error('Error:', error))
     }
-  }, [searchQuery]) // Add searchQuery as dependency
+  }, [searchQuery])
 
-  // Simplified handleSearch
+
   function handleSearch(e) {
     setSearchQuery(e.target.value)
   }
