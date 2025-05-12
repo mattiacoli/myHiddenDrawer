@@ -23,7 +23,7 @@ export default function RelatedProducts() {
 
         <>
 
-            <div className="container related-products">
+            <div className="container related-products ">
                 <h2>Prodotti Correlati</h2>
 
 
