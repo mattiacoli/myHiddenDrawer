@@ -9,7 +9,7 @@ export default function ProductCard({ item }) {
 
   const imageUrl = `http://localhost:3000/images`
 
-  const handleWishlistClick = (e) => {
+  function handleWishlistClick(e) {
     e.preventDefault();
     if (isInWishlist) {
       removeFromWishlist(item.id);
@@ -34,8 +34,7 @@ export default function ProductCard({ item }) {
                   <button
                     onClick={handleWishlistClick}
                     className="btn p-0 border-0 bg-transparent"
-                    aria-label="Aggiungi o rimuovi dalla wishlist"
-                  >
+                    aria-label="Aggiungi o rimuovi dalla wishlist">
                     <i className={`bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'} fs-4 text-danger`}></i>
                   </button>
                 </div>

@@ -64,14 +64,14 @@ function GlobalProvider({ children }) {
   }
 
   // Funzione per aggiungere un prodotto alla wishlist
-  const addToWishlist = (id) => {
+  function addToWishlist(id) {
     if (!wishlist.includes(id)) {
       setWishlist(prevWishlist => [...prevWishlist, id]);
     }
   };
 
   // Funzione per rimuovere un prodotto dalla wishlist
-  const removeFromWishlist = (id) => {
+  function removeFromWishlist(id) {
     setWishlist(prevWishlist => prevWishlist.filter(productId => productId !== id));
   };
 
