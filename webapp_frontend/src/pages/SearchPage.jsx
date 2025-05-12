@@ -71,18 +71,27 @@ export default function SearchPage() {
   return (
     <>
       <div className="p-5 mb-4 bg-light rounded-3 jumbotron">
-        <div className="container-fluid py-5 text-center">
-          <Searchbar />
+        <div className="container-fluid py-5">
+          <div className="row justify-content-center">
+
+            <div className='col' style={{ maxWidth: '800px' }}>
+
+              <Searchbar />
+            </div>
+          </div>
 
           {/* search filter */}
 
-          <div className="row row-cols-2">
-            <div className="col">
+          <div className="row  mt-4 flex-row-reverse me-auto">
+
+
+
+            <div className="col " style={{ maxWidth: '200px' }}>
               {/* category */}
-              <div className="my-3">
+              <div className="my-4">
                 <label htmlFor="category" className="form-label">Categoria</label>
                 <select
-                  className="form-select form-select-lg"
+                  className="form-select form-select-sm"
                   name="category"
                   id="category"
                   onChange={e => setCategoryQuery(e.target.value)}
@@ -91,40 +100,45 @@ export default function SearchPage() {
                   <option value="condom" >Condom</option>
                   <option value="sex-toys">SexToys</option>
                 </select>
+
+
+                <div className="my-4">
+                  <label htmlFor="sort" className="form-label">Ordina per</label>
+                  <select
+                    className="form-select form-select-sm"
+                    name="sort"
+                    id="sort"
+                    onChange={e => setSortBy(e.target.value)}
+                  >
+                    <option value="">Nessun ordinamento</option>
+                    <option value="price_asc">Prezzo crescente</option>
+                    <option value="price_desc">Prezzo decrescente</option>
+                    <option value="latest">Ultimi arrivi</option>
+                  </select>
+                </div>
+
+                <div class="form-check">
+                  <label htmlFor="promo">In Sconto</label>
+                  <input
+                    class="form-check-input"
+                    name="promo"
+                    id="promo"
+                    type="checkbox"
+                    value={isChecked}
+                    aria-label="Text for screen reader"
+                    onChange={handleCheck}
+                  />
+                </div>
               </div>
             </div>
 
             {/* order by */}
             <div className="col">
-              <div className="my-3">
-                <label htmlFor="sort" className="form-label">Ordina per</label>
-                <select
-                  className="form-select form-select-lg"
-                  name="sort"
-                  id="sort"
-                  onChange={e => setSortBy(e.target.value)}
-                >
-                  <option value="">Nessun ordinamento</option>
-                  <option value="price_asc">Prezzo crescente</option>
-                  <option value="price_desc">Prezzo decrescente</option>
-                  <option value="latest">Ultimi arrivi</option>
-                </select>
-              </div>
+
             </div>
 
             <div className="col">
-              <div class="form-check">
-                <label htmlFor="promo">In Sconto</label>
-                <input
-                  class="form-check-input"
-                  name="promo"
-                  id="promo"
-                  type="checkbox"
-                  value={isChecked}
-                  aria-label="Text for screen reader"
-                  onChange={handleCheck}
-                />
-              </div>
+
 
             </div>
           </div>
