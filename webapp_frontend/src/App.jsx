@@ -11,6 +11,8 @@ import SexToysPage from "./pages/SexToysPage"
 import SearchPage from "./pages/SearchPage"
 import Cart from "./pages/Cart"
 import Wishlist from "./pages/Wishlist"
+import Checkout from "./pages/Checkout"
+import OrderConfirmation from "./pages/OrderConfirmation"
 
 function App() {
 
@@ -28,6 +30,8 @@ function App() {
             <Route path="/cart" Component={Cart} />
             <Route path="/search_page" Component={SearchPage} />
             <Route path="/wishlist" Component={Wishlist} />
+            <Route path="/checkout" Component={Checkout} />
+            <Route path="/order-confirmation" Component={OrderConfirmation} />
 
           </Route>
         </Routes>
