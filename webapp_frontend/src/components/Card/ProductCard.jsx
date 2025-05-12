@@ -1,8 +1,10 @@
+import { useGlobalContext } from '../../contexts/GlobalContext';
 import style from './ProductCard.module.css'
 import { Link } from 'react-router-dom'
 
 export default function ProductCard({ item }) {
 
+  const { wishlist, addToWishlist, removeFromWishlist } = useGlobalContext();
 
   const imageUrl = `http://localhost:3000/images`
 

@@ -62,7 +62,7 @@ export default function Header() {
                   <NavLink className="nav-link" to="/cart"><i className="bi bi-bag-heart"></i></NavLink>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#"><i className="bi bi-heart"></i></a>
+                  <NavLink className="nav-link" to="/wishlist"><i className="bi bi-heart"></i></NavLink>
                 </li>
               </ul>
             </div>
