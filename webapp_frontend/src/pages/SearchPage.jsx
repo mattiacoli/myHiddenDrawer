@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useGlobalContext } from '../contexts/GlobalContext'
 import ProductCard from '../components/Card/ProductCard'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, Link } from 'react-router-dom'
 
 export default function SearchPage() {
   const { products = [] } = useGlobalContext()
@@ -46,11 +46,20 @@ export default function SearchPage() {
       </div>
 
       <div className="container">
-        <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 ">
-          {filteredProducts.map(item => (
-            <ProductCard item={item} key={item.id} />
-          ))}
-        </div>
+        {
+          filteredProducts?.length > 0 ? (
+            <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 ">
+              {filteredProducts.map(item => (
+                <ProductCard item={item} key={item.id} />
+              ))}
+            </div>
+
+          ) : (
+            <div className='text-center' style={{ minHeight: '80vh' }}>
+              <h2>Nessun prodotto trovato</h2>
+            </div>
+          )
+        }
       </div>
     </>
   )
