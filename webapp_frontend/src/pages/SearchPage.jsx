@@ -86,10 +86,10 @@ export default function SearchPage() {
 
 
 
-            <div className="col " style={{ maxWidth: '200px' }}>
+            <div className="col border border-3 border-white rounded-3" style={{ maxWidth: '200px' }}>
               {/* category */}
               <div className="my-4">
-                <label htmlFor="category" className="form-label">Categoria</label>
+                <label htmlFor="category" className="form-label text-white fw-bold">Categoria</label>
                 <select
                   className="form-select form-select-sm"
                   name="category"
@@ -103,7 +103,7 @@ export default function SearchPage() {
 
 
                 <div className="my-4">
-                  <label htmlFor="sort" className="form-label">Ordina per</label>
+                  <label htmlFor="sort" className="form-label text-white fw-bold">Ordina per</label>
                   <select
                     className="form-select form-select-sm"
                     name="sort"
@@ -118,7 +118,7 @@ export default function SearchPage() {
                 </div>
 
                 <div class="form-check">
-                  <label htmlFor="promo">In Sconto</label>
+                  <label htmlFor="promo" className='form-label text-white fw-bold'>In Sconto</label>
                   <input
                     class="form-check-input"
                     name="promo"
