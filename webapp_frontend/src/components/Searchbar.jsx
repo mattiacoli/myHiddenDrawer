@@ -14,7 +14,7 @@ export default function Searchbar() {
 
   return (
     <div className="mt-4">
-      <form onSubmit={handleSubmit} className='d-flex bg-white rounded p-2 gap-2' >
+      <form onSubmit={handleSubmit} className='d-flex bg-white rounded-5 p-2 gap-2' >
         <input
           type="text"
           className="form-control border-white"
@@ -22,7 +22,7 @@ export default function Searchbar() {
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Cosa stai cercando?"
         />
-        <button type="submit" className='btn  btn-outline-dark'>Cerca</button>
+        <button type="submit" className='btn  btn-outline-dark rounded-pill'>Cerca</button>
       </form>
     </div>
   )
