@@ -8,6 +8,8 @@ import Homepage from "./pages/Homepage"
 import Product from "./pages/Product"
 import CondomPage from "./pages/CondomPage"
 import SexToysPage from "./pages/SexToysPage"
+import SearchPage from "./pages/SearchPage"
+import Cart from "./pages/Cart"
 
 function App() {
 
