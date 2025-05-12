@@ -22,7 +22,7 @@ export default function Searchbar() {
 
   return (
     <div className="mt-4">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='d-flex'>
 
         <input
           type="text"
