@@ -92,10 +92,10 @@ main {
 
   .card {
 
-    .discount {
-      position: absolute;
-      right: 1rem;
+    .badge {
 
+      top: 0;
+      right: 0;
     }
 
     .final_price {

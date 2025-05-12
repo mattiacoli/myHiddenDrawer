@@ -10,6 +10,11 @@ function GlobalProvider({ children }) {
 
   const [products, setProducts] = useState([])
   const [cart, setCart] = useState([])
+  const [wishlist, setWishlist] = useState(() => {
+    // Recupera la wishlist da localStorage, se presente
+    const savedWishlist = localStorage.getItem("wishlist");
+    return savedWishlist ? JSON.parse(savedWishlist) : [];
+  });
 
 
   useEffect(() => {
@@ -20,6 +25,11 @@ function GlobalProvider({ children }) {
         setProducts(data)
       })
   }, [])
+
+  // Salva la wishlist nel localStorage ogni volta che cambia
+  useEffect(() => {
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  }, [wishlist]);
 
   function addToCart(product) {
     console.log("Aggiunto al carrello:", product);
@@ -53,8 +63,21 @@ function GlobalProvider({ children }) {
     }
   }
 
+  // Funzione per aggiungere un prodotto alla wishlist
+  function addToWishlist(id) {
+    if (!wishlist.includes(id)) {
+      setWishlist(prevWishlist => [...prevWishlist, id]);
+    }
+  };
+
+  // Funzione per rimuovere un prodotto dalla wishlist
+  function removeFromWishlist(id) {
+    setWishlist(prevWishlist => prevWishlist.filter(productId => productId !== id));
+  };
+
+
   return (
-    <GlobalContext.Provider value={{ products, cart, setCart, addToCart, removeFromCart, updateQuantity }}>
+    <GlobalContext.Provider value={{ products, cart, setCart, addToCart, removeFromCart, updateQuantity, wishlist, addToWishlist, removeFromWishlist }}>
       {children}
     </GlobalContext.Provider>
   )

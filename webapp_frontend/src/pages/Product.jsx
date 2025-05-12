@@ -5,8 +5,10 @@ import { useGlobalContext } from '../contexts/GlobalContext'
 export default function Product() {
 
     const [product, setProduct] = useState({})
-    const { addToCart } = useGlobalContext()
+    const { addToCart, wishlist, addToWishlist, removeFromWishlist } = useGlobalContext()
     const { slug } = useParams()
+
+    const isInWishlist = wishlist.includes(product.id)
 
     useEffect(() => {
         fetch('http://localhost:3000/api/v1/products/' + slug)
@@ -17,6 +19,15 @@ export default function Product() {
             })
             .catch(err => console.error(err))
     }, [])
+
+    function handleWishlistClick(e) {
+        e.preventDefault();
+        if (isInWishlist) {
+            removeFromWishlist(product.id);
+        } else {
+            addToWishlist(product.id);
+        }
+    };
 
     return (
         <>
@@ -36,9 +47,18 @@ export default function Product() {
                             <p className="fs-4">
                                 {product.description}
                             </p>
-                            <button className="btn btn-primary btn-lg add-to-cart" type="button">
-                                Aggiungi al carrello
-                            </button>
+                            <div className="d-flex gap-3">
+                                <button className="btn btn-primary btn-lg add-to-cart" type="button">
+                                    Aggiungi al carrello
+                                </button>
+                                <button
+                                    onClick={handleWishlistClick}
+                                    className="btn p-0 border-0 bg-transparent"
+                                    aria-label="Aggiungi o rimuovi dalla wishlist">
+                                    <i className={`bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'} fs-4 text-danger`}></i>
+                                </button>
+                            </div>
+
                         </div>
                     </div>
 
@@ -118,13 +138,23 @@ export default function Product() {
                             <li><i className="bi bi-tree"></i> Materiali certificati</li>
                             <li><i className="bi bi-shield-lock"></i> Pagamento sicuro</li>
                         </ul>
-                        <button className="btn btn-primary btn-lg mt-5 add-to-cart" type="button"
-                            onClick={() => {
-                                addToCart(product);
-                                alert("Prodotto aggiunto al carrello!");
-                            }}>
-                            Aggiungi al carrello
-                        </button>
+                        <div className="d-flex gap-3 mt-5">
+                            <button className="btn btn-primary btn-lg add-to-cart" type="button"
+                                onClick={() => {
+                                    addToCart(product);
+                                    alert("Prodotto aggiunto al carrello!");
+                                }}>
+                                Aggiungi al carrello
+                            </button>
+
+                            <button
+                                onClick={handleWishlistClick}
+                                className="btn p-0 border-0 bg-transparent"
+                                aria-label="Aggiungi o rimuovi dalla wishlist">
+                                <i className={`bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'} fs-4 text-danger`}></i>
+                            </button>
+                        </div>
+
                     </div>
                 </div>
             </div>
