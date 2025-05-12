@@ -24,6 +24,8 @@ function App() {
             <Route path="/products/:slug" Component={Product} />
             <Route path="/products/condom" Component={CondomPage} />
             <Route path="/products/sextoys" Component={SexToysPage} />
+            <Route path="/cart" Component={Cart} />
+            <Route path="/search_page" Component={SearchPage} />
 
           </Route>
         </Routes>
