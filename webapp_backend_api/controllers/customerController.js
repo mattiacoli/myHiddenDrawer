@@ -68,14 +68,14 @@ function store(req, res) {
     const values = [name, lastname, phone_number, email, address, postcode, city, province, country, created_at, updated_at]
 
     // Running the query
-    connection.query(sql, values, err => {
+    connection.query(sql, values, (err, result) => {
         if (err) {
             console.error(err);
             return res.status(500).json({ err: "Database query failed" })
         }
 
         // Response in case of success
-        res.status(201).json({ message: 'Customer added successfully' });
+        res.status(201).json({ message: 'Customer added successfully', id: result.insertId });
     })
 
 }
