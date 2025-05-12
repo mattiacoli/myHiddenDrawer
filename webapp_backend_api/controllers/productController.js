@@ -71,7 +71,7 @@ function show(req, res) {
 
 // Search
 function search(req, res) {
-    const { name, category, minPrice, maxPrice } = req.query;
+    const { name, category, minPrice, maxPrice, createdAfter, createdBefore } = req.query;
     let query = `
         SELECT DISTINCT p.*, c.name AS category
         FROM products p
@@ -95,8 +95,23 @@ function search(req, res) {
     }
 
     if (minPrice) {
-        query += "AND p.price <= ?"
+        query += "AND p.price >= ?"
         params.push(minPrice);
+    }
+
+    if (maxPrice) {
+        query += "AND p.price <= ?"
+        params.push(maxPrice);
+    }
+
+    if (createdAfter) {
+        query += " AND p.updated_at >= ?";
+        params.push(createdAfter);
+    }
+
+    if (createdBefore) {
+        query += "AND p.updated_at <= ?";
+        params.push(createdBefore);
     }
 
     connection.query(query, params, (err, results) => {
