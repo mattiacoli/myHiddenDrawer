@@ -1,9 +1,11 @@
 import { NavLink } from "react-router-dom"
 import { useEffect, useState } from "react"
+import { useGlobalContext } from "../contexts/GlobalContext"
 
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
+  const { cart } = useGlobalContext()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,8 +60,19 @@ export default function Header() {
                   ><i className="bi bi-search"></i>
                     <span className="visually-hidden">(current)</span></NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/cart"><i className="bi bi-bag-heart"></i></NavLink>
+                <li className="nav-item position-relative">
+                  <NavLink className="nav-link" to="/cart"><i className="bi bi-bag-heart"></i>
+                    {cart.length > 0 && (
+                      <span className="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle d-flex justify-content-center align-items-center" style={{
+                        width: '20px',
+                        height: '20px',
+                        fontSize: '12px',
+                        color: 'white'
+                      }}> {cart.length}
+                        <span className="visually-hidden">Articoli nel carrello</span>
+                      </span>
+                    )}
+                  </NavLink>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#"><i className="bi bi-heart"></i></a>
