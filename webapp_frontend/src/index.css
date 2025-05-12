@@ -149,3 +149,12 @@ main {
   top: 80px;
   align-self: flex-start;
 }
+
+/* Icona wishlist */
+.card .btn {
+  transition: transform 0.3s ease;
+}
+
+.card .btn:hover {
+  transform: scale(1.2);
+}
