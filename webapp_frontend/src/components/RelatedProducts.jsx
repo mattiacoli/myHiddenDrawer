@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import style from '../components/Card/ProductCard.module.css'
 
 export default function RelatedProducts() {
 
@@ -23,7 +24,7 @@ export default function RelatedProducts() {
 
         <>
 
-            <div className="container related-products ">
+            <div className="container related-products my-5">
                 <h2>Prodotti Correlati</h2>
 
 
@@ -31,9 +32,9 @@ export default function RelatedProducts() {
                     {
                         relatedProducts.slice(0, 4).map(item => (
                             <div key={item.id} className="col">
-                                <Link to={`/products/${slug}`} className='text-decoration-none' >
+                                <Link to={`/products/${item.slug}`} className='text-decoration-none' >
 
-                                    <div className={`card`} style={{ height: '500px' }}>
+                                    <div className={`card ${style.card}`}>
                                         {
                                             item?.discount_percentage != 0 ? (
 
