@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
 import { useGlobalContext } from "../contexts/GlobalContext";
 import ProductCard from "../components/Card/ProductCard";
 
 export default function Wishlist() {
-    const { products, wishlist, addToWishlist, removeFromWishlist } = useGlobalContext();
+    const { products, wishlist } = useGlobalContext();
 
     // Filtra i prodotti che sono nella wishlist
     const wishedProducts = products.filter(p => wishlist.includes(p.id));
