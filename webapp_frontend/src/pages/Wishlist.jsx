@@ -16,26 +16,17 @@ export default function Wishlist() {
             {wishedProducts.length === 0 ? (
                 <p className="text-center">Nessun prodotto nella tua lista dei desideri.</p>
             ) : (
-                <div className="row row-cols-1 row-cols-md-3 g-4">
+                <div className="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
                     {/* Mappa ogni prodotto che è nella wishlist */}
                     {wishedProducts.map(item => (
                         <div key={item.id} className="col">
                             <ProductCard item={item} />
-                            <button onClick={() => removeFromWishlist(item.id)}>Rimuovi</button>
                         </div>
                     ))}
                 </div>
             )}
 
-            {/* Mostra tutti i prodotti con la possibilità di aggiungerli alla wishlist */}
-            <div className="row row-cols-1 row-cols-md-3 g-4 mt-5">
-                {products.map(item => (
-                    <div key={item.id} className="col">
-                        <ProductCard item={item} />
-                        <button onClick={() => addToWishlist(item.id)}>Aggiungi alla Wishlist</button>
-                    </div>
-                ))}
-            </div>
+
         </div>
     )
 }
