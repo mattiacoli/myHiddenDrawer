@@ -15,17 +15,9 @@ export default function Searchbar() {
   function handleSubmit(e) {
     e.preventDefault()
     if (searchQuery) {
-      const searchParams = new URLSearchParams({
-        name: searchQuery
-      })
-      navigate(`/search_page?q=${searchParams.toString()}`)
+      navigate(`/search_page?q=${searchQuery}`)
     }
   }
-
-
-
-
-
 
 
   return (
@@ -41,6 +33,7 @@ export default function Searchbar() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Cosa stai cercando?"
+
         />
 
         <button typeof='submit' className='btn btn-dark'>Cerca</button>
