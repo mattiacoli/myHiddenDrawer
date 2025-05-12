@@ -74,11 +74,18 @@ function related(req, res) {
     const { slug } = req.params;
 
     const relatedSql = `
-    SELECT DISTINCT p.*, cp.category_id, GROUP_CONCAT(DISTINCT pt.tag_id) AS tag_ids
+    SELECT 
+        p.*,
+        cp.category_id,
+        c.name AS category_name,
+        GROUP_CONCAT(DISTINCT pt.tag_id) AS tag_ids,
+        GROUP_CONCAT(DISTINCT t.name) AS tag_names
     FROM products p
     JOIN category_product cp ON cp.product_id = p.id
+    JOIN categories c ON c.id = cp.category_id
     JOIN product_tag pt ON pt.product_id = p.id
-    WHERE cp.category_id = (
+    JOIN tags t ON t.id = pt.tag_id
+    WHERE cp.category_id IN (
         SELECT cp.category_id
         FROM category_product cp
         JOIN products pr ON pr.id = cp.product_id
@@ -93,7 +100,7 @@ function related(req, res) {
     AND p.id != (
         SELECT id FROM products WHERE slug = ?
     )
-    GROUP BY p.id, cp.category_id;
+    GROUP BY p.id, cp.category_id, c.name
   `;
 
     connection.query(relatedSql, [slug, slug, slug], (err, results) => {
