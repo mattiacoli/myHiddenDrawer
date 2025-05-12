@@ -4,7 +4,7 @@ import { useGlobalContext } from '../contexts/GlobalContext'
 
 // Component for Product Card
 import ProductCard from '../components/Card/ProductCard'
-
+import Searchbar from '../components/Searchbar'
 
 export default function Homepage() {
 
@@ -38,6 +38,9 @@ export default function Homepage() {
       {/* Jumbotron */}
       <div className="p-5 mb-4 bg-light rounded-3 jumbotron">
         <div className="container-fluid py-5 text-center">
+
+          <Searchbar />
+
 
         </div>
       </div>
@@ -74,7 +77,7 @@ export default function Homepage() {
           <h2>Ultimi Arrivi</h2>
           <div className="contanier">
 
-            <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 ">
+            <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4">
 
               {latest.slice(0, 8).map(item => (
 
@@ -88,11 +91,11 @@ export default function Homepage() {
 
 
         {/* promo products */}
-        <section className='best_sellers my-4'>
+        <section className='best_sellers my-4 '>
           <h2>In Offerta</h2>
           <div className="contanier">
 
-            <div className="row row-cols-sm-1 row-cols-md-2  row-cols-lg-4 gy-4  ">
+            <div className="row row-cols-sm-1 row-cols-md-2  row-cols-lg-4 gy-4 flex-nowrap mb-4 ">
 
               {promo.slice(0, 8).map(item => (
 

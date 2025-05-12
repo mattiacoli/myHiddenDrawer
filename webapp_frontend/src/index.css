@@ -103,6 +103,36 @@ main {
     }
   }
 
+  section {
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-bottom: 2rem;
+
+    &::-webkit-scrollbar {
+      height: 5px;
+
+      &:hover {
+        height: 8px;
+      }
+
+    }
+
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+      margin-right: 10px;
+
+
+    }
+
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--mhd-primary);
+      border-radius: 50rem;
+      width: 30%;
+
+    }
+  }
 
 }
 

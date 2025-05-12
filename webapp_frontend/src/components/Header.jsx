@@ -54,10 +54,9 @@ export default function Header() {
             <div className="collapse navbar-collapse justify-content-end " id="collapsibleNavId">
               <ul className="navbar-nav mt-2 mt-lg-0 ">
                 <li className="nav-item">
-                  <a className="nav-link active" href="#" aria-current="page"
+                  <NavLink className="nav-link active" to="/search_page" aria-current="page"
                   ><i className="bi bi-search"></i>
-                    <span className="visually-hidden">(current)</span></a
-                  >
+                    <span className="visually-hidden">(current)</span></NavLink>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#"><i className="bi bi-bag-heart"></i></a>
