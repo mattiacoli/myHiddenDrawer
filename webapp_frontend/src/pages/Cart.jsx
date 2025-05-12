@@ -1,4 +1,5 @@
 import { useGlobalContext } from "../contexts/GlobalContext"
+import { Link } from "react-router-dom"
 
 export default function Cart() {
 
@@ -45,7 +46,12 @@ export default function Cart() {
                         <h4 className="text-end">
                             Totale: {cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}€
                         </h4>
-                        <button className="btn btn-primary mt-3">Procedi al Checkout</button>
+                        <Link to="/checkout">
+                            <button className="btn btn-primary mt-3">
+                                Procedi al Checkout
+                            </button>
+                        </Link>
+
                     </div>
                 )}
             </div>

@@ -10,6 +10,7 @@ import CondomPage from "./pages/CondomPage"
 import SexToysPage from "./pages/SexToysPage"
 import SearchPage from "./pages/SearchPage"
 import Cart from "./pages/Cart"
+import Checkout from "./pages/Checkout"
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="/products/sextoys" Component={SexToysPage} />
             <Route path="/cart" Component={Cart} />
             <Route path="/search_page" Component={SearchPage} />
+            <Route path="/checkout" Component={Checkout} />
 
           </Route>
         </Routes>
