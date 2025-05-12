@@ -1,7 +1,15 @@
 import { useGlobalContext } from "../contexts/GlobalContext"
+import { useNavigate } from "react-router-dom";
 
 export default function Checkout() {
     const { cart } = useGlobalContext()
+    const navigate = useNavigate()
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        navigate('/conferma-ordine')
+    }
 
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0)
     const capOptions = [
@@ -381,7 +389,7 @@ export default function Checkout() {
 
 
                 {/* Form dati cliente */}
-                <form style={{ width: "70%" }}>
+                <form style={{ width: "70%" }} onSubmit={handleSubmit}>
                     <div className="d-flex gap-3">
                         <div className="mb-3">
                             <label className="form-label">Nome</label>
@@ -464,7 +472,7 @@ export default function Checkout() {
                         </select>
                     </div>
 
-                    <button className="btn btn-primary">Conferma ordine</button>
+                    <button className="btn btn-primary" type="submit">Conferma ordine</button>
                 </form>
             </div>
 
