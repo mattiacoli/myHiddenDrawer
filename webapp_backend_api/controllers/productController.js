@@ -71,7 +71,7 @@ function show(req, res) {
 
 // Search
 function search(req, res) {
-    const { name, category } = req.query;
+    const { name, category, minPrice, maxPrice, createdAfter, createdBefore } = req.query;
     let query = `
         SELECT DISTINCT p.*, c.name AS category
         FROM products p
@@ -92,6 +92,26 @@ function search(req, res) {
         query += " AND REPLACE(LOWER(c.name), ' ', '') LIKE ?";
         const categoryTerm = category.toLowerCase().replace(/\s+/g, '');
         params.push(`%${categoryTerm}%`);
+    }
+
+    if (minPrice) {
+        query += "AND p.final_price >= ? ORDER BY p.final_price ASC"
+        params.push(minPrice);
+    }
+
+    if (maxPrice) {
+        query += "AND p.final_price <= ? ORDER BY p.final_price ASC"
+        params.push(maxPrice);
+    }
+
+    if (createdAfter) {
+        query += " AND p.updated_at >= ? ORDER BY p.updated_at ASC";
+        params.push(createdAfter);
+    }
+
+    if (createdBefore) {
+        query += "AND p.updated_at <= ? ORDER BY p.updated_at ASC";
+        params.push(createdBefore);
     }
 
     connection.query(query, params, (err, results) => {
