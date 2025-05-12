@@ -103,6 +103,10 @@ main {
     }
   }
 
+  section {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
 
 }
 

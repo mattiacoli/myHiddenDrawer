@@ -74,7 +74,7 @@ export default function Homepage() {
           <h2>Ultimi Arrivi</h2>
           <div className="contanier">
 
-            <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 ">
+            <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4">
 
               {latest.slice(0, 8).map(item => (
 
@@ -92,7 +92,7 @@ export default function Homepage() {
           <h2>In Offerta</h2>
           <div className="contanier">
 
-            <div className="row row-cols-sm-1 row-cols-md-2  row-cols-lg-4 gy-4  ">
+            <div className="row row-cols-sm-1 row-cols-md-2  row-cols-lg-4 gy-4 flex-nowrap mb-4 ">
 
               {promo.slice(0, 8).map(item => (
 
