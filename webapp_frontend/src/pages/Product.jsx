@@ -17,7 +17,7 @@ export default function Product() {
                 setProduct(data)
             })
             .catch(err => console.error(err))
-    }, [])
+    }, [slug])
 
     return (
         <>
