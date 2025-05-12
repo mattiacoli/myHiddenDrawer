@@ -95,22 +95,22 @@ function search(req, res) {
     }
 
     if (minPrice) {
-        query += "AND p.price >= ?"
+        query += "AND p.final_price >= ? ORDER BY p.final_price ASC"
         params.push(minPrice);
     }
 
     if (maxPrice) {
-        query += "AND p.price <= ?"
+        query += "AND p.final_price <= ? ORDER BY p.final_price ASC"
         params.push(maxPrice);
     }
 
     if (createdAfter) {
-        query += " AND p.updated_at >= ?";
+        query += " AND p.updated_at >= ? ORDER BY p.updated_at ASC";
         params.push(createdAfter);
     }
 
     if (createdBefore) {
-        query += "AND p.updated_at <= ?";
+        query += "AND p.updated_at <= ? ORDER BY p.updated_at ASC";
         params.push(createdBefore);
     }
 
