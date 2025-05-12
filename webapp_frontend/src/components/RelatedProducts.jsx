@@ -25,7 +25,7 @@ export default function RelatedProducts() {
             <div className="container related-products my-5">
                 <h2>Prodotti Correlati</h2>
 
-                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
                     {
                         relatedProducts.slice(0, 4).map(item => (
 
