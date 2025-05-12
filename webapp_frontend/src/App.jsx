@@ -8,6 +8,7 @@ import Homepage from "./pages/Homepage"
 import Product from "./pages/Product"
 import CondomPage from "./pages/CondomPage"
 import SexToysPage from "./pages/SexToysPage"
+import Cart from "./pages/Cart"
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
             <Route path="/products/:slug" Component={Product} />
             <Route path="/products/condom" Component={CondomPage} />
             <Route path="/products/sextoys" Component={SexToysPage} />
+            <Route path="/cart" Component={Cart} />
 
           </Route>
         </Routes>

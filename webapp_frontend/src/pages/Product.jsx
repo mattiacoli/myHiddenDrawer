@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useGlobalContext } from '../contexts/GlobalContext'
 
 export default function Product() {
 
     const [product, setProduct] = useState({})
-
+    const { addToCart } = useGlobalContext()
     const { slug } = useParams()
 
     useEffect(() => {
@@ -117,7 +118,11 @@ export default function Product() {
                             <li><i className="bi bi-tree"></i> Materiali certificati</li>
                             <li><i className="bi bi-shield-lock"></i> Pagamento sicuro</li>
                         </ul>
-                        <button className="btn btn-primary btn-lg mt-5 add-to-cart" type="button">
+                        <button className="btn btn-primary btn-lg mt-5 add-to-cart" type="button"
+                            onClick={() => {
+                                addToCart(product);
+                                alert("Prodotto aggiunto al carrello!");
+                            }}>
                             Aggiungi al carrello
                         </button>
                     </div>
