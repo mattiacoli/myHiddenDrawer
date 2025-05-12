@@ -1,66 +1,78 @@
 import { useState, useEffect } from 'react'
-import { useGlobalContext } from '../contexts/GlobalContext'
+import { useSearchParams } from 'react-router-dom'
 import ProductCard from '../components/Card/ProductCard'
-import { useSearchParams, Link } from 'react-router-dom'
+import Searchbar from '../components/Searchbar'
 
 export default function SearchPage() {
-  const { products = [] } = useGlobalContext()
   const [searchParams] = useSearchParams()
-  const [filteredProducts, setFilteredProducts] = useState([...products])
-  const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '')
+  const [filteredProducts, setFilteredProducts] = useState([])
+  const [category_query, set]
 
-  const searchEndPoint = `http://localhost:3000/api/v1/products/search?name=${searchQuery}`
+
+  const query = searchParams.get('q')
 
   useEffect(() => {
-    if (searchQuery) {
-      fetch(searchEndPoint)
+    if (query) {
+      fetch(`http://localhost:3000/api/v1/products/search?name=${query}`)
         .then(res => res.json())
         .then(data => {
-          console.log(data);
           setFilteredProducts(data)
         })
+        .catch(error => console.error('Error:', error))
     }
-  }, [searchQuery])
 
-  function handleSearch(e) {
-    setSearchQuery(e.target.value)
+    if (query && category_query) {
+      fetch(`http://localhost:3000/api/v1/products/search?name=${query}&category=${category_query}`)
+        .then(res => res.json())
+        .then(data => {
+          setFilteredProducts(data)
+        })
+        .catch(error => console.error('Error:', error))
+    }
+
+
   }
+  }, [query, category_query])
 
-  return (
-    <>
-      <div className="p-5 mb-4 bg-light rounded-3 jumbotron">
-        <div className="container-fluid py-5 text-center">
-          <div className="mt-4">
-            <input
-              type="text"
-              className="form-control"
-              name="searchbar"
-              id="searchbar"
-              aria-describedby="helpId"
-              value={searchQuery}
-              onChange={handleSearch}
-              placeholder="Cosa stai cercando?"
-            />
-          </div>
+return (
+  <>
+    <div className="p-5 mb-4 bg-light rounded-3 jumbotron">
+      <div className="container-fluid py-5 text-center">
+        <Searchbar />
+
+        <div className="mb-3">
+          <label htmlFor="category" className="form-label">City</label>
+          <select
+            className="form-select form-select-lg"
+            name="category"
+            id="category"
+          >
+            <option selected>Select one</option>
+            <option value=""></option>
+            <option value="">Istanbul</option>
+            <option value="">Jakarta</option>
+          </select>
         </div>
-      </div>
 
-      <div className="container">
-        {
-          filteredProducts?.length > 0 ? (
-            <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 ">
-              {filteredProducts.map(item => (
-                <ProductCard item={item} key={item.id} />
-              ))}
-            </div>
 
-          ) : (
-            <div className='text-center' style={{ minHeight: '80vh' }}>
-              <h2>Nessun prodotto trovato</h2>
-            </div>
-          )
-        }
+
+
       </div>
-    </>
-  )
+    </div>
+
+    <div className="container">
+      {filteredProducts?.length > 0 ? (
+        <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4">
+          {filteredProducts.map(item => (
+            <ProductCard item={item} key={item.id} />
+          ))}
+        </div>
+      ) : (
+        <div className='text-center' style={{ minHeight: '80vh' }}>
+          <h2>Nessun prodotto trovato</h2>
+        </div>
+      )}
+    </div>
+  </>
+)
 }
