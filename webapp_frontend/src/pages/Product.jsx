@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useGlobalContext } from '../contexts/GlobalContext'
+import RelatedProducts from '../components/RelatedProducts'
 
 export default function Product() {
 
@@ -18,7 +19,7 @@ export default function Product() {
                 setProduct(data)
             })
             .catch(err => console.error(err))
-    }, [])
+    }, [slug])
 
     function handleWishlistClick(e) {
         e.preventDefault();
@@ -158,6 +159,8 @@ export default function Product() {
                     </div>
                 </div>
             </div>
+
+            <RelatedProducts />
 
         </>
     )
