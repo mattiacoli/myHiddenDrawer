@@ -59,7 +59,7 @@ export default function Header() {
                     <span className="visually-hidden">(current)</span></NavLink>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#"><i className="bi bi-bag-heart"></i></a>
+                  <NavLink className="nav-link" to="/cart"><i className="bi bi-bag-heart"></i></NavLink>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#"><i className="bi bi-heart"></i></a>
