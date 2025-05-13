@@ -17,17 +17,29 @@ export default function SexToysPage() {
 
 
   return (
-    <div className="container mt-4">
-      <h1>Sextoys</h1>
 
-      <div className=" row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4  mt-4">
 
-        {sextoys.map(item => (
-          <ProductCard item={item} key={item.id} />
-        ))}
+    <>
+      <div className="p-5 mb-4 bg-light rounded-3 jumbotron_sextoys">
+        <div className="container-fluid py-5 text-center">
+          <h1>Sex Toys</h1>
+
+        </div>
       </div>
 
 
-    </div >
+      <div className="container mt-4">
+        <h1>Sextoys</h1>
+
+        <div className=" row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4  mt-4">
+
+          {sextoys.map(item => (
+            <ProductCard item={item} key={item.id} />
+          ))}
+        </div>
+
+
+      </div >
+    </>
   )
 }
