@@ -1,18 +1,14 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { useGlobalContext } from '../contexts/GlobalContext'
 
 // Component for Product Card
 import ProductCard from '../components/Card/ProductCard'
-import Searchbar from '../components/Searchbar'
 import Popup from '../components/Popup/Popup'
 
 export default function Homepage() {
 
   const [latest, setLatest] = useState([])
   const [promo, setPromo] = useState([])
-
-  const { products = [] } = useGlobalContext()
 
   const productUrl = 'http://localhost:3000/api/v1/products'
 
