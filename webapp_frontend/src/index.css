@@ -249,6 +249,13 @@ main {
 /* Media query */
 
 /* Stile desktop */
+
+@media (max-width: 991px) {
+  .sticky-details {
+    display: none;
+  }
+}
+
 @media (min-width: 992px) {
   .image-scroll-container {
     display: block;
