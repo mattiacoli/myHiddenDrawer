@@ -8,16 +8,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 5;
 }
 
 .popup {
-  background: white;
+  background: #E85D75;
+  background: linear-gradient(0deg, rgba(232, 93, 117, 1) 0%, rgba(247, 197, 159, 1) 100%);
   padding: 2rem;
   border-radius: 10px;
   max-width: 500px;
   width: 90%;
   position: relative;
+
+
+
 }
 
 .closeButton {
@@ -28,4 +32,17 @@
   background: none;
   font-size: 1.5rem;
   cursor: pointer;
+}
+
+.btn {
+  background-color: #3185fc;
+  color: white;
+
+  &:hover {
+    border: 3px solid #3185fc;
+    color: white;
+    font-weight: 500;
+  }
+
+
 }

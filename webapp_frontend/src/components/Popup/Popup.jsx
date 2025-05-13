@@ -38,15 +38,25 @@ export default function Popup() {
           className={styles.closeButton}
           onClick={() => setIsOpen(false)}
         >
-          ×
+          <i class="bi bi-x-circle"></i>
         </button>
 
         <div className="container">
-          <h3 className="text-center mb-4">Iscriviti alla newsletter</h3>
+          <h3 className="text-center mb-4">Ben<strong>venut*</strong> <br /> nel lato piccante dello shopping! 🔥</h3>
+
+          <div className="message text-center mb-4">
+            <p >Hai appena messo piede nel tuo nuovo sexy posto felice! </p>
+            <p>💌 Iscriviti alla newsletter e resta sempre sul pezzo (…e sul piacere).
+              Tips piccanti, novità bollenti e consigli senza tabù, direttamente nella tua inbox.
+              Perché il piacere, si sa, ama essere coltivato… con stile. 😏.</p>
+            <p> 👉 Nessun imbarazzo, solo vibrazioni positive.</p>
+          </div>
+
+
           <form onSubmit={handleSubmit} className="text-center">
             <input
               type="email"
-              className="form-control mb-3"
+              className="form-control mb-3 rounded-4"
               value={mail}
               onChange={(e) => setMail(e.target.value)}
               placeholder="Inserisci la tua email"
@@ -54,7 +64,7 @@ export default function Popup() {
             />
             <button
               type="submit"
-              className="btn btn-primary"
+              className={`btn rounded-pill ${styles.btn}`}
             >
               Iscriviti
             </button>
