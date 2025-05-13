@@ -5,6 +5,7 @@ import { useGlobalContext } from '../contexts/GlobalContext'
 // Component for Product Card
 import ProductCard from '../components/Card/ProductCard'
 import Searchbar from '../components/Searchbar'
+import Popup from '../components/Popup'
 
 export default function Homepage() {
 
@@ -42,6 +43,7 @@ export default function Homepage() {
             <div className="col" style={{ maxWidth: '800px' }}>
 
               <Searchbar />
+              <Popup />
             </div>
           </div>
 
