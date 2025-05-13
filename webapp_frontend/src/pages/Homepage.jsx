@@ -47,6 +47,9 @@ export default function Homepage() {
 
               <Searchbar />
 
+
+              <Popup />
+
             </div>
           </div>
 

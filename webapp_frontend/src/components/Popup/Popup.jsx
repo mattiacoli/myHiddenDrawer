@@ -2,10 +2,7 @@ import { useEffect, useState } from "react"
 import styles from './Popup.module.css'
 
 export default function Popup() {
-  const [isOpen, setIsOpen] = useState(() => {
-    const savedMail = localStorage.getItem('mail')
-    return !savedMail
-  })
+  const [isOpen, setIsOpen] = useState(false)
 
   const [mail, setMail] = useState(() => {
     const saved = localStorage.getItem('mail')
@@ -14,14 +11,21 @@ export default function Popup() {
   })
 
   useEffect(() => {
-    localStorage.setItem('mail', mail)
+    const savedMail = localStorage.getItem('mail')
+    if (!savedMail || savedMail.trim() === '') {
+      const timer = setTimeout(() => {
+        setIsOpen(true)
+      }, 3000)
 
-  }, [mail])
+      return () => clearTimeout(timer)
+    }
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (mail) {
+    if (mail.trim()) {
       setIsOpen(false)
+      localStorage.setItem('mail', mail)
     }
   }
 
