@@ -76,7 +76,7 @@ export default function Product() {
                         {
                             product.images?.map(image => (
                                 <div key={image.id}>
-                                    <img className='mt-3' src={`http://localhost:3000/images/${image.image_url}`} alt={image.alt_text} />
+                                    <img className='mt-3' style={{ maxWidth: "500px" }} src={`http://localhost:3000/images/${image.image_url}`} alt={image.alt_text} />
                                 </div>
 
 
