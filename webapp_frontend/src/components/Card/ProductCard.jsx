@@ -28,7 +28,7 @@ export default function ProductCard({ item }) {
 
       <div className={`card position-relative  ${style.card}`}>
 
-        <div className="position-absolute top-0 start-0 m-2 d-flex gap-2 z-3">
+        <div className={`position-absolute top-0 start-0 m-2 d-flex gap-2 z-3 actions ${style.actions}`}>
           <button
             onClick={handleAddToCart}
             className="btn p-0 border-0 bg-transparent"
