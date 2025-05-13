@@ -19,18 +19,27 @@ export default function CondomPage() {
 
 
   return (
-    <div className="container mt-4">
-      <h1>Condoms</h1>
 
-      <div className=" row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4  mt-4">
+    <>
+      <div className="p-5 mb-4 bg-light rounded-3 jumbotron_condoms">
+        <div className="container-fluid py-5 text-center">
+          <h1>Condoms</h1>
 
-        {condoms.map(item => (
-          <ProductCard item={item} key={item.id} />
-
-        ))}
+        </div>
       </div>
+      <div className="container mt-4">
+
+        <div className=" row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4  mt-4">
+
+          {condoms.map(item => (
+            <ProductCard item={item} key={item.id} />
+
+          ))}
+        </div>
 
 
-    </div >
+      </div >
+    </>
+
   )
 }

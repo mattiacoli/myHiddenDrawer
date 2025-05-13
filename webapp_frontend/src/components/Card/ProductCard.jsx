@@ -21,7 +21,7 @@ export default function ProductCard({ item }) {
   return (
     <Link to={`/products/${item.slug}`} className='col text-decoration-none' >
 
-      <div className={`card position-relative ${style.card}`}>
+      <div className={`card position-relative  ${style.card}`}>
 
         <button
           onClick={handleWishlistClick}
