@@ -35,9 +35,12 @@ function App() {
             <Route path="/checkout" Component={Checkout} />
             <Route path="/order-confirmation" Component={OrderConfirmation} />
             <Route path="/promotions/all" Component={Promotions} />
-            <Route path="*" Component={NotFound} />
+
 
           </Route>
+
+          <Route path="*" Component={NotFound} />
+
         </Routes>
       </BrowserRouter>
 
