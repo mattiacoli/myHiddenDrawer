@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default function ProductCard({ item }) {
 
-  const { wishlist, addToWishlist, removeFromWishlist } = useGlobalContext();
+  const { wishlist, addToWishlist, removeFromWishlist, addToCart } = useGlobalContext();
   const isInWishlist = wishlist.includes(item.id);
 
   const imageUrl = `http://localhost:3000/images`
@@ -18,17 +18,33 @@ export default function ProductCard({ item }) {
     }
   };
 
+  function handleAddToCart(e) {
+    e.preventDefault();
+    addToCart(item);
+  }
+
   return (
     <Link to={`/products/${item.slug}`} className='col text-decoration-none' >
 
       <div className={`card position-relative  ${style.card}`}>
 
-        <button
-          onClick={handleWishlistClick}
-          className="btn position-absolute top-0 start-0 m-2 p-0 border-0 bg-transparent z-3"
-          aria-label="Aggiungi o rimuovi dalla wishlist">
-          <i className={`bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'} fs-4 text-danger`}></i>
-        </button>
+        <div className="position-absolute top-0 start-0 m-2 d-flex gap-2 z-3">
+          <button
+            onClick={handleAddToCart}
+            className="btn p-0 border-0 bg-transparent"
+            aria-label="Aggiungi al carrello">
+            <i className="bi bi-bag-plus fs-4 text-primary"></i>
+          </button>
+
+          <button
+            onClick={handleWishlistClick}
+            className="btn btn-wishlist p-0 border-0 bg-transparent"
+            aria-label="Aggiungi o rimuovi dalla wishlist">
+            <i className={`bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'} fs-4 text-danger`}></i>
+          </button>
+        </div>
+
+
 
         {
           item?.discount_percentage != 0 ? (
