@@ -48,6 +48,7 @@ export default function Checkout() {
             .then(res => res.json())
             .then(order => {
                 console.log("Ordine creato:", order);
+
                 //Invia mail di conferma al cliente
                 emailjs.send(
                     'service_4y9n44r',
@@ -68,7 +69,31 @@ export default function Checkout() {
                     })
                     .catch(err => {
                         console.log("Errore invio email conferma acquisto cliente", err);
+                    });
+
+                // Invia mail al venditore
+                // --- NOTIFICA VENDITORE ---
+                emailjs.send(
+                    'service_4y9n44r',
+                    'template_2fpwhzj',
+                    {
+                        name: formData.name,
+                        lastname: formData.lastname,
+                        email: formData.email,
+                        order_number: order.order_number,
+                        items: cartDetails,
+                        shipping_price: shipping_price.toFixed(2),
+                        total: totalWithShipping.toFixed(2)
+                    },
+                    'Eogl_h70L7lrbe9Fy'
+                )
+                    .then(res => {
+                        console.log("Email notifica venditore inviata", res.status);
                     })
+                    .catch(err => {
+                        console.log("Errore invio email venditore", err);
+                    });
+
                 //Svuota il carrello e la wishilist al click
                 setCart([])
                 setWishlist([])
