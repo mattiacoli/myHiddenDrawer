@@ -1,9 +1,15 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 export default function Footer() {
   return (
-    <footer className="py-5 mt-5">
+    <footer className="py-4">
       <div className="container">
+
+        {/* Logo */}
+        <NavLink className="navbar-brand" to="/">
+          <img src="/logo/my_hidden_drawer_logo.png" alt="logo" className="logo mb-5" style={{ width: "300px" }} />
+
+        </NavLink>
         <div className="row gy-4">
 
           {/* Chi siamo */}
@@ -35,7 +41,7 @@ export default function Footer() {
             <h5>Cosa dicono i nostri clienti</h5>
             <p className="small">Spoiler: qualcuno ha detto “meglio del mio ex”.</p>
             <ul className="list-unstyled">
-              <li>🗯️ “Vibra più del mio telefono. 10/10.”</li>
+              <li>🗯️ “Un'esperienza che supera ogni aspettativa.”</li>
               <li>🗯️ “Arrivato in confezione super discreta. Meno male.”</li>
               <li><Link className="text-decoration-none" to="/reviews">Leggi tutte le recensioni</Link></li>
             </ul>
