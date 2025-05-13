@@ -104,25 +104,28 @@ function related(req, res) {
     JOIN categories c ON c.id = cp.category_id
     JOIN product_tag pt ON pt.product_id = p.id
     JOIN tags t ON t.id = pt.tag_id
-    WHERE cp.category_id IN (
-        SELECT cp.category_id
-        FROM category_product cp
-        JOIN products pr ON pr.id = cp.product_id
-        WHERE pr.slug = ?
-    )
-    AND pt.tag_id IN (
-        SELECT pt.tag_id
-        FROM product_tag pt
-        JOIN products pr ON pr.id = pt.product_id
-        WHERE pr.slug = ?
-    )
-    AND p.id != (
-        SELECT id FROM products WHERE slug = ?
+    WHERE p.id IN (
+        SELECT pt1.product_id
+        FROM product_tag pt1
+        WHERE pt1.product_id != (SELECT id FROM products WHERE slug = ?)
+        AND NOT EXISTS (
+            -- Trova i tag del prodotto corrente che non sono presenti nel prodotto correlato
+            SELECT pt2.tag_id
+            FROM product_tag pt2
+            WHERE pt2.product_id = (SELECT id FROM products WHERE slug = ?)
+            AND pt2.tag_id NOT IN (
+                SELECT pt3.tag_id
+                FROM product_tag pt3
+                WHERE pt3.product_id = pt1.product_id
+            )
+        )
     )
     GROUP BY p.id, cp.category_id, c.name
-  `;
+    ORDER BY p.updated_at DESC
+  `
+        ;
 
-    connection.query(relatedSql, [slug, slug, slug], (err, results) => {
+    connection.query(relatedSql, [slug, slug, slug, slug], (err, results) => {
         if (err) {
             console.error('Errore nella query dei correlati:', err);
             return res.status(500).json({ message: 'Errore del server' });
