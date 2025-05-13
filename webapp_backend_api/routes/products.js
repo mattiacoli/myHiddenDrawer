@@ -2,12 +2,8 @@ const router = require('express').Router();
 
 const productController = require('../controllers/productController')
 
-
-// Index
-router.get('/', productController.index)
-
-// Related
-router.get('/:slug/related', productController.related)
+// All Promotions
+router.get('/promotions/all', productController.allPromotions)
 
 // 4 Promotions
 router.get('/promotions', productController.promotions)
@@ -18,8 +14,13 @@ router.get('/latest', productController.latestProduct)
 // Search
 router.get('/search', productController.search)
 
+// Related
+router.get('/:slug/related', productController.related)
+
 // Show
 router.get('/:slug', productController.show)
 
+// Index
+router.get('/', productController.index)
 
 module.exports = router
