@@ -15,6 +15,16 @@ function index(req, res) {
     })
 }
 
+// Get 4 products with promotions
+function promotions(req, res) {
+    const sql = `SELECT * FROM products WHERE discount_percentage > 0 LIMIT 4`;
+
+    connection.query(sql, (err, results) => {
+        if (err) return res.status(500).json({ err: "Database query failed" });
+        res.json(results);
+    })
+}
+
 // Get latest product
 function latestProduct(req, res) {
     const sql = 'SELECT * FROM products ORDER BY updated_at DESC';
@@ -170,5 +180,6 @@ module.exports = {
     show,
     latestProduct,
     search,
-    related
+    related,
+    promotions
 }

@@ -9,6 +9,9 @@ router.get('/', productController.index)
 // Related
 router.get('/:slug/related', productController.related)
 
+// 4 Promotions
+router.get('/promotions', productController.promotions)
+
 // Latest Product
 router.get('/latest', productController.latestProduct)
 
