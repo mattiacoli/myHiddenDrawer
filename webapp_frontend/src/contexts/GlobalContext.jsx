@@ -77,7 +77,7 @@ function GlobalProvider({ children }) {
 
 
   return (
-    <GlobalContext.Provider value={{ products, cart, setCart, addToCart, removeFromCart, updateQuantity, wishlist, addToWishlist, removeFromWishlist }}>
+    <GlobalContext.Provider value={{ products, cart, setCart, addToCart, removeFromCart, updateQuantity, wishlist, setWishlist, addToWishlist, removeFromWishlist }}>
       {children}
     </GlobalContext.Provider>
   )

@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function Checkout() {
-    const { cart } = useGlobalContext()
+    const { cart, setCart, setWishlist } = useGlobalContext()
     const navigate = useNavigate()
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -36,6 +37,8 @@ export default function Checkout() {
             .then(res => res.json())
             .then(order => {
                 console.log("Ordine creato:", order);
+                setCart([])
+                setWishlist([])
                 navigate('/order-confirmation');
             })
             .catch(err => console.error("Errore:", err));
