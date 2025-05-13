@@ -1,11 +1,22 @@
 import { useGlobalContext } from "../contexts/GlobalContext"
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import emailjs from "emailjs-com"
 
 export default function Checkout() {
     const { cart, setCart, setWishlist } = useGlobalContext()
     const navigate = useNavigate()
 
+    //Variabile per il totale
+    const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0)
+
+    //Recupero gli articoli dell'acquisto per l'invio della mail
+    const cartDetails = cart.map(item => ({
+        name: item.name,
+        quantity: item.quantity,
+        price: parseFloat(item.price).toFixed(2),
+        image_url: `http://localhost:3000/images/${item.cover_image}`
+    }))
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -37,14 +48,42 @@ export default function Checkout() {
             .then(res => res.json())
             .then(order => {
                 console.log("Ordine creato:", order);
+                //Invia mail di conferma al cliente
+                emailjs.send(
+                    'service_4y9n44r',
+                    'template_87wlh7t',
+                    {
+                        name: formData.name,
+                        lastname: formData.lastname,
+                        email: formData.email,
+                        order_number: order.order_number,
+                        items: cartDetails,
+                        shipping_price: shipping_price.toFixed(2),
+                        total: totalWithShipping.toFixed(2)
+                    },
+                    'Eogl_h70L7lrbe9Fy'
+                )
+                    .then(res => {
+                        console.log("Email conferma acquisto cliente inviata", res.status);
+                    })
+                    .catch(err => {
+                        console.log("Errore invio email conferma acquisto cliente", err);
+                    })
+                //Svuota il carrello e la wishilist al click
                 setCart([])
                 setWishlist([])
-                navigate('/order-confirmation');
+                //Naviga alla pagina di conferma ordine
+                navigate('/order-confirmation', {
+                    state: {
+                        order: order,
+                        cart: cart,
+                        formData: formData
+                    }
+                });
             })
             .catch(err => console.error("Errore:", err));
     }
-    //Variabile per il totale
-    const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0)
+
 
     const [formData, setFormData] = useState({
         name: '',
