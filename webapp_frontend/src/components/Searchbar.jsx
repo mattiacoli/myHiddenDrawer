@@ -22,11 +22,11 @@ export default function Searchbar({ setShowSearch }) {
   }
 
   return (
-    <div className="mt-4" >
-      <form onSubmit={handleSubmit} className='d-flex bg-white rounded-5 p-2 gap-2' >
+    <div className="mt-4 " >
+      <form onSubmit={handleSubmit} className='d-flex bg-white rounded-5 p-2 gap-2 shadow-sm border border-dark-subtle border-2 ' >
         <input
           type="text"
-          className="form-control border-white"
+          className="form-control border-white "
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Cosa stai cercando?"
