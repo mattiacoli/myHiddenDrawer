@@ -1,13 +1,22 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
-export default function Searchbar() {
+
+export default function Searchbar({ setShowSearch }) {
   const [query, setQuery] = useState('')
+  const [searchParams, setSearchParams] = useSearchParams()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    setQuery(searchParams.get('q') || '')
+  }, [searchParams])
 
   function handleSubmit(e) {
     e.preventDefault()
-    if (query) {
+    setShowSearch?.(false)
+    if (window.location.pathname === '/search_page') {
+      setSearchParams({ q: query })
+    } else {
       navigate(`/search_page?q=${query}`)
     }
   }

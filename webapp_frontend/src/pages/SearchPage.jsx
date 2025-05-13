@@ -4,7 +4,7 @@ import ProductCard from '../components/Card/ProductCard'
 import Searchbar from '../components/Searchbar'
 
 export default function SearchPage() {
-  const [searchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
   const [filteredProducts, setFilteredProducts] = useState([])
   const [categoryQuery, setCategoryQuery] = useState([])
   const [sortBy, setSortBy] = useState('')
@@ -32,11 +32,11 @@ export default function SearchPage() {
     const sortedProducts = [...products]
     switch (sortType) {
       case 'price_asc':
-        return sortedProducts.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
+        return sortedProducts.sort((a, b) => parseFloat(a.final_price) - parseFloat(b.final_price))
       case 'price_desc':
-        return sortedProducts.sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
+        return sortedProducts.sort((a, b) => parseFloat(b.final_price) - parseFloat(a.final_price))
       case 'latest':
-        return sortedProducts.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+        return sortedProducts.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
       default:
         return products
     }
@@ -117,10 +117,10 @@ export default function SearchPage() {
                   </select>
                 </div>
 
-                <div class="form-check">
+                <div className="form-check">
                   <label htmlFor="promo" className='form-label text-white fw-bold'>In Sconto</label>
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     name="promo"
                     id="promo"
                     type="checkbox"
