@@ -43,7 +43,7 @@ export default function ProductCard({ item }) {
               </div>
               <div className="card-body d-flex flex-column justify-content-between">
                 <h4>{item.name}</h4>
-                <p className=' '>
+                <p className=' fs-6'>
                   {item.description}
                 </p>
                 <div className="pricing text-end d-flex gap-3 justify-content-end  mt-auto">
@@ -60,7 +60,7 @@ export default function ProductCard({ item }) {
               </div>
               <div className="card-body d-flex flex-column justify-content-between">
                 <h4>{item.name}</h4>
-                <p className=' '>
+                <p className='fs-6 '>
                   {item.description}
                 </p>
                 <p className='text-end fs-4 mt-auto'><strong>{item.price} &#8364;</strong></p>

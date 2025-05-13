@@ -1,10 +1,10 @@
   .card {
-
-    height: 500px;
+    height: 100%;
 
     box-shadow: 3px 3px 4px 0px #d7bebe;
 
     &:hover {
+      transition: all 0.3s;
       cursor: pointer;
       box-shadow: 3px 3px 7px 4px var(--mhd-primary-soft);
 
@@ -15,6 +15,11 @@
 
     img {
       aspect-ratio: 1;
+    }
+
+    h4 {
+      font-family: 'Lexend Deca Variable', sans-serif;
+      font-weight: 500;
     }
 
   }
