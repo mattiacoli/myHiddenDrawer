@@ -30,17 +30,17 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Recensioni hot */}
           <div className="col-md-3">
-            <h5>Non perderti le novità</h5>
-            <p className="small">
-              Iscriviti alla nostra newsletter per ricevere offerte esclusive e contenuti segreti. Niente spam, solo goduria.
-            </p>
-            <form className="d-flex flex-column gap-2">
-              <input type="email" className="form-control" placeholder="La tua email" />
-              <button type="submit" className="btn btn-outline-dark">Iscriviti</button>
-            </form>
+            <h5>Cosa dicono i nostri clienti</h5>
+            <p className="small">Spoiler: qualcuno ha detto “meglio del mio ex”.</p>
+            <ul className="list-unstyled">
+              <li>🗯️ “Vibra più del mio telefono. 10/10.”</li>
+              <li>🗯️ “Arrivato in confezione super discreta. Meno male.”</li>
+              <li><Link className="text-decoration-none" to="/reviews">Leggi tutte le recensioni</Link></li>
+            </ul>
           </div>
+
 
           {/* Social */}
           <div className="col-md-3">
