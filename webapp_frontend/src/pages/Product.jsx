@@ -15,7 +15,6 @@ export default function Product() {
         fetch('http://localhost:3000/api/v1/products/' + slug)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setProduct(data)
             })
             .catch(err => console.error(err))

@@ -12,7 +12,6 @@ export default function RelatedProducts() {
         fetch(`http://localhost:3000/api/v1/products/${slug}/related/`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setRelatedProducts(data)
             })
             .catch(err => console.error(err))
