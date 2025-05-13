@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
+import emailjs from 'emailjs-com'
 import styles from './Popup.module.css'
+
 
 export default function Popup() {
   const [isOpen, setIsOpen] = useState(false)
@@ -26,7 +28,30 @@ export default function Popup() {
     if (mail.trim()) {
       setIsOpen(false)
       localStorage.setItem('mail', mail)
+      sendEmail(mail)
     }
+  }
+
+  function sendEmail(mail) {
+    // Create template parameters object
+    const templateParams = {
+      email: mail,
+      // Add any other template parameters you need
+    };
+
+    emailjs.send(
+      'service_0jrbiu5',
+      'template_mbn6r8f',
+      templateParams,
+      'Yl4NruAJhvwFTSBmI'
+    )
+      .then((result) => {
+        window.location.reload();
+        console.log(`mail inviata a: ${mail}`, result.status);
+      })
+      .catch((error) => {
+        console.log('errore invio:', error.text);
+      });
   }
 
   if (!isOpen) return null
