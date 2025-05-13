@@ -17,9 +17,13 @@ export default function Homepage() {
   const productUrl = 'http://localhost:3000/api/v1/products'
 
   useEffect(() => {
-    const discountedProducts = products.filter(product => product.discount_percentage !== '0.00')
-    setPromo(discountedProducts)
-  }, [products])
+    fetch(`${productUrl}/promotions`)
+      .then(res => res.json())
+      .then(data => {
+        setPromo(data)
+      })
+      .catch(err => console.error(err))
+  }, [])
 
   useEffect(() => {
     fetch(`${productUrl}/latest`)
@@ -88,7 +92,7 @@ export default function Homepage() {
         {/* Last Products */}
         <section className="last_products my-4">
           <h2>Ultimi Arrivi</h2>
-          <div className="contanier">
+          <div className="container">
 
             <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4">
 
@@ -104,22 +108,22 @@ export default function Homepage() {
 
 
         {/* promo products */}
-        <section className='best_sellers my-4 '>
-          <h2>In Offerta</h2>
-          <div className="contanier">
-
-            <div className="row row-cols-sm-1 row-cols-md-2  row-cols-lg-4 gy-4 flex-nowrap mb-4 ">
-
-              {promo.slice(0, 8).map(item => (
-
+        <section className='best_sellers my-4'>
+          <div className="d-flex align-items-center gap-4 mb-3">
+            <h2 className="m-0">In Offerta</h2>
+            <Link to="/promotions/all" className="btn btn-outline-dark">
+              Mostra tutti
+            </Link>
+          </div>
+          <div className="container">
+            <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4">
+              {promo.map(item => (
                 <ProductCard item={item} key={item.id} />
-
               ))}
-
-
             </div>
           </div>
         </section>
+
 
 
       </div>

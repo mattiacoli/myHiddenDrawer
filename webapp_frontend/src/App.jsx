@@ -13,6 +13,7 @@ import Cart from "./pages/Cart"
 import Wishlist from "./pages/Wishlist"
 import Checkout from "./pages/Checkout"
 import OrderConfirmation from "./pages/OrderConfirmation"
+import Promotions from "./pages/Promotions"
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
             <Route path="/wishlist" Component={Wishlist} />
             <Route path="/checkout" Component={Checkout} />
             <Route path="/order-confirmation" Component={OrderConfirmation} />
+            <Route path="/promotions/all" Component={Promotions} />
 
           </Route>
         </Routes>
