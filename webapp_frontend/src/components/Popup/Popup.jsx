@@ -28,16 +28,29 @@ export default function Popup() {
     if (mail.trim()) {
       setIsOpen(false)
       localStorage.setItem('mail', mail)
+      sendEmail(mail)
     }
   }
 
-  function sendEmail(e) {
-    e.preventDefault();
-    emailjs.sendForm('service_4y9n44r', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_USER_ID')
+  function sendEmail(mail) {
+    // Create template parameters object
+    const templateParams = {
+      email: mail,
+      // Add any other template parameters you need
+    };
+
+    emailjs.send(
+      'service_0jrbiu5',
+      'template_mbn6r8f',
+      templateParams,
+      'Yl4NruAJhvwFTSBmI'
+    )
       .then((result) => {
-        window.location.reload()
-      }, (error) => {
-        console.log(error.text);
+        window.location.reload();
+        console.log(`mail inviata a: ${mail}`, result.status);
+      })
+      .catch((error) => {
+        console.log('errore invio:', error.text);
       });
   }
 

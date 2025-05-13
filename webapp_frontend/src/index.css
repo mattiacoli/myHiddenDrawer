@@ -89,6 +89,8 @@ main {
   .jumbotron_condoms {
     background-image: url(https://www.veganok.com/wp-content/uploads/2022/09/Copertine-56.png);
     background-position: right 20% bottom 70%;
+    background-size: cover;
+    background-repeat: no-repeat;
 
     h1 {
       font-size: 8rem;

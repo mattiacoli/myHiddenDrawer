@@ -29,7 +29,7 @@ export default function SexToysPage() {
 
 
       <div className="container mt-4">
-        <h1>Sextoys</h1>
+
 
         <div className=" row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4  mt-4">
 

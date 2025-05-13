@@ -52,7 +52,7 @@ export default function Homepage() {
               <Searchbar />
 
 
-              {/* <Popup /> */}
+              <Popup />
 
             </div>
           </div>
