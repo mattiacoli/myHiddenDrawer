@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export default function Searchbar() {
+export default function Searchbar({ setShowSearch }) {
   const [query, setQuery] = useState('')
   const navigate = useNavigate()
 
   function handleSubmit(e) {
     e.preventDefault()
+    setShowSearch(false)
+
     if (query) {
       navigate(`/search_page?q=${query}`)
     }

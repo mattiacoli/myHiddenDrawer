@@ -49,8 +49,6 @@ export default function Homepage() {
           <div className="row justify-content-center">
             <div className="col" style={{ maxWidth: '800px' }}>
 
-              <Searchbar />
-
 
               <Popup />
 

@@ -1,10 +1,12 @@
 import { NavLink } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { useGlobalContext } from "../contexts/GlobalContext"
+import Searchbar from "./Searchbar"
 
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
+  const [showSearch, setShowSearch] = useState(false)
   const { cart, wishlist } = useGlobalContext()
 
   useEffect(() => {
@@ -15,6 +17,13 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+
+  const handleSearchClick = () => {
+    setShowSearch(!showSearch)
+  }
+
+
   return (
     <>
       <div className="shipping-banner text-center py-2">
@@ -58,10 +67,25 @@ export default function Header() {
             {/* Icons: Search, Cart, Wishlist */}
             <div className="collapse navbar-collapse justify-content-end " id="collapsibleNavId">
               <ul className="navbar-nav mt-2 mt-lg-0 ">
-                <li className="nav-item">
-                  <NavLink className="nav-link active" to="/search_page" aria-current="page"
-                  ><i className="bi bi-search"></i>
-                    <span className="visually-hidden">(current)</span></NavLink>
+                <li className="nav-item position-relative">
+                  <button
+                    className="nav-link active"
+                    onClick={handleSearchClick}
+                    aria-current="page"
+                  >
+                    <i className="bi bi-search"></i>
+                    <span className="visually-hidden">Search</span>
+                  </button>
+                  {showSearch && (
+                    <div className="position-absolute" style={{
+                      top: "100%",
+                      right: 0,
+                      zIndex: 1000,
+                      width: "500px"
+                    }}>
+                      <Searchbar setShowSearch={setShowSearch} />
+                    </div>
+                  )}
                 </li>
                 <li className="nav-item position-relative">
                   <NavLink className="nav-link" to="/cart"><i className="bi bi-bag-heart"></i>
