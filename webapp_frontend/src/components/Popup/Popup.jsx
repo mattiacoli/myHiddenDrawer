@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
+import emailjs from 'emailjs-com'
 import styles from './Popup.module.css'
+
 
 export default function Popup() {
   const [isOpen, setIsOpen] = useState(false)
@@ -27,6 +29,16 @@ export default function Popup() {
       setIsOpen(false)
       localStorage.setItem('mail', mail)
     }
+  }
+
+  function sendEmail(e) {
+    e.preventDefault();
+    emailjs.sendForm('service_4y9n44r', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_USER_ID')
+      .then((result) => {
+        window.location.reload()
+      }, (error) => {
+        console.log(error.text);
+      });
   }
 
   if (!isOpen) return null
