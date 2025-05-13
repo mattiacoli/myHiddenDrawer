@@ -21,6 +21,12 @@ export default function Product() {
             .catch(err => console.error(err))
     }, [slug])
 
+    //Scroll a inizio pagina all'apertura
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+    //Handle wishlist
     function handleWishlistClick(e) {
         e.preventDefault();
         if (isInWishlist) {
@@ -38,18 +44,20 @@ export default function Product() {
 
                     <div className="row g-4" >
 
-                        <div className="col-md-12 col-lg-4">
-                            <img src={`http://localhost:3000/images/${product.cover_image}`} alt={product.name} />
+                        <div className="col-md-12 col-lg-6 justify-content-center">
+                            <img className='img-fluid' src={`http://localhost:3000/images/${product.cover_image}`} alt={product.name} />
                         </div>
 
 
-                        <div className="d-flex col-md-12 col-lg-8 flex-column justify-content-end align-items-start">
+                        <div className="d-flex col-md-12 col-lg-6 flex-column justify-content-center align-items-start">
                             <h1 className="display-5 fw-bold">{product.name}</h1>
                             <p className="fs-4">
                                 {product.description}
                             </p>
                             <div className="d-flex gap-3">
-                                <button className="btn btn-primary btn-lg add-to-cart" type="button">
+                                <button className="btn btn-lg add-to-cart" type="button" onClick={() => {
+                                    addToCart(product);
+                                }}>
                                     Aggiungi al carrello
                                 </button>
                                 <button
@@ -70,19 +78,22 @@ export default function Product() {
             {/* Product */}
             <div className="container">
 
-                <div className="row align-items-start">
+                <div className="row">
                     {/* Product images */}
                     <div className="col-md-12 col-lg-8" >
-                        {
-                            product.images?.map(image => (
-                                <div key={image.id}>
-                                    <img className='mt-3' style={{ maxWidth: "500px" }} src={`http://localhost:3000/images/${image.image_url}`} alt={image.alt_text} />
-                                </div>
-
-
-                            ))
-
-                        }
+                        <div className="image-scroll-container">
+                            {
+                                product.images?.map(image => (
+                                    <div key={image.id} className="scroll-image-wrapper">
+                                        <img
+                                            className='img-fluid'
+                                            src={`http://localhost:3000/images/${image.image_url}`}
+                                            alt={image.alt_text}
+                                        />
+                                    </div>
+                                ))
+                            }
+                        </div>
 
                         {/* Tags */}
                         <div className="pt-2">
@@ -94,11 +105,7 @@ export default function Product() {
                         </div>
                     </div>
 
-
-
                     {/* Sticky card price */}
-
-
                     <div className="col-md-12 col-lg-4 sticky-details p-5">
 
                         {/* Product details & buy */}
@@ -140,10 +147,9 @@ export default function Product() {
                             <li><i className="bi bi-shield-lock"></i> Pagamento sicuro</li>
                         </ul>
                         <div className="d-flex gap-3 mt-5">
-                            <button className="btn btn-primary btn-lg add-to-cart" type="button"
+                            <button className="btn btn-lg add-to-cart" type="button"
                                 onClick={() => {
                                     addToCart(product);
-                                    alert("Prodotto aggiunto al carrello!");
                                 }}>
                                 Aggiungi al carrello
                             </button>
@@ -162,6 +168,51 @@ export default function Product() {
 
             <RelatedProducts />
 
+            {/* Mobile price banner */}
+            <div className="mobile-price d-lg-none">
+                <div className="container d-flex justify-content-between align-items-center">
+                    <button
+                        onClick={handleWishlistClick}
+                        className="btn p-0 border-0 bg-transparent"
+                        aria-label="Aggiungi o rimuovi dalla wishlist">
+                        <i className={`bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'} fs-4 text-danger`}></i>
+                    </button>
+                    <div>
+                        <h6>{product.name}</h6>
+                        {product.discount_percentage != 0 ? (
+                            <>
+                                <div className="price d-flex align-items-center gap-1">
+                                    <p className='final_price fw-bold '>{product.final_price} &#8364;</p>
+                                    <p className='old_price text-secondary'><s>{product.price} &#8364;</s></p>
+                                    <p className='discount badge text-bg-danger'>{parseFloat(product.discount_percentage).toFixed(0)}%</p>
+                                </div>
+
+                            </>
+                        ) : (
+                            <>
+                                <div className='fw-bold'>{product.price}€</div>
+                            </>
+                        )}
+
+                    </div>
+                    <div className='d-flex flex-column gap-2'>
+                        <div>
+                            {product.available === 1 ? (
+                                <span>Disponibile <i className="bi bi-hand-thumbs-up-fill text-success"></i></span>
+                            ) : (
+                                <span>Non disponibile <i className="bi bi-hand-thumbs-down-fill text-danger"></i></span>
+                            )}
+                        </div>
+                        <button
+                            className="btn btn-sm add-to-cart"
+                            onClick={() => addToCart(product)}
+                        >
+                            Aggiungi al carrello
+                        </button>
+                    </div>
+
+                </div>
+            </div>
         </>
     )
 }
