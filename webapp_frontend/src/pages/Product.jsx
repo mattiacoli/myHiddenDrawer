@@ -43,8 +43,6 @@ export default function Product() {
         addToCart(productQuantity);
     }
 
-
-
     return (
         <>
             {/* Product Jumbotron */}
