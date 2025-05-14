@@ -79,7 +79,7 @@ export default function Product() {
 
                 <div className="row">
                     {/* Product images */}
-                    <div className="col-md-12 col-lg-8" >
+                    <div className="col-md-12 col-lg-7" >
                         <div className="image-scroll-container">
                             {
                                 product.images?.map(image => (
@@ -88,6 +88,7 @@ export default function Product() {
                                             className='img-fluid'
                                             src={`http://localhost:3000/images/${image.image_url}`}
                                             alt={image.alt_text}
+                                            style={{ width: '600px', height: 'auto' }}
                                         />
                                     </div>
                                 ))
@@ -105,7 +106,7 @@ export default function Product() {
                     </div>
 
                     {/* Sticky card price */}
-                    <div className="col-md-12 col-lg-4 sticky-details p-5">
+                    <div className="col-md-12 col-lg-5 sticky-details p-5">
 
                         {/* Product details & buy */}
                         <h4>

@@ -209,6 +209,12 @@ main {
   width: 80vw;
   /* oppure 80vw per una percentuale */
   scroll-snap-align: start;
+
+  @media screen and (max-width: 768px) {
+
+    width: 400px;
+
+  }
 }
 
 .image-scroll-container::-webkit-scrollbar {
