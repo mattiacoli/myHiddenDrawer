@@ -42,6 +42,61 @@ header {
   z-index: 1000;
   background-color: transparent;
   transition: background-color 0.3s ease;
+
+}
+
+.navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-nav {
+  padding: 0;
+
+  @media screen and (max-width: 577px) {
+    .nav-link {
+      font-size: 11px;
+    }
+  }
+
+  @media screen and (min-width: 576px) and (max-width: 768px) {
+    .nav-link {
+      font-size: 12.5px;
+    }
+  }
+}
+
+.logo {
+  width: 300px;
+
+  @media screen and (max-width: 768px) {
+    width: 240px;
+    height: auto;
+    padding-left: 1rem;
+
+  }
+
+  @media screen and (max-width: 568px) {
+    width: 200px;
+    height: auto;
+  }
+}
+
+#iconsContainer {
+  flex: 0 0 auto;
+}
+
+@media screen and (max-width: 576px) {
+  #iconsContainer .navbar-nav {
+    flex-direction: row;
+  }
+
+  #iconsContainer .nav-item {
+    padding: 0 4px;
+
+    i {
+      font-size: 1rem;
+    }
+  }
 }
 
 header.scrolled {
@@ -240,6 +295,12 @@ main {
   flex: 0 0 auto;
   width: 80vw;
   scroll-snap-align: start;
+
+  @media screen and (max-width: 768px) {
+
+    width: 400px;
+
+  }
 }
 
 .image-scroll-container::-webkit-scrollbar {

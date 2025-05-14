@@ -88,6 +88,7 @@ export default function Product() {
                                             className='img-fluid'
                                             src={`http://localhost:3000/images/${image.image_url}`}
                                             alt={image.alt_text}
+                                            style={{ width: '600px', height: 'auto' }}
                                         />
                                     </div>
                                 ))
