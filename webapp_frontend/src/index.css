@@ -61,7 +61,8 @@ header.scrolled {
   padding-top: 120px;
   /* evita che il contenuto venga tagliato */
   min-height: 600px;
-  background-color: var(--mhd-primary-soft);
+  background: #E85D75;
+  background: linear-gradient(0deg, rgba(232, 93, 117, 1) 0%, rgba(247, 197, 159, 1) 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: right 30% bottom 20%;

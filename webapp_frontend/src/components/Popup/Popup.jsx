@@ -63,7 +63,7 @@ export default function Popup() {
           className={styles.closeButton}
           onClick={() => setIsOpen(false)}
         >
-          <i class="bi bi-x-circle"></i>
+          <i className="bi bi-x-circle"></i>
         </button>
 
         <div className="container">

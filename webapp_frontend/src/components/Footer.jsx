@@ -2,7 +2,7 @@ import { Link, NavLink } from 'react-router-dom'
 
 export default function Footer() {
   return (
-    <footer className="py-4">
+    <footer className="py-4 mt-5">
       <div className="container">
 
         {/* Logo */}
