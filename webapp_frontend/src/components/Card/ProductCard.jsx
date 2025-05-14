@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom'
 
 export default function ProductCard({ item }) {
 
-  const { wishlist, addToWishlist, removeFromWishlist, addToCart } = useGlobalContext();
+  const { wishlist, addToWishlist, removeFromWishlist, cart, addToCart, removeFromCart } = useGlobalContext();
+
   const isInWishlist = wishlist.includes(item.id);
+  const isInCart = cart.find(product => product.id === item.id);
 
   const imageUrl = `http://localhost:3000/images`
 
@@ -18,9 +20,14 @@ export default function ProductCard({ item }) {
     }
   };
 
-  function handleAddToCart(e) {
+  function handleCartClick(e) {
     e.preventDefault();
-    addToCart(item);
+    if (isInCart) {
+      removeFromCart(item.id);
+    }
+    else {
+      addToCart(item);
+    }
   }
 
   return (
@@ -30,10 +37,10 @@ export default function ProductCard({ item }) {
 
         <div className={`position-absolute top-0 start-0 m-2 d-flex gap-2 z-3 actions ${style.actions}`}>
           <button
-            onClick={handleAddToCart}
-            className="btn p-0 border-0 bg-transparent"
+            onClick={handleCartClick}
+            className="btn btn-cart p-0 border-0 bg-transparent"
             aria-label="Aggiungi al carrello">
-            <i className="bi bi-bag-plus fs-4 text-primary"></i>
+            <i className={`bi ${isInCart ? 'bi-bag-check-fill' : 'bi-bag-plus'} fs-4 text-primary`}></i>
           </button>
 
           <button
