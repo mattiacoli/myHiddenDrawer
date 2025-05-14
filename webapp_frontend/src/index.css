@@ -96,12 +96,27 @@ footer {
 
 main {
   .jumbotron {
-    min-height: 600px;
-    background-image: url(https://img.freepik.com/free-photo/close-up-sex-toys_23-2149151775.jpg?t=st=1746798361~exp=1746801961~hmac=b0a91eda04d2be250b7ad5e82580de2c1e3c334ba5ffa5dbe0104b610674b0ba&w=996);
+    min-height: 70vh;
+    background-image:
+      url(../public/images/sfonod\ jumbo.png),
+      linear-gradient(0deg, rgba(232, 93, 117, 1) 0%, rgba(247, 197, 159, 1) 100%);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: right 30% bottom 20%;
+    margin-top: -80px;
 
+
+
+    .hero-title {
+      font-size: 75px;
+      color: white;
+      padding-top: 50px;
+    }
+
+    .hero-text {
+      font-size: 25px;
+      color: white
+    }
   }
 
   .jumbotron_condoms {
@@ -224,7 +239,6 @@ main {
 .scroll-image-wrapper {
   flex: 0 0 auto;
   width: 80vw;
-  /* oppure 80vw per una percentuale */
   scroll-snap-align: start;
 }
 
