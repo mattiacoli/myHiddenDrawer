@@ -47,8 +47,6 @@ header {
 
 .navbar-collapse {
   flex-grow: 0;
-  flex-basis: 100%;
-  align-items: center;
 }
 
 .navbar-nav {
@@ -94,6 +92,10 @@ header {
 
   #iconsContainer .nav-item {
     padding: 0 4px;
+
+    i {
+      font-size: 1rem;
+    }
   }
 }
 
