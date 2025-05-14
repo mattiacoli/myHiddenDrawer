@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { useGlobalContext } from "../contexts/GlobalContext"
 import Searchbar from "./Searchbar"
@@ -7,7 +7,12 @@ import Searchbar from "./Searchbar"
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [showSearch, setShowSearch] = useState(false)
-  const { cart, wishlist } = useGlobalContext()
+  const { cart, wishlist, updateQuantity, removeFromCart } = useGlobalContext()
+  const [showCartPanel, setShowCartPanel] = useState(false)
+
+  const toggleCartPanel = () => {
+    setShowCartPanel(!showCartPanel)
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,7 +93,7 @@ export default function Header() {
                   )}
                 </li>
                 <li className="nav-item position-relative">
-                  <NavLink className="nav-link" to="/cart"><i className="bi bi-bag-heart"></i>
+                  <button className="nav-link" onClick={toggleCartPanel}><i className="bi bi-bag-heart"></i>
                     {cart.length > 0 && (
                       <span className="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle d-flex justify-content-center align-items-center" style={{
                         width: '20px',
@@ -99,7 +104,7 @@ export default function Header() {
                         <span className="visually-hidden">Articoli nel carrello</span>
                       </span>
                     )}
-                  </NavLink>
+                  </button>
                 </li>
                 <li className="nav-item position-relative wishlist-icon">
                   <NavLink className="nav-link" to="/wishlist">
@@ -124,6 +129,56 @@ export default function Header() {
         </nav>
       </header>
 
+      {showCartPanel && (
+        <div className={`cart-panel shadow p-4 bg-white ${showCartPanel ? "show" : ""}`}>
+          <button className="btn-close mb-3" onClick={toggleCartPanel}></button>
+          <h4>Il tuo carrello</h4>
+          {cart.length === 0 ? (
+            <p>Il carrello è vuoto 😢</p>
+          ) : (
+            <div>
+              {cart.map(item => (
+                <div className="d-flex align-items-center mb-3" key={item.id}>
+                  <img src={`http://localhost:3000/images/${item.cover_image}`} alt={item.name} width={60} className="me-3" />
+                  <div className="flex-grow-1">
+                    <h6>{item.name}</h6>
+                    <div>Prezzo: {item.price}€</div>
+                    <div className="d-flex align-items-center">
+                      <label htmlFor={`quantity-${item.id}`} className="me-2 mb-0">Qtà:</label>
+                      <input
+                        id={`quantity-${item.id}`}
+                        type="number"
+                        min="1"
+                        value={item.quantity}
+                        onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
+                        className="form-control me-2"
+                        style={{ width: "60px" }}
+                      />
+                    </div>
+                    <div>Totale: {(item.price * item.quantity).toFixed(2)}€</div>
+                  </div>
+                  <button className="btn btn-sm btn-outline-danger"
+                    onClick={() => {
+                      removeFromCart(item.id);
+                      alert("Hai rimosso il prodotto dal carrello!");
+                    }}>🗑</button>
+                </div>
+              ))}
+              <hr />
+              <div className="d-flex justify-content-between align-items-center">
+                <strong>Totale:</strong>
+                <span>{cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}€</span>
+              </div>
+              <Link to="/checkout">
+                <button className="btn btn-primary w-100 mt-3">Procedi al Checkout</button>
+              </Link>
+              <Link to="/cart">
+                <button className="btn btn-primary w-100 mt-3">Vai al carrello</button>
+              </Link>
+            </div>
+          )}
+        </div>
+      )}
     </>
 
   )
