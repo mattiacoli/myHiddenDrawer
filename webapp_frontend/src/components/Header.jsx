@@ -173,7 +173,7 @@ export default function Header() {
                 <button className="btn btn-primary w-100 mt-3">Procedi al Checkout</button>
               </Link>
               <Link to="/cart">
-                <button className="btn btn-primary w-100 mt-3">Vai al carrello</button>
+                <button className="btn btn-primary w-100 mt-3">Vai alla pagina del carrello</button>
               </Link>
             </div>
           )}
