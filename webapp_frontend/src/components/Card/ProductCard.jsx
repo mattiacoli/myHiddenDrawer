@@ -40,7 +40,7 @@ export default function ProductCard({ item }) {
             onClick={handleCartClick}
             className="btn btn-cart p-0 border-0 bg-transparent"
             aria-label="Aggiungi al carrello">
-            <i className={`bi ${isInCart ? 'bi-bag-check-fill' : 'bi-bag-plus'} fs-4 text-primary`}></i>
+            <i className={`bi ${isInCart ? 'bi-bag-check-fill' : 'bi-bag-plus'} fs-4`}></i>
           </button>
 
           <button
