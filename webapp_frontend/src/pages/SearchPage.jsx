@@ -74,7 +74,7 @@ export default function SearchPage() {
 
 
         <div className="col border border-3 border-white rounded-3 " >
-          <Searchbar />
+
         </div>
 
       </div>
@@ -84,51 +84,58 @@ export default function SearchPage() {
       {/* products list */}
       <div div className="container-fluid mt-4 p-3" >
         <div className="row">
-          <div className="col-2 d-flex flex-column">
-            <div className="my-4">
-              <label htmlFor="category" className="form-label text-black fw-bold">Categoria</label>
-              <select
-                className="form-select form-select-sm"
-                name="category"
-                id="category"
-                onChange={e => setCategoryQuery(e.target.value)}
-              >
-                <option selected value=''>Tutti i prodotti</option>
-                <option value="condom" >Condom</option>
-                <option value="sex-toys">SexToys</option>
-              </select>
-            </div>
+          <div className="col-3 d-flex flex-column d-sm-none d-md-block">
 
-            <div className="my-4">
-              <label htmlFor="sort" className="form-label text-black fw-bold">Ordina per</label>
-              <select
-                className="form-select form-select-sm"
-                name="sort"
-                id="sort"
-                onChange={e => setSortBy(e.target.value)}
-              >
-                <option value="">Nessun ordinamento</option>
-                <option value="price_asc">Prezzo crescente</option>
-                <option value="price_desc">Prezzo decrescente</option>
-                <option value="latest">Ultimi arrivi</option>
-              </select>
-            </div>
+            <div className="search_actions sticky-details ">
 
-            <div className="form-check">
-              <label htmlFor="promo" className='form-label text-black fw-bold'>In Sconto</label>
-              <input
-                className="form-check-input"
-                name="promo"
-                id="promo"
-                type="checkbox"
-                value={isChecked}
-                aria-label="Text for screen reader"
-                onChange={handleCheck}
-              />
+              <Searchbar />
+
+
+              <div className="my-4">
+                <label htmlFor="category" className="form-label text-black fw-bold">Categoria</label>
+                <select
+                  className="form-select form-select-sm"
+                  name="category"
+                  id="category"
+                  onChange={e => setCategoryQuery(e.target.value)}
+                >
+                  <option selected value=''>Tutti i prodotti</option>
+                  <option value="condom" >Condom</option>
+                  <option value="sex-toys">SexToys</option>
+                </select>
+              </div>
+
+              <div className="my-4">
+                <label htmlFor="sort" className="form-label text-black fw-bold">Ordina per</label>
+                <select
+                  className="form-select form-select-sm"
+                  name="sort"
+                  id="sort"
+                  onChange={e => setSortBy(e.target.value)}
+                >
+                  <option value="">Nessun ordinamento</option>
+                  <option value="price_asc">Prezzo crescente</option>
+                  <option value="price_desc">Prezzo decrescente</option>
+                  <option value="latest">Ultimi arrivi</option>
+                </select>
+              </div>
+
+              <div className="form-check">
+                <label htmlFor="promo" className='form-label text-black fw-bold'>In Sconto</label>
+                <input
+                  className="form-check-input"
+                  name="promo"
+                  id="promo"
+                  type="checkbox"
+                  value={isChecked}
+                  aria-label="Text for screen reader"
+                  onChange={handleCheck}
+                />
+              </div>
             </div>
 
           </div>
-          <div className="col-10">
+          <div className="col-9">
             {filteredProducts?.length > 0 ? (
               <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4">
                 {filteredProducts.map(item => (

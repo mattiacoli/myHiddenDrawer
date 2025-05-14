@@ -31,7 +31,7 @@ export default function Searchbar({ setShowSearch }) {
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Cosa stai cercando?"
         />
-        <button type="submit" className='btn  btn-outline-dark rounded-pill'>Cerca</button>
+        <button type="submit" className='btn  btn-outline-dark rounded-pill'><i className="bi bi-search"></i></button>
       </form>
     </div>
   )
