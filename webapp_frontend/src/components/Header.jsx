@@ -49,7 +49,7 @@ export default function Header() {
 
             {/*Menu */}
             <div className="collapse navbar-collapse" id="collapsibleNavId">
-              <ul className="navbar-nav me-auto mt-2 mt-lg-0">
+              <ul className="navbar-nav mt-2 mt-lg-0">
                 <li className="nav-item">
                   <NavLink className="nav-link active" to="/products/condom" aria-current="page">Condom</NavLink>
 
@@ -65,7 +65,7 @@ export default function Header() {
             <NavLink className="navbar-brand" to="/"><img src="/logo/my_hidden_drawer_logo.png" alt="logo" className="logo" /></NavLink>
 
             {/* Icons: Search, Cart, Wishlist */}
-            <div className="collapse navbar-collapse justify-content-end " id="collapsibleNavId">
+            <div className="justify-content-end " id="iconsContainer">
               <ul className="navbar-nav mt-2 mt-lg-0 ">
                 <li className="nav-item position-relative">
                   <button

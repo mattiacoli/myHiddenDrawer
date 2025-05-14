@@ -45,16 +45,24 @@ header {
 
 }
 
+.navbar-collapse {
+  flex-grow: 0;
+  flex-basis: 100%;
+  align-items: center;
+}
+
 .navbar-nav {
-  @media screen and (max-width: 576px) {
+  padding: 0;
+
+  @media screen and (max-width: 577px) {
     .nav-link {
-      font-size: 13px;
+      font-size: 11px;
     }
   }
 
-  @media screen and (min-width: 577px) and (max-width: 768px) {
+  @media screen and (min-width: 576px) and (max-width: 768px) {
     .nav-link {
-      font-size: 13px;
+      font-size: 12.5px;
     }
   }
 }
@@ -72,6 +80,20 @@ header {
   @media screen and (max-width: 568px) {
     width: 200px;
     height: auto;
+  }
+}
+
+#iconsContainer {
+  flex: 0 0 auto;
+}
+
+@media screen and (max-width: 576px) {
+  #iconsContainer .navbar-nav {
+    flex-direction: row;
+  }
+
+  #iconsContainer .nav-item {
+    padding: 0 4px;
   }
 }
 
