@@ -1,7 +1,12 @@
+
+// hooks
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
+
+//component
 import ProductCard from '../components/Card/ProductCard'
 import Searchbar from '../components/Searchbar'
+import OverlaySearch from '../components/OverlaySearch'
 
 export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -9,6 +14,7 @@ export default function SearchPage() {
   const [categoryQuery, setCategoryQuery] = useState([])
   const [sortBy, setSortBy] = useState('')
   const [isChecked, setIsChecked] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
 
   const query = searchParams.get('q')
@@ -46,6 +52,10 @@ export default function SearchPage() {
     setIsChecked(!isChecked)
   }
 
+  function handleClick() {
+    setIsOpen(!isOpen)
+  }
+
 
 
   useEffect(() => {
@@ -74,8 +84,12 @@ export default function SearchPage() {
 
 
         <div className="col border border-3 border-white rounded-3  text-center" >
-          <h3>Risultati per "{query}"</h3>
+          {filteredProducts.length > 0 ? (
+
+            <h3>{filteredProducts.length} risultati per "{query}"</h3>
+          ) : ('')}
         </div>
+
 
       </div>
 
@@ -83,8 +97,10 @@ export default function SearchPage() {
 
       {/* products list */}
       <div div className="container-fluid mt-4 p-3" >
+
+
         <div className="row">
-          <div className="col-3 d-flex flex-column d-sm-none d-md-block">
+          <div className="col-3  d-xs-none  d-sm-none  d-md-none d-lg-flex">
 
             <div className="search_actions sticky-details ">
 
@@ -135,9 +151,33 @@ export default function SearchPage() {
             </div>
 
           </div>
-          <div className="col-9">
+
+
+          <div className="col-sm-12 col-md-10 col-lg-9">
+
+
+            <div className="filter" onClick={handleClick}>
+              <div className='text-end fs-4 d-sm-block d-md-block d-lg-none'>
+                <i class="bi bi-sliders2"></i>
+              </div>
+            </div>
+
+            {isOpen === true ? (
+              <div className="position-fixed p-3 d-lg-none" style={{
+                top: '111px',
+                right: 0,
+                zIndex: 4,
+                width: "500px",
+                height: '100vh',
+                backgroundColor: 'white',
+              }}>
+                <OverlaySearch isChecked={isChecked} handleCheck={handleCheck} />
+              </div>
+            ) : ('')}
+
+
             {filteredProducts?.length > 0 ? (
-              <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4">
+              <div className="row gy-4">
                 {filteredProducts.map(item => (
                   <ProductCard item={item} key={item.id} />
                 ))}

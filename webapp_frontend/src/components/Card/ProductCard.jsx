@@ -24,9 +24,9 @@ export default function ProductCard({ item }) {
   }
 
   return (
-    <Link to={`/products/${item.slug}`} className='col text-decoration-none' >
+    <Link to={`/products/${item.slug}`} className=' col-sm-12 col-md-6 col-lg-3 text-decoration-none' >
 
-      <div className={`card position-relative  ${style.card}`}>
+      <div className={`card position-relative   ${style.card}`}>
 
         <div className={`position-absolute top-0 start-0 m-2 d-flex gap-2 z-3 actions ${style.actions}`}>
           <button
