@@ -245,6 +245,16 @@ main {
   border-top-left-radius: 25px;
 }
 
+.btn-show-all {
+  color: var(--mhd-secondary);
+  border: 1px solid var(--mhd-secondary);
+
+  &:hover {
+    background-color: var(--mhd-secondary);
+    color: white;
+  }
+}
+
 /* Icona wishlist */
 .card .btn {
   transition: transform 0.3s ease;
@@ -256,11 +266,10 @@ main {
 
 /* Icona carrello */
 .btn-cart i {
-  color: var(--mhd-secondary) !important;
-  transition: color 0.2s ease;
+  color: var(--mhd-secondary);
 
   .bi-bag-check-fill {
-    color: var(--mhd-secondary) !important;
+    color: var(--mhd-secondary);
   }
 }
 
