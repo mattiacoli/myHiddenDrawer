@@ -73,8 +73,8 @@ export default function SearchPage() {
       <div className="row  mt-4 me-auto justify-content-center ">
 
 
-        <div className="col border border-3 border-white rounded-3 " >
-
+        <div className="col border border-3 border-white rounded-3  text-center" >
+          <h3>Risultati per "{query}"</h3>
         </div>
 
       </div>
