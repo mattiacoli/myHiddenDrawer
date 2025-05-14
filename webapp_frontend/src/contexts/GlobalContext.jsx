@@ -38,11 +38,11 @@ function GlobalProvider({ children }) {
     if (existing) {
       setCart(cart.map(item =>
         item.id === product.id
-          ? { ...item, quantity: item.quantity + 1 }
+          ? { ...item, quantity: item.quantity + (product.quantity || 1) }
           : item
       ))
     } else {
-      setCart([...cart, { ...product, quantity: 1 }])
+      setCart([...cart, { ...product, quantity: product.quantity || 1 }])
     }
   }
 

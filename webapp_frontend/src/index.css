@@ -320,6 +320,16 @@ main {
   border-top-left-radius: 25px;
 }
 
+.btn-show-all {
+  color: var(--mhd-secondary);
+  border: 1px solid var(--mhd-secondary);
+
+  &:hover {
+    background-color: var(--mhd-secondary);
+    color: white;
+  }
+}
+
 /* Icona wishlist */
 .card .btn {
   transition: transform 0.3s ease;
@@ -329,15 +339,20 @@ main {
   transform: scale(1.2);
 }
 
-.wishlist-icon .bi-heart {
-  transition: transform 0.3s ease, color 0.3s ease;
+/* Icona carrello */
+.btn-cart i {
+  color: var(--mhd-secondary);
+
+  .bi-bag-check-fill {
+    color: var(--mhd-secondary);
+  }
 }
 
-.wishlist-icon:hover .bi-heart {
-  transform: scale(1.3);
-  color: var(--mhd-primary);
+/* Input quantità */
+#quantity {
+  max-width: 60px;
+  font-size: 0.85rem;
 }
-
 
 /* Media query */
 
