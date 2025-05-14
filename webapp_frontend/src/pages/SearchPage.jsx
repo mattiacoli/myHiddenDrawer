@@ -98,7 +98,7 @@ export default function SearchPage() {
       <div div className="container-fluid mt-4 p-3" >
 
 
-        <div className="row">
+        <div className="row justify-content-center">
           <div className="col-3  d-xs-none  d-sm-none  d-md-none d-lg-flex sticky-details">
 
 
