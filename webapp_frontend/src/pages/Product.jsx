@@ -6,10 +6,12 @@ import RelatedProducts from '../components/RelatedProducts'
 export default function Product() {
 
     const [product, setProduct] = useState({})
-    const { addToCart, wishlist, addToWishlist, removeFromWishlist } = useGlobalContext()
+    const [quantity, setQuantity] = useState(1);
+    const { cart, addToCart, wishlist, addToWishlist, removeFromWishlist } = useGlobalContext()
     const { slug } = useParams()
 
     const isInWishlist = wishlist.includes(product.id)
+    const isInCart = cart.some(item => item.id === product.id);
 
     useEffect(() => {
         fetch('http://localhost:3000/api/v1/products/' + slug)
@@ -35,6 +37,14 @@ export default function Product() {
         }
     };
 
+    // Handle add to cart
+    function handleAddToCart() {
+        const productQuantity = { ...product, quantity };
+        addToCart(productQuantity);
+    }
+
+
+
     return (
         <>
             {/* Product Jumbotron */}
@@ -53,12 +63,24 @@ export default function Product() {
                             <p className="fs-4">
                                 {product.description}
                             </p>
-                            <div className="d-flex gap-3">
-                                <button className="btn btn-lg add-to-cart" type="button" onClick={() => {
-                                    addToCart(product);
-                                }}>
+                            <div className="d-flex gap-3 align-items-center">
+
+                                <div>
+                                    <label htmlFor="quantity" className="form-label me-2">Quantità:</label>
+                                    <input
+                                        type="number"
+                                        id="quantity"
+                                        className="form-control d-inline-block w-auto"
+                                        min={1}
+                                        value={quantity}
+                                        onChange={(e) => setQuantity(parseInt(e.target.value))}
+                                        disabled={isInCart} />
+                                </div>
+
+                                <button className="btn btn-lg add-to-cart" onClick={handleAddToCart} disabled={isInCart}>
                                     Aggiungi al carrello
                                 </button>
+
                                 <button
                                     onClick={handleWishlistClick}
                                     className="btn p-0 border-0 bg-transparent"
@@ -87,8 +109,7 @@ export default function Product() {
                                         <img
                                             className='img-fluid'
                                             src={`http://localhost:3000/images/${image.image_url}`}
-                                            alt={image.alt_text}
-                                        />
+                                            alt={image.alt_text} />
                                     </div>
                                 ))
                             }
@@ -145,20 +166,38 @@ export default function Product() {
                             <li><i className="bi bi-tree"></i> Materiali certificati</li>
                             <li><i className="bi bi-shield-lock"></i> Pagamento sicuro</li>
                         </ul>
-                        <div className="d-flex gap-3 mt-5">
-                            <button className="btn btn-lg add-to-cart" type="button"
-                                onClick={() => {
-                                    addToCart(product);
-                                }}>
-                                Aggiungi al carrello
-                            </button>
 
-                            <button
-                                onClick={handleWishlistClick}
-                                className="btn p-0 border-0 bg-transparent"
-                                aria-label="Aggiungi o rimuovi dalla wishlist">
-                                <i className={`bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'} fs-4 text-danger`}></i>
-                            </button>
+                        <div className="d-flex align-items-center gap-3 mt-5 flex-wrap">
+                            {/* Input quantità */}
+                            <div>
+                                <label htmlFor="quantity" className="form-label me-2">Quantità:</label>
+                                <input
+                                    type="number"
+                                    id="quantity"
+                                    className="form-control w-auto"
+                                    min={1}
+                                    value={quantity}
+                                    onChange={(e) => setQuantity(parseInt(e.target.value))}
+                                    disabled={isInCart} />
+                            </div>
+
+                            {/* Bottone Aggiungi al carrello */}
+                            <div className="d-flex align-items-center gap-2">
+                                <button
+                                    className="btn btn-lg add-to-cart text-nowrap"
+                                    onClick={handleAddToCart}
+                                    disabled={isInCart} >
+                                    Aggiungi al carrello
+                                </button>
+
+                                {/* Cuore wishlist */}
+                                <button
+                                    onClick={handleWishlistClick}
+                                    className="btn p-0 border-0 bg-transparent"
+                                    aria-label="Aggiungi o rimuovi dalla wishlist">
+                                    <i className={`bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'} fs-4 text-danger`}></i>
+                                </button>
+                            </div>
                         </div>
 
                     </div>
@@ -202,10 +241,21 @@ export default function Product() {
                                 <span>Non disponibile <i className="bi bi-hand-thumbs-down-fill text-danger"></i></span>
                             )}
                         </div>
+                        <div>
+                            <label htmlFor="quantity" className="form-label me-2">Quantità:</label>
+                            <input
+                                type="number"
+                                id="quantity"
+                                className="form-control d-inline-block w-auto"
+                                min={1}
+                                value={quantity}
+                                onChange={(e) => setQuantity(parseInt(e.target.value))}
+                                disabled={isInCart} />
+                        </div>
                         <button
                             className="btn btn-sm add-to-cart"
-                            onClick={() => addToCart(product)}
-                        >
+                            onClick={handleAddToCart}
+                            disabled={isInCart}>
                             Aggiungi al carrello
                         </button>
                     </div>
