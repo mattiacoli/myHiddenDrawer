@@ -5,8 +5,7 @@ import { useSearchParams } from 'react-router-dom'
 
 //component
 import ProductCard from '../components/Card/ProductCard'
-import Searchbar from '../components/Searchbar'
-import OverlaySearch from '../components/OverlaySearch'
+import FilterBox from '../components/Search/FilterBox'
 
 export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -100,55 +99,13 @@ export default function SearchPage() {
 
 
         <div className="row">
-          <div className="col-3  d-xs-none  d-sm-none  d-md-none d-lg-flex">
-
-            <div className="search_actions sticky-details ">
-
-              <Searchbar />
+          <div className="col-3  d-xs-none  d-sm-none  d-md-none d-lg-flex sticky-details">
 
 
-              <div className="my-4">
-                <label htmlFor="category" className="form-label text-black fw-bold">Categoria</label>
-                <select
-                  className="form-select form-select-sm"
-                  name="category"
-                  id="category"
-                  onChange={e => setCategoryQuery(e.target.value)}
-                >
-                  <option selected value=''>Tutti i prodotti</option>
-                  <option value="condom" >Condom</option>
-                  <option value="sex-toys">SexToys</option>
-                </select>
-              </div>
+            <FilterBox isChecked={isChecked} handleCheck={handleCheck} setCategoryQuery={setCategoryQuery} setSortBy={setSortBy} />
 
-              <div className="my-4">
-                <label htmlFor="sort" className="form-label text-black fw-bold">Ordina per</label>
-                <select
-                  className="form-select form-select-sm"
-                  name="sort"
-                  id="sort"
-                  onChange={e => setSortBy(e.target.value)}
-                >
-                  <option value="">Nessun ordinamento</option>
-                  <option value="price_asc">Prezzo crescente</option>
-                  <option value="price_desc">Prezzo decrescente</option>
-                  <option value="latest">Ultimi arrivi</option>
-                </select>
-              </div>
 
-              <div className="form-check">
-                <label htmlFor="promo" className='form-label text-black fw-bold'>In Sconto</label>
-                <input
-                  className="form-check-input"
-                  name="promo"
-                  id="promo"
-                  type="checkbox"
-                  value={isChecked}
-                  aria-label="Text for screen reader"
-                  onChange={handleCheck}
-                />
-              </div>
-            </div>
+
 
           </div>
 
@@ -158,15 +115,15 @@ export default function SearchPage() {
 
             <div className="filter" onClick={handleClick}>
               <div className='text-end fs-4 d-sm-block d-md-block d-lg-none'>
-                <i class="bi bi-sliders2"></i>
+                <i className="bi bi-sliders2"></i>
               </div>
             </div>
 
-            {isOpen === true ? (
+            {isOpen && (
               <div className="position-fixed p-3 d-lg-none" style={{
-                top: '111px',
+                top: 0,
                 right: 0,
-                zIndex: 4,
+                zIndex: 1000,
                 width: "500px",
                 height: '100vh',
                 backgroundColor: 'white',
@@ -178,17 +135,18 @@ export default function SearchPage() {
                     right: '10px',
                     border: 'none',
                     background: 'none',
-                    fontSize: '1.5rem',
+                    fontSize: '1rem',
                     cursor: 'pointer',
+
                   }}
 
                   onClick={() => setIsOpen(false)}
                 >
                   <i className="bi bi-x-circle"></i>
                 </button>
-                <OverlaySearch isChecked={isChecked} handleCheck={handleCheck} setCategoryQuery={setCategoryQuery} setSortBy={setSortBy} />
+                <FilterBox isChecked={isChecked} handleCheck={handleCheck} setCategoryQuery={setCategoryQuery} setSortBy={setSortBy} />
               </div>
-            ) : ('')}
+            )}
 
 
             {filteredProducts?.length > 0 ? (

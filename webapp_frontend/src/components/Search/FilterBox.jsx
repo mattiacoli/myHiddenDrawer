@@ -1,8 +1,8 @@
 import Searchbar from "./Searchbar"
 
-export default function OverlaySearch({ isChecked, handleCheck, setCategoryQuery, setSortBy }) {
+export default function FilterBox({ isChecked, handleCheck, setCategoryQuery, setSortBy }) {
   return (
-    <div className="search_actions d-lg-none ">
+    <div className="search_actions ">
 
 
 
