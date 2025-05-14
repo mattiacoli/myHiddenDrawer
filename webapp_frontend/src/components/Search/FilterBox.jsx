@@ -1,4 +1,5 @@
 import Searchbar from "./Searchbar"
+import styles from './Searchbox.module.css'
 
 export default function FilterBox({ isChecked, handleCheck, setCategoryQuery, setSortBy }) {
   return (
@@ -13,7 +14,7 @@ export default function FilterBox({ isChecked, handleCheck, setCategoryQuery, se
       <div className="my-4">
         <label htmlFor="category" className="form-label text-black fw-bold">Categoria</label>
         <select
-          className="form-select form-select-sm"
+          className={`form-select form-select-sm ${styles.select}`}
           name="category"
           id="category"
           onChange={e => setCategoryQuery(e.target.value)}
@@ -27,7 +28,7 @@ export default function FilterBox({ isChecked, handleCheck, setCategoryQuery, se
       <div className="my-4">
         <label htmlFor="sort" className="form-label text-black fw-bold">Ordina per</label>
         <select
-          className="form-select form-select-sm"
+          className={`form-select form-select-sm ${styles.select}`}
           name="sort"
           id="sort"
           onChange={e => setSortBy(e.target.value)}
@@ -39,10 +40,9 @@ export default function FilterBox({ isChecked, handleCheck, setCategoryQuery, se
         </select>
       </div>
 
-      <div className="form-check">
-        <label htmlFor="promo" className='form-label text-black fw-bold'>In Sconto</label>
+      <div className='form-check form-switch'>
         <input
-          className="form-check-input"
+          className={`form-check-input ${styles.check}`}
           name="promo"
           id="promo"
           type="checkbox"
@@ -50,6 +50,7 @@ export default function FilterBox({ isChecked, handleCheck, setCategoryQuery, se
           aria-label="Text for screen reader"
           onChange={handleCheck}
         />
+        <label htmlFor="promo" className='form-label text-black fw-bold'>In Sconto</label>
       </div>
 
     </div>
