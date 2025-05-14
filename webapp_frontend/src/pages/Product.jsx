@@ -79,7 +79,7 @@ export default function Product() {
 
                 <div className="row">
                     {/* Product images */}
-                    <div className="col-md-8" >
+                    <div className=" col-md-6 col-xl-8" >
                         <div className="image-scroll-container">
                             {
                                 product.images?.map(image => (
@@ -105,7 +105,7 @@ export default function Product() {
                     </div>
 
                     {/* Sticky card price */}
-                    <div className="col-md-4 sticky-details p-5">
+                    <div className="col-md-6 col-xl-4 sticky-details p-5">
 
                         {/* Product details & buy */}
                         <h4>
