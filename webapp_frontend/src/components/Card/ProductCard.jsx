@@ -31,9 +31,9 @@ export default function ProductCard({ item }) {
   }
 
   return (
-    <Link to={`/products/${item.slug}`} className='col text-decoration-none' >
+    <Link to={`/products/${item.slug}`} className=' col-sm-12 col-md-6 col-lg-3 text-decoration-none' >
 
-      <div className={`card position-relative  ${style.card}`}>
+      <div className={`card position-relative   ${style.card}`}>
 
         <div className={`position-absolute top-0 start-0 m-2 d-flex gap-2 z-3 actions ${style.actions}`}>
           <button
@@ -57,7 +57,7 @@ export default function ProductCard({ item }) {
           item?.discount_percentage != 0 ? (
 
             <>
-              <div className="card-header bg-white position-relative">
+              <div className="card-header bg-white position-relative"  >
                 <div className="badge position-absolute m-2 d-flex align-items-center gap-2 z-2">
                   <div className='discount badge text-bg-danger fs-5'>{parseFloat(item.discount_percentage).toFixed(0)}%
                   </div>

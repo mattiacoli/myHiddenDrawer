@@ -1,7 +1,11 @@
+
+// hooks
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
+
+//component
 import ProductCard from '../components/Card/ProductCard'
-import Searchbar from '../components/Searchbar'
+import FilterBox from '../components/Search/FilterBox'
 
 export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -9,6 +13,7 @@ export default function SearchPage() {
   const [categoryQuery, setCategoryQuery] = useState([])
   const [sortBy, setSortBy] = useState('')
   const [isChecked, setIsChecked] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
 
   const query = searchParams.get('q')
@@ -46,6 +51,10 @@ export default function SearchPage() {
     setIsChecked(!isChecked)
   }
 
+  function handleClick() {
+    setIsOpen(!isOpen)
+  }
+
 
 
   useEffect(() => {
@@ -70,96 +79,91 @@ export default function SearchPage() {
 
   return (
     <>
-      <div className="p-5 mb-4 bg-light rounded-3 jumbotron">
-        <div className="container-fluid py-5">
+      <div className="row  mt-4 me-auto justify-content-center ">
 
 
-          {/* search filter */}
+        <div className="col border border-3 border-white rounded-3  text-center" >
+          {filteredProducts.length > 0 ? (
 
-          <div className="row  mt-4 me-auto justify-content-center ">
-
-
-            <div className="col border border-3 border-white rounded-3 " >
-              <Searchbar />
-
-
-              <div className="row row-cols-2">
-                <div className="col">
-                  <div className="my-4">
-                    <label htmlFor="category" className="form-label text-white fw-bold">Categoria</label>
-                    <select
-                      className="form-select form-select-sm"
-                      name="category"
-                      id="category"
-                      onChange={e => setCategoryQuery(e.target.value)}
-                    >
-                      <option selected value=''>Tutti i prodotti</option>
-                      <option value="condom" >Condom</option>
-                      <option value="sex-toys">SexToys</option>
-                    </select>
-                  </div>
-
-                </div>
-
-                <div className="col">
-                  <div className="my-4">
-                    <label htmlFor="sort" className="form-label text-white fw-bold">Ordina per</label>
-                    <select
-                      className="form-select form-select-sm"
-                      name="sort"
-                      id="sort"
-                      onChange={e => setSortBy(e.target.value)}
-                    >
-                      <option value="">Nessun ordinamento</option>
-                      <option value="price_asc">Prezzo crescente</option>
-                      <option value="price_desc">Prezzo decrescente</option>
-                      <option value="latest">Ultimi arrivi</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="col-12 w-100">
-                  <div className="form-check">
-                    <label htmlFor="promo" className='form-label text-white fw-bold'>In Sconto</label>
-                    <input
-                      className="form-check-input"
-                      name="promo"
-                      id="promo"
-                      type="checkbox"
-                      value={isChecked}
-                      aria-label="Text for screen reader"
-                      onChange={handleCheck}
-                    />
-                  </div>
-                </div>
-
-
-
-
-
-              </div>
-            </div>
-
-          </div>
+            <h3>{filteredProducts.length} risultati per "{query}"</h3>
+          ) : ('')}
         </div>
-      </div >
+
+
+      </div>
 
 
 
       {/* products list */}
-      <div div className="container" >
-        {filteredProducts?.length > 0 ? (
-          <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4">
-            {filteredProducts.map(item => (
-              <ProductCard item={item} key={item.id} />
-            ))}
+      <div div className="container-fluid mt-4 p-3" >
+
+
+        <div className="row">
+          <div className="col-3  d-xs-none  d-sm-none  d-md-none d-lg-flex sticky-details">
+
+
+            <FilterBox isChecked={isChecked} handleCheck={handleCheck} setCategoryQuery={setCategoryQuery} setSortBy={setSortBy} />
+
+
+
+
           </div>
-        ) : (
-          <div className='text-center' style={{ minHeight: '80vh' }}>
-            <h2>Nessun prodotto trovato</h2>
+
+
+          <div className="col-sm-12 col-md-10 col-lg-9">
+
+
+            <div className="filter" onClick={handleClick}>
+              <div className='text-end fs-4 d-sm-block d-md-block d-lg-none'>
+                <i className="bi bi-sliders2"></i>
+              </div>
+            </div>
+
+            {isOpen && (
+              <div className="position-fixed p-3 d-lg-none" style={{
+                top: 0,
+                right: 0,
+                zIndex: 1000,
+                width: "500px",
+                height: '100vh',
+                backgroundColor: 'white',
+              }}>
+                <button
+                  style={{
+                    position: 'absolute',
+                    top: '10px',
+                    right: '10px',
+                    border: 'none',
+                    background: 'none',
+                    fontSize: '1rem',
+                    cursor: 'pointer',
+
+                  }}
+
+                  onClick={() => setIsOpen(false)}
+                >
+                  <i className="bi bi-x-circle"></i>
+                </button>
+                <FilterBox isChecked={isChecked} handleCheck={handleCheck} setCategoryQuery={setCategoryQuery} setSortBy={setSortBy} />
+              </div>
+            )}
+
+
+            {filteredProducts?.length > 0 ? (
+              <div className="row gy-4">
+                {filteredProducts.map(item => (
+                  <ProductCard item={item} key={item.id} />
+                ))}
+              </div>
+            ) : (
+              <div className='text-center' style={{ minHeight: '80vh' }}>
+                <h2>Nessun prodotto trovato</h2>
+              </div>
+            )
+            }
           </div>
-        )
-        }
+        </div>
+
       </div >
     </>
   )
