@@ -36,7 +36,7 @@ export default function Header() {
       </div>
       <header className={scrolled ? "scrolled" : ""}>
         <nav
-          className="navbar navbar-expand-sm navbar-light"
+          className="navbar navbar-expand-md navbar-light"
         >
           <div className="header-container d-flex justify-content-around align-items-center ps-5 pe-5" style={{ width: "100%" }}>
 
