@@ -65,6 +65,15 @@ header {
   }
 }
 
+.navbar-toggler {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
 .logo {
   width: 300px;
 
@@ -375,8 +384,9 @@ main {
     background-color: var(--mhd-primary-soft);
     z-index: 1000;
     width: 100%;
-    padding: 1rem;
+    padding: 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
   }
 
   .navbar-collapse .navbar-nav {
@@ -388,11 +398,12 @@ main {
   .navbar-collapse .nav-item {
     width: 100%;
     text-align: center;
-    padding: 0.5rem 0;
+    padding: 0;
   }
 
   .navbar-collapse .nav-link {
     display: block;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem;
   }
+
 }

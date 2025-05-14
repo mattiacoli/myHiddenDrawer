@@ -8,6 +8,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [showSearch, setShowSearch] = useState(false)
   const { cart, wishlist, updateQuantity, removeFromCart } = useGlobalContext()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [showCartPanel, setShowCartPanel] = useState(false)
 
   const toggleCartPanel = () => {
@@ -28,6 +29,14 @@ export default function Header() {
     setShowSearch(!showSearch)
   }
 
+  const handleToggleClick = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleMenuItemClick = () => {
+    setIsMenuOpen(false);
+  };
+
 
   return (
     <>
@@ -41,26 +50,31 @@ export default function Header() {
           <div className="header-container d-flex justify-content-around align-items-center ps-5 pe-5" style={{ width: "100%" }}>
 
             <button
-              className="navbar-toggler d-lg-none"
+              className="navbar-toggler"
               type="button"
+              onClick={handleToggleClick}
               data-bs-toggle="collapse"
               data-bs-target="#collapsibleNavId"
               aria-controls="collapsibleNavId"
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span className="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon small"></span>
             </button>
 
             {/*Menu */}
-            <div className="collapse navbar-collapse" id="collapsibleNavId">
+            <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="collapsibleNavId">
               <ul className="navbar-nav mt-2 mt-lg-0">
                 <li className="nav-item">
-                  <NavLink className="nav-link active" to="/products/condom" aria-current="page">Condom</NavLink>
+                  <NavLink className="nav-link active" to="/products/condom" aria-current="page"
+                    onClick={handleMenuItemClick}
+                  >Condom</NavLink>
 
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link active" to="/products/sextoys" aria-current="page">Sex Toys</NavLink>
+                  <NavLink className="nav-link active" to="/products/sextoys" aria-current="page"
+                    onClick={handleMenuItemClick}
+                  >Sex Toys</NavLink>
                 </li>
 
               </ul>
