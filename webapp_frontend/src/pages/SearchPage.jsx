@@ -118,8 +118,7 @@ export default function SearchPage() {
                   </div>
                 </div>
 
-
-                <div className="row">
+                <div className="col-12 w-100">
                   <div className="form-check">
                     <label htmlFor="promo" className='form-label text-white fw-bold'>In Sconto</label>
                     <input
@@ -133,6 +132,9 @@ export default function SearchPage() {
                     />
                   </div>
                 </div>
+
+
+
 
 
               </div>
