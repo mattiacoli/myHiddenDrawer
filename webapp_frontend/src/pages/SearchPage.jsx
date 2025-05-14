@@ -171,7 +171,22 @@ export default function SearchPage() {
                 height: '100vh',
                 backgroundColor: 'white',
               }}>
-                <OverlaySearch isChecked={isChecked} handleCheck={handleCheck} />
+                <button
+                  style={{
+                    position: 'absolute',
+                    top: '10px',
+                    right: '10px',
+                    border: 'none',
+                    background: 'none',
+                    fontSize: '1.5rem',
+                    cursor: 'pointer',
+                  }}
+
+                  onClick={() => setIsOpen(false)}
+                >
+                  <i className="bi bi-x-circle"></i>
+                </button>
+                <OverlaySearch isChecked={isChecked} handleCheck={handleCheck} setCategoryQuery={setCategoryQuery} setSortBy={setSortBy} />
               </div>
             ) : ('')}
 
