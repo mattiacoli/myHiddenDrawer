@@ -129,6 +129,8 @@ export default function Header() {
         </nav>
       </header>
 
+
+      {/* Pannello carrello */}
       {showCartPanel && (
         <div className={`cart-panel shadow p-4 bg-white ${showCartPanel ? "show" : ""}`}>
           <button className="btn-close mb-3" onClick={toggleCartPanel}></button>

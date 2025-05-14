@@ -42,9 +42,14 @@ export default function Homepage() {
       {/* Jumbotron */}
       <div className="p-5 mb-4 bg-light rounded-3 jumbotron">
         <div className="container-fluid py-5 ">
-          <div className="row justify-content-center">
+          <div className="row justify-content-start">
             <div className="col" style={{ maxWidth: '800px' }}>
-
+              <h1 className='hero-title'>Prontə ad entrare?</h1>
+              <p className='hero-text'>
+                Apri il cassetto dei tuoi desideri. <br />
+                Scopri prodotti selezionati per il piacere, la protezione e la libertà di esprimerti come vuoi, quando vuoi. <br />
+                Discreti, affidabili, sexy. Proprio come te.
+              </p>
 
               <Popup />
 
