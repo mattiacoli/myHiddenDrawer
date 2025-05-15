@@ -104,12 +104,8 @@ export default function Header() {
                 <li className="nav-item position-relative">
                   <button className="nav-link" onClick={toggleCartPanel}><i className="bi bi-bag-heart"></i>
                     {cart.length > 0 && (
-                      <span className="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle d-flex justify-content-center align-items-center" style={{
-                        width: '20px',
-                        height: '20px',
-                        fontSize: '12px',
-                        color: 'white'
-                      }}> {cart.length}
+                      <span className="badge-counter">
+                        {cart.length}
                         <span className="visually-hidden">Articoli nel carrello</span>
                       </span>
                     )}
@@ -119,12 +115,7 @@ export default function Header() {
                   <NavLink className="nav-link" to="/wishlist">
                     <i className="bi bi-heart"></i>
                     {wishlist.length > 0 && (
-                      <span className="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle d-flex justify-content-center align-items-center" style={{
-                        width: '20px',
-                        height: '20px',
-                        fontSize: '12px',
-                        color: 'white'
-                      }}>
+                      <span className="badge-counter">
                         {wishlist.length}
                         <span className="visually-hidden">Articoli nella wishlist</span>
                       </span>

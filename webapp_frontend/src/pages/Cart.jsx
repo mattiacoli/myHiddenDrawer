@@ -13,7 +13,9 @@ export default function Cart() {
       <div className="container my-5">
         <h2>Il tuo carrello</h2>
         {cart.length === 0 ? (
-          <p>Il carrello è vuoto 😢</p>
+          <div className='text-center min-height-80'>
+            <h2>Nessun prodotto trovato</h2>
+          </div>
         ) : (
           <div className="row">
             {cart.map(item => (

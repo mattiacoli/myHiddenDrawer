@@ -68,7 +68,7 @@ export default function Product() {
                   <input
                     type="number"
                     id="quantity"
-                    className="form-control d-inline-block w-auto"
+                    className="form-control d-inline-block w-auto input-quantity"
                     min={1}
                     value={quantity}
                     onChange={(e) => setQuantity(parseInt(e.target.value))}
@@ -174,7 +174,7 @@ export default function Product() {
                 <input
                   type="number"
                   id="quantity"
-                  className="form-control w-auto"
+                  className="form-control w-auto input-quantity"
                   min={1}
                   value={quantity}
                   onChange={(e) => setQuantity(parseInt(e.target.value))}
@@ -246,7 +246,7 @@ export default function Product() {
               <input
                 type="number"
                 id="quantity"
-                className="form-control d-inline-block w-auto"
+                className="form-control d-inline-block w-auto input-quantity"
                 min={1}
                 value={quantity}
                 onChange={(e) => setQuantity(parseInt(e.target.value))}
