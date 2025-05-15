@@ -28,6 +28,8 @@ export default function Homepage() {
       .then(res => res.json())
       .then(data => {
         setReviews(data)
+        console.log(data);
+
       })
       .catch(err => console.error(err))
   }, [])
@@ -105,6 +107,29 @@ export default function Homepage() {
             </Link>
           </div>
         </section>
+
+        {/* <section>
+          {reviews?.slice(0, 8).map(item => (
+
+
+            <div class="card text-center" key={item.id}>
+              <div className="card-header">
+                {item.vote}
+              </div>
+
+              <div class="card-body">
+                <h5 class="card-title">{item.title}</h5>
+                <p class="card-text">{item.text}</p>
+              </div>
+              <div class="card-footer text-body-secondary">
+                {item.author}
+                {item.created_at}
+              </div>
+            </div>
+
+
+          ))}
+        </section> */}
 
 
         {/* Last Products */}
