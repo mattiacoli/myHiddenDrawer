@@ -722,8 +722,14 @@ main {
 
 /* #endregion product page */
 
+/* About page */
+.about {
 
-
+  h1,
+  h2 {
+    color: var(--mhd-primary);
+  }
+}
 
 /* footer */
 footer {

@@ -15,6 +15,7 @@ import Checkout from "./pages/Checkout"
 import OrderConfirmation from "./pages/OrderConfirmation"
 import Promotions from "./pages/Promotions"
 import NotFound from "./pages/NotFound"
+import About from "./pages/About"
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="/checkout" Component={Checkout} />
             <Route path="/order-confirmation" Component={OrderConfirmation} />
             <Route path="/promotions/all" Component={Promotions} />
+            <Route path="/about" Component={About} />
             <Route path="*" Component={NotFound} />
 
           </Route>
