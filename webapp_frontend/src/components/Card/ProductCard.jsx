@@ -31,7 +31,7 @@ export default function ProductCard({ item }) {
   }
 
   return (
-    <Link to={`/products/${item.slug}`} className=' col-sm-12 col-md-6 col-lg-3 text-decoration-none' >
+    <Link to={`/products/${item.slug}`} className=' col-sm-12 col-md-6 col-lg-4 col-xxl-3 text-decoration-none' >
 
       <div className={`card position-relative   ${style.card}`}>
 
@@ -57,36 +57,36 @@ export default function ProductCard({ item }) {
           item?.discount_percentage != 0 ? (
 
             <>
-              <div className="card-header bg-white position-relative"  >
+              <div className={`card-header bg-white position-relative ${style.card_header} `}  >
                 <div className="badge position-absolute m-2 d-flex align-items-center gap-2 z-2">
                   <div className='discount badge text-bg-danger fs-5'>{parseFloat(item.discount_percentage).toFixed(0)}%
                   </div>
                 </div>
                 <img src={item.cover_image.length > 0 ? `${imageUrl}/${item.cover_image}` : `${imageUrl}/placeholder.jpg`} alt="" className='card-img-top' />
               </div>
-              <div className="card-body d-flex flex-column justify-content-between">
-                <h4>{item.name}</h4>
-                <p className=' fs-6'>
+              <div className="card-body d-flex flex-column justify-content-between p-2 p-md-3">
+                <h4 className="mb-1">{item.name}</h4>
+                <p className="small mb-2">
                   {item.description}
                 </p>
-                <div className="pricing text-end d-flex gap-3 justify-content-end  mt-auto">
-                  <p className='old_price fs-4'><s>{item.price} &#8364;</s></p>
-                  <p className='final_price fs-4 fw-bold'>{item.final_price} &#8364;</p>
+                <div className="pricing d-flex gap-2 mt-2 fs-4">
+                  <p className='old_price'><s>{item.price} &#8364;</s></p>
+                  <p className='final_price fw-bold'>{item.final_price} &#8364;</p>
                 </div>
               </div>
             </>
 
           ) : (
             <>
-              <div className="card-header bg-white position-relative">
+              <div className={`card-header bg-white position-relative ${style.card_header} `} >
                 <img src={`${imageUrl}/${item.cover_image}`} alt="" className='card-img-top' />
               </div>
-              <div className="card-body d-flex flex-column justify-content-between">
-                <h4>{item.name}</h4>
-                <p className='fs-6 '>
+              <div className="card-body d-flex flex-column justify-content-between p-2 p-md-3">
+                <h4 className="mb-1">{item.name}</h4>
+                <p className="small mb-2">
                   {item.description}
                 </p>
-                <p className='text-end fs-4 mt-auto'><strong>{item.price} &#8364;</strong></p>
+                <p className='fs-4 mt-2'><strong>{item.price} &#8364;</strong></p>
               </div>
             </>
           )

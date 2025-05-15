@@ -99,7 +99,7 @@ export default function SearchPage() {
 
 
         <div className="row justify-content-center">
-          <div className="col-3  d-xs-none  d-sm-none  d-md-none d-lg-flex sticky-details">
+          <div className="col-3  d-xs-none  d-sm-none  d-md-none d-lg-none d-xl-flex sticky-details">
 
 
             <FilterBox isChecked={isChecked} handleCheck={handleCheck} setCategoryQuery={setCategoryQuery} setSortBy={setSortBy} />
@@ -114,13 +114,13 @@ export default function SearchPage() {
 
 
             <div className="filter mb-3" onClick={handleClick}>
-              <div className='text-end fs-4 d-sm-block d-md-block d-lg-none'>
+              <div className='text-end fs-4 d-sm-block d-md-block d-xl-none'>
                 <i className="bi bi-sliders2"></i>
               </div>
             </div>
 
             {isOpen && (
-              <div className="position-fixed d-lg-none" style={{
+              <div className="position-fixed d-xl-none" style={{
                 top: 0,
                 right: 0,
                 zIndex: 1000,
