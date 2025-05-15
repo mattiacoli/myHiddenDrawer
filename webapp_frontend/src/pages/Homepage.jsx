@@ -40,21 +40,31 @@ export default function Homepage() {
 
 
       {/* Jumbotron */}
-      <div className="p-5 mb-4 jumbotron-base jumbotron-home">
-        <div className="container-fluid py-5">
-          <div className="row justify-content-start">
-            <div className="col" style={{ maxWidth: '800px' }}>
-              <h1 className='hero-title'>Prontə ad entrare?</h1>
-              <p className='hero-text'>
-                Apri il cassetto dei tuoi desideri. <br />
-                Scopri prodotti selezionati per il piacere, la protezione e la libertà di esprimerti come vuoi, quando vuoi. <br />
-                Discreti, affidabili, sexy. Proprio come te.
-              </p>
-              <Popup />
+
+      <div className="video-hero-wrapper">
+        <div className="video-background">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/qC0vDKVPCrw?si=lzj2py5wsmVkUHc1autoplay=1&mute=1&controls=0&loop=1&playlist=VIDEO_ID&modestbranding=1&showinfo=0">
+          </iframe>
+          <div className="hero-content">
+            <div className="p-5 mb-4 jumbotron-base jumbotron-home">
+              <div className="container-fluid py-5">
+                <div className="row justify-content-start">
+                  <div className="col" style={{ maxWidth: '800px' }}>
+                    <h1 className='hero-title'>Prontə ad entrare?</h1>
+                    <p className='hero-text'>
+                      Apri il cassetto dei tuoi desideri. <br />
+                      Scopri prodotti selezionati per il piacere, la protezione e la libertà di esprimerti come vuoi, quando vuoi. <br />
+                      Discreti, affidabili, sexy. Proprio come te.
+                    </p>
+                    <Popup />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
 
       <div className="container">
 
