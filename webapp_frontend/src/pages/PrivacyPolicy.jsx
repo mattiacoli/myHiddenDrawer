@@ -51,7 +51,7 @@ export default function PrivacyPolicy() {
             </div>
 
             <div className="mb-4">
-                <h4>🧯 I tuoi diritti</h4>
+                <h4>📖 I tuoi diritti</h4>
                 <p>
                     Puoi chiederci in qualsiasi momento di:
                 </p>

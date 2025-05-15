@@ -18,6 +18,7 @@ import NotFound from "./pages/NotFound"
 import About from "./pages/About"
 import FAQ from "./pages/Faq"
 import PrivacyPolicy from "./pages/PrivacyPolicy"
+import TermsAndConditions from "./pages/TermsAndConditions"
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
             <Route path="/about" Component={About} />
             <Route path="/faq" Component={FAQ} />
             <Route path="/privacy-policy" Component={PrivacyPolicy} />
+            <Route path="/terms" Component={TermsAndConditions} />
             <Route path="*" Component={NotFound} />
 
           </Route>
