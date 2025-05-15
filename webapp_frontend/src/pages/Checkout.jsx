@@ -825,7 +825,7 @@ export default function Checkout() {
             <label className="form-label">Nome</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control search_form"
               required
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -836,7 +836,7 @@ export default function Checkout() {
             <label className="form-label">Cognome</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control search_form"
               required
               value={formData.lastname}
               onChange={(e) => setFormData({ ...formData, lastname: e.target.value })}
@@ -844,10 +844,10 @@ export default function Checkout() {
           </div>
 
           <div className="col-md-6">
-            <label className="form-label">Email</label>
+            <label className="form-label ">Email</label>
             <input
               type="email"
-              className="form-control"
+              className="form-control search_form"
               required
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -858,7 +858,7 @@ export default function Checkout() {
             <label className="form-label">Numero di telefono</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control search_form"
               value={formData.phone_number}
               onChange={(e) => setFormData({ ...formData, phone_number: e.target.value })}
             />
@@ -868,7 +868,7 @@ export default function Checkout() {
             <label className="form-label">Indirizzo di spedizione</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control search_form"
               required
               value={formData.address}
               onChange={(e) => setFormData({ ...formData, address: e.target.value })}
@@ -878,7 +878,7 @@ export default function Checkout() {
           <div className="col-md-4">
             <label className="form-label">CAP</label>
             <select
-              className="form-select"
+              className="form-select select"
               required
               value={formData.postcode}
               onChange={(e) => setFormData({ ...formData, postcode: e.target.value })}
@@ -893,7 +893,7 @@ export default function Checkout() {
           <div className="col-md-4">
             <label className="form-label">Provincia</label>
             <select
-              className="form-select"
+              className="form-select select"
               required
               value={formData.city}
               onChange={(e) => setFormData({ ...formData, city: e.target.value })}
@@ -910,7 +910,7 @@ export default function Checkout() {
           <div className="col-md-4">
             <label className="form-label">Comune</label>
             <select
-              className="form-select"
+              className="form-select select"
               required
             >
               <option value="">Seleziona la tua città</option>
@@ -925,7 +925,7 @@ export default function Checkout() {
           <div className="col-md-6">
             <label className="form-label">Regione</label>
             <select
-              className="form-select"
+              className="form-select select"
               required
               value={formData.province}
               onChange={(e) => setFormData({ ...formData, province: e.target.value })}
@@ -942,7 +942,7 @@ export default function Checkout() {
           <div className="col-md-6">
             <label className="form-label">Stato</label>
             <select
-              className="form-select"
+              className="form-select select"
               required
               value={formData.country}
               onChange={(e) => setFormData({ ...formData, country: e.target.value })}
@@ -960,7 +960,7 @@ export default function Checkout() {
 
           <div className="col-12">
             <label className="form-label">Metodo di pagamento</label>
-            <select className="form-select" required>
+            <select className="form-select select" required>
               <option value="">Seleziona</option>
               <option value="carta">Carta di credito</option>
               <option value="paypal">PayPal</option>
