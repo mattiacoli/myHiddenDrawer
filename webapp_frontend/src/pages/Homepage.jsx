@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 // Component for Product Card
 import ProductCard from '../components/Card/ProductCard'
 import Popup from '../components/Popup/Popup'
+import ReviewsCard from '../components/ReviewsCard'
 
 export default function Homepage() {
 
@@ -28,7 +29,6 @@ export default function Homepage() {
       .then(res => res.json())
       .then(data => {
         setReviews(data)
-        console.log(data);
 
       })
       .catch(err => console.error(err))
@@ -48,9 +48,6 @@ export default function Homepage() {
 
   return (
     <>
-
-
-
 
       {/* Jumbotron */}
 
@@ -108,30 +105,6 @@ export default function Homepage() {
           </div>
         </section>
 
-        {/* <section>
-          {reviews?.slice(0, 8).map(item => (
-
-
-            <div class="card text-center" key={item.id}>
-              <div className="card-header">
-                {item.vote}
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title">{item.title}</h5>
-                <p class="card-text">{item.text}</p>
-              </div>
-              <div class="card-footer text-body-secondary">
-                {item.author}
-                {item.created_at}
-              </div>
-            </div>
-
-
-          ))}
-        </section> */}
-
-
         {/* Last Products */}
         <section className="last_products my-4">
           <h2>Ultimi Arrivi</h2>
@@ -145,6 +118,17 @@ export default function Homepage() {
 
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Reviews */}
+        <section className='my-5'>
+          <h2>Cosa dicono i clienti</h2>
+          <div className='row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4'>
+            {reviews?.slice(0, 8).map(item => (
+              <ReviewsCard item={item} key={item.id} />
+
+            ))}
           </div>
         </section>
 
