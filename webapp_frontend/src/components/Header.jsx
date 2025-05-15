@@ -82,12 +82,7 @@ export default function Header() {
                     <span className="visually-hidden">Search</span>
                   </button>
                   {showSearch && (
-                    <div className="position-absolute" style={{
-                      top: "100%",
-                      right: 0,
-                      zIndex: 1000,
-                      width: "500px"
-                    }}>
+                    <div className="searchbar-dropdown">
                       <Searchbar setShowSearch={setShowSearch} />
                     </div>
                   )}

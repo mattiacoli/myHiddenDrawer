@@ -338,6 +338,18 @@ main {
   color: var(--mhd-primary);
 }
 
+.searchbar-dropdown {
+  position: fixed;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 450px;
+  max-width: 90vw;
+  margin: 0;
+  padding: 1rem;
+  border-radius: 18px;
+}
 
 /* Media query */
 
@@ -346,6 +358,20 @@ main {
 @media (max-width: 768px) {
   .sticky-details {
     display: none !important;
+  }
+
+  .searchbar-dropdown {
+    width: 90vw;
+    top: 100px;
+    /* Leggermente più in alto su mobile */
+  }
+}
+
+@media (max-width: 576px) {
+  .searchbar-dropdown {
+    width: 95vw;
+    top: 90px;
+    /* Ancora più in alto su schermi piccoli */
   }
 }
 

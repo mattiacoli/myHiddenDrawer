@@ -113,20 +113,24 @@ export default function SearchPage() {
           <div className="col-sm-12 col-md-10 col-lg-9">
 
 
-            <div className="filter" onClick={handleClick}>
+            <div className="filter mb-3" onClick={handleClick}>
               <div className='text-end fs-4 d-sm-block d-md-block d-lg-none'>
                 <i className="bi bi-sliders2"></i>
               </div>
             </div>
 
             {isOpen && (
-              <div className="position-fixed p-3 d-lg-none" style={{
+              <div className="position-fixed d-lg-none" style={{
                 top: 0,
                 right: 0,
                 zIndex: 1000,
                 width: "500px",
                 height: '100vh',
                 backgroundColor: 'white',
+                paddingTop: '7rem',
+                paddingRight: "1.5rem",
+                paddingLeft: '1.5rem',
+
               }}>
                 <button
                   style={{
