@@ -24,6 +24,24 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  useEffect(() => {
+    const closeMenu = (e) => {
+      // Chiudi il menu se il click è fuori dal menu e non sul toggle button
+      if (!e.target.closest('.navbar-collapse') &&
+        !e.target.classList.contains('navbar-toggler') &&
+        !e.target.classList.contains('navbar-toggler-icon')) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener('click', closeMenu);
+    }
+
+    return () => {
+      document.removeEventListener('click', closeMenu);
+    };
+  }, [isMenuOpen]);
 
   const handleSearchClick = () => {
     setShowSearch(!showSearch)
