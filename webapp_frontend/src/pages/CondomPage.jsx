@@ -21,10 +21,9 @@ export default function CondomPage() {
   return (
 
     <>
-      <div className="p-5 mb-4 bg-light jumbotron_condoms">
+      <div className="p-5 mb-4 jumbotron-base jumbotron-condoms">
         <div className="container-fluid py-5 text-center">
-          <h1>Condoms</h1>
-
+          <h1 className="jumbotron-category-title">Condoms</h1>
         </div>
       </div>
       <div className="container mt-4">

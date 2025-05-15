@@ -46,7 +46,7 @@ export default function Product() {
   return (
     <>
       {/* Product Jumbotron */}
-      <div className="jumbotron-product p-5 mb-4 ">
+      <div className="jumbotron-base jumbotron-product p-5 mb-4">
         <div className="container-fluid py-5">
 
           <div className="row g-4" >

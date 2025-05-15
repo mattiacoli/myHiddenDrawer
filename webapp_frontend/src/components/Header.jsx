@@ -181,10 +181,10 @@ export default function Header() {
                 <span>{cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}€</span>
               </div>
               <Link to="/checkout">
-                <button className="btn btn-general w-100 mt-3">Procedi al Checkout</button>
+                <button className="btn btn-general w-100 mt-3" onClick={toggleCartPanel}>Procedi al Checkout</button>
               </Link>
               <Link to="/cart">
-                <button className="btn btn-general w-100 mt-3">Vai alla pagina del carrello</button>
+                <button className="btn btn-general w-100 mt-3" onClick={toggleCartPanel}>Vai alla pagina del carrello</button>
               </Link>
             </div>
           )}
