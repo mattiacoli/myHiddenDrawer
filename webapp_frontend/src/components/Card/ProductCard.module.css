@@ -78,4 +78,8 @@
   .card h4 {
     font-size: 1rem;
   }
+
+  .actions {
+    opacity: 1 !important;
+  }
 }
