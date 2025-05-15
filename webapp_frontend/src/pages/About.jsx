@@ -39,7 +39,7 @@ export default function About() {
             </p>
 
             <div className="mt-5 text-center">
-                <a href="/" className="btn btn-base btn-secondary-mhd px-4 py-2">
+                <a href="/" className="btn btn-base btn-outline-secondary-mhd px-4 py-2">
                     Scopri cosa c'è nel cassetto 🔥
                 </a>
             </div>

@@ -16,6 +16,7 @@ import OrderConfirmation from "./pages/OrderConfirmation"
 import Promotions from "./pages/Promotions"
 import NotFound from "./pages/NotFound"
 import About from "./pages/About"
+import FAQ from "./pages/Faq"
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
             <Route path="/order-confirmation" Component={OrderConfirmation} />
             <Route path="/promotions/all" Component={Promotions} />
             <Route path="/about" Component={About} />
+            <Route path="/faq" Component={FAQ} />
             <Route path="*" Component={NotFound} />
 
           </Route>
