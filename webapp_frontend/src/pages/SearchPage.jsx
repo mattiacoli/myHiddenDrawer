@@ -119,13 +119,11 @@ export default function SearchPage() {
             </div>
 
             {isOpen && (
-              <div className="filter-panel d-xl-none">
+              <div className={`filter-panel d-xl-none ${isOpen ? "show" : ""}`}>
                 <button
-                  className="close-btn-position"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <i className="bi bi-x-circle"></i>
-                </button>
+                  className="btn-close mb-3"
+                  onClick={() => setIsOpen(false)}></button>
+
                 <FilterBox isChecked={isChecked} handleCheck={handleCheck} setCategoryQuery={setCategoryQuery} setSortBy={setSortBy} />
               </div>
             )}
