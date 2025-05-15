@@ -48,7 +48,7 @@ export default function Cart() {
                             Totale: {cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}€
                         </h4>
                         <Link to="/checkout">
-                            <button className="btn btn-primary mt-3">
+                            <button className="btn btn-general mt-3">
                                 Procedi al Checkout
                             </button>
                         </Link>

@@ -798,14 +798,18 @@ export default function Checkout() {
                         <div className="card-body">
                             {cart.map(item => (
                                 <div key={item.id} className="d-flex justify-content-between border-bottom py-2">
-                                    <div>{item.name} x {item.quantity}</div>
+                                    <div className="d-flex">
+                                        <img src={`http://localhost:3000/images/${item.cover_image}`} alt={item.name} width={100} className="me-3" />
+                                        <div>{item.name} x {item.quantity}</div>
+                                    </div>
+
                                     <div>{(item.price * item.quantity).toFixed(2)} €</div>
                                 </div>
                             ))}
 
                             <div className="d-flex justify-content-between mt-3">
-                                <div>Spedizione</div>
-                                <div>{shipping_price === 0 ? "Gratuita" : `${shipping_price.toFixed(2)} €`}</div>
+                                <div ></div>
+                                <div className="text-end">Spedizione: {shipping_price === 0 ? "Gratuita" : `${shipping_price.toFixed(2)} €`}</div>
                             </div>
 
                             <hr />
@@ -815,56 +819,52 @@ export default function Checkout() {
                     </div>
                 </div>
 
-
                 {/* Form dati cliente */}
-                <form style={{ width: "70%" }} onSubmit={handleSubmit}>
-                    <div className="d-flex gap-3">
-                        <div className="mb-3">
-                            <label className="form-label">Nome</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                required
-                                value={formData.name}
-                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            />
-                        </div>
-
-                        <div className="mb-3">
-                            <label className="form-label">Cognome</label>
-                            <input type="text"
-                                className="form-control"
-                                required
-                                value={formData.lastname}
-                                onChange={(e) => setFormData({ ...formData, lastname: e.target.value })}
-                            />
-                        </div>
+                <form className="row g-3" onSubmit={handleSubmit}>
+                    <div className="col-md-6">
+                        <label className="form-label">Nome</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            required
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        />
                     </div>
 
-                    <div className="d-flex gap-3">
-                        <div className="mb-3">
-                            <label className="form-label">Email</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                required
-                                value={formData.email}
-                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            />
-                        </div>
-
-                        <div className="mb-3">
-                            <label className="form-label">Numero di telefono</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                value={formData.phone_number}
-                                onChange={(e) => setFormData({ ...formData, phone_number: e.target.value })} />
-                        </div>
+                    <div className="col-md-6">
+                        <label className="form-label">Cognome</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            required
+                            value={formData.lastname}
+                            onChange={(e) => setFormData({ ...formData, lastname: e.target.value })}
+                        />
                     </div>
 
+                    <div className="col-md-6">
+                        <label className="form-label">Email</label>
+                        <input
+                            type="email"
+                            className="form-control"
+                            required
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        />
+                    </div>
 
-                    <div className="mb-3">
+                    <div className="col-md-6">
+                        <label className="form-label">Numero di telefono</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            value={formData.phone_number}
+                            onChange={(e) => setFormData({ ...formData, phone_number: e.target.value })}
+                        />
+                    </div>
+
+                    <div className="col-12">
                         <label className="form-label">Indirizzo di spedizione</label>
                         <input
                             type="text"
@@ -875,80 +875,90 @@ export default function Checkout() {
                         />
                     </div>
 
-                    <div className="d-flex gap-3">
-                        <div className="mb-3">
-                            <label className="form-label">CAP</label>
-                            <select
-                                className="form-select"
-                                required
-                                value={formData.postcode}
-                                onChange={(e) => setFormData({ ...formData, postcode: e.target.value })}
-                            >
-                                <option value="">Seleziona CAP</option>
-                                {capOptions.map((cap, index) => (
-                                    <option key={index} value={cap}>{cap}</option>
-                                ))}
-                            </select>
-                        </div>
-
-                        <div className="mb-3">
-                            <label className="form-label">Provincia</label>
-                            <select
-                                className="form-select"
-                                required
-                                value={formData.city}
-                                onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                            >
-                                <option value="">Seleziona Provincia</option>
-                                {province.map((province, index) => (
-                                    <option key={index} value={province}>{province}</option>
-                                ))}
-                            </select>
-                        </div>
-
-                        <div className="mb-3">
-                            <label className="form-label">Comune</label>
-                            <select className="form-select" required>
-                                <option value="">Seleziona la tua città</option>
-                                {comuni.map((comuni, index) => (
-                                    <option key={index} value={comuni}>{comuni}</option>
-                                ))}
-                            </select>
-                        </div>
-
-                        <div className="mb-3">
-                            <label className="form-label">Regione</label>
-                            <select
-                                className="form-select"
-                                required
-                                value={formData.province}
-                                onChange={(e) => setFormData({ ...formData, province: e.target.value })}
-                            >
-                                <option value="">Seleziona Regione</option>
-                                {regioni.map((regioni, index) => (
-                                    <option key={index} value={regioni}>{regioni}</option>
-                                ))}
-                            </select>
-                        </div>
-
-
-                        <div className="mb-3">
-                            <label className="form-label">Stato</label>
-                            <select
-                                className="form-select"
-                                required
-                                value={formData.country}
-                                onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                            >
-                                <option value="">Seleziona Stato</option>
-                                {stati.map((stati, index) => (
-                                    <option key={index} value={stati}>{stati}</option>
-                                ))}
-                            </select>
-                        </div>
+                    <div className="col-md-4">
+                        <label className="form-label">CAP</label>
+                        <select
+                            className="form-select"
+                            required
+                            value={formData.postcode}
+                            onChange={(e) => setFormData({ ...formData, postcode: e.target.value })}
+                        >
+                            <option value="">Seleziona CAP</option>
+                            {capOptions.map((cap, index) => (
+                                <option key={index} value={cap}>{cap}</option>
+                            ))}
+                        </select>
                     </div>
 
-                    <div className="mb-3">
+                    <div className="col-md-4">
+                        <label className="form-label">Provincia</label>
+                        <select
+                            className="form-select"
+                            required
+                            value={formData.city}
+                            onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                        >
+                            <option value="">Seleziona Provincia</option>
+                            {province.map((province, index) => (
+                                <option key={index} value={province}>{province}</option>
+                            ))}
+                        </select>
+                    </div>
+
+
+
+                    <div className="col-md-4">
+                        <label className="form-label">Comune</label>
+                        <select
+                            className="form-select"
+                            required
+                        >
+                            <option value="">Seleziona la tua città</option>
+                            {comuni.map((comuni, index) => (
+                                <option key={index} value={comuni}>{comuni}</option>
+                            ))}
+                        </select>
+                    </div>
+
+
+
+                    <div className="col-md-6">
+                        <label className="form-label">Regione</label>
+                        <select
+                            className="form-select"
+                            required
+                            value={formData.province}
+                            onChange={(e) => setFormData({ ...formData, province: e.target.value })}
+                        >
+                            <option value="">Seleziona Regione</option>
+                            {regioni.map((regioni, index) => (
+                                <option key={index} value={regioni}>{regioni}</option>
+                            ))}
+                        </select>
+
+                    </div>
+
+
+                    <div className="col-md-6">
+                        <label className="form-label">Stato</label>
+                        <select
+                            className="form-select"
+                            required
+                            value={formData.country}
+                            onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                        >
+                            <option value="">Seleziona Stato</option>
+                            {
+                                stati.map((stati, index) => (
+                                    <option key={index} value={stati}>{stati}</option>
+                                ))
+                            }
+                        </select>
+                    </div>
+
+
+
+                    <div className="col-12">
                         <label className="form-label">Metodo di pagamento</label>
                         <select className="form-select" required>
                             <option value="">Seleziona</option>
@@ -957,9 +967,16 @@ export default function Checkout() {
                         </select>
                     </div>
 
-                    <button className="btn btn-primary" type="submit">Conferma ordine</button>
-                </form>
+
+
+                    <div className="col-12">
+                        <button className="btn w-100 btn-general" type="submit">Conferma ordine</button>
+                    </div>
+                </form >
+
             </div>
+
+
 
         </>
     )
