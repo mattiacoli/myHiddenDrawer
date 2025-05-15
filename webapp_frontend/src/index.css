@@ -19,6 +19,17 @@
   --mhd-accent: #3185fc;
 }
 
+.btn-general {
+  background-color: var(--mhd-secondary);
+  color: white;
+}
+
+.btn-general:hover {
+  background-color: white;
+  color: var(--mhd-secondary);
+  border: 1px solid var(--mhd-secondary);
+}
+
 
 body {
 
@@ -277,7 +288,7 @@ main {
 }
 
 .add-to-cart:hover {
-  background-color: var(--mhd-primary-soft);
+  background-color: white;
   color: var(--mhd-secondary);
   border: 1px solid var(--mhd-secondary);
 }
