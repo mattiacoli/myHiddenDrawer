@@ -21,7 +21,7 @@ export default function CondomPage() {
   return (
 
     <>
-      <div className="p-5 mb-4 bg-light rounded-3 jumbotron_condoms">
+      <div className="p-5 mb-4 bg-light jumbotron_condoms">
         <div className="container-fluid py-5 text-center">
           <h1>Condoms</h1>
 

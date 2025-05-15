@@ -40,7 +40,7 @@ export default function Homepage() {
 
 
       {/* Jumbotron */}
-      <div className="p-5 mb-4 bg-light rounded-3 jumbotron">
+      <div className="p-5 mb-4 bg-light  jumbotron">
         <div className="container-fluid py-5 ">
           <div className="row justify-content-start">
             <div className="col" style={{ maxWidth: '800px' }}>
