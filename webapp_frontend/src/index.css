@@ -159,8 +159,8 @@
 /* Badge e contatori */
 .badge-counter {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 12px;
+  right: -3px;
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
@@ -321,7 +321,7 @@ header.scrolled {
 
   @media screen and (min-width: 576px) and (max-width: 767.9px) {
     .nav-link {
-      font-size: 12.5px;
+      font-size: 1rem;
     }
   }
 }
@@ -352,6 +352,7 @@ header.scrolled {
 }
 
 #iconsContainer {
+  font-size: 1.5rem;
   flex: 0 0 auto;
 }
 
@@ -408,7 +409,7 @@ main {
 
   /* jumbo common */
   .jumbotron-base {
-    margin-top: -80px;
+    margin-top: 0px;
     min-height: 50vh;
     background-size: cover;
     background-repeat: no-repeat;

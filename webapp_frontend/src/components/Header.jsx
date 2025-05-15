@@ -65,14 +65,14 @@ export default function Header() {
             {/*Menu */}
             <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="collapsibleNavId">
               <ul className="navbar-nav mt-2 mt-lg-0">
-                <li className="nav-item">
-                  <NavLink className="nav-link active" to="/products/condom" aria-current="page"
+                <li className="nav-item fs-5">
+                  <NavLink className="nav-link " to="/products/condom" aria-current="page"
                     onClick={handleMenuItemClick}
                   >Condom</NavLink>
 
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link active" to="/products/sextoys" aria-current="page"
+                  <NavLink className="nav-link fs-5" to="/products/sextoys" aria-current="page"
                     onClick={handleMenuItemClick}
                   >Sex Toys</NavLink>
                 </li>
@@ -85,7 +85,7 @@ export default function Header() {
 
             {/* Icons: Search, Cart, Wishlist */}
             <div className="justify-content-end " id="iconsContainer">
-              <ul className="navbar-nav mt-2 mt-lg-0 ">
+              <ul className="navbar-nav mt-2 mt-lg-0 d-flex gap-3">
                 <li className="nav-item position-relative">
                   <button
                     className="nav-link active"
