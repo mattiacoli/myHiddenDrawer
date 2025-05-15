@@ -89,7 +89,7 @@ export default function Popup() {
             />
             <button
               type="submit"
-              className={`btn rounded-pill ${styles.btn}`}
+              className="btn-base btn-primary-mhd"
             >
               Iscriviti
             </button>

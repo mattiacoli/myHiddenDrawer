@@ -67,7 +67,7 @@ export default function Homepage() {
           <div className=' mt-4 d-flex gap-2 justify-content-center gap-5'>
             <Link to='/products/condom' className='icon_category text-decoration-none text-black'>
 
-              <img src="http://localhost:3000/images/xxl_comfort.jpg" alt="" className='card-img-top' style={{ width: '80px', scale: '1' }} />
+              <img src="http://localhost:3000/images/xxl_comfort.jpg" alt="" className='card-img-top img-icon' />
               <p >Condom</p>
             </Link>
 
@@ -105,7 +105,7 @@ export default function Homepage() {
         <section className='best_sellers my-4'>
           <div className="d-flex align-items-center gap-4 mb-3">
             <h2 className="m-0">In Offerta</h2>
-            <Link to="/promotions/all" className="btn btn-show-all">
+            <Link to="/promotions/all" className="btn-base btn-outline-primary-mhd">
               Mostra tutti
             </Link>
           </div>

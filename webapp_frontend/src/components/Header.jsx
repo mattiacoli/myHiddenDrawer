@@ -83,14 +83,14 @@ export default function Header() {
             {/*Menu */}
             <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="collapsibleNavId">
               <ul className="navbar-nav mt-2 mt-lg-0">
-                <li className="nav-item">
-                  <NavLink className="nav-link active" to="/products/condom" aria-current="page"
+                <li className="nav-item fs-5">
+                  <NavLink className="nav-link " to="/products/condom" aria-current="page"
                     onClick={handleMenuItemClick}
                   >Condom</NavLink>
 
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link active" to="/products/sextoys" aria-current="page"
+                  <NavLink className="nav-link fs-5" to="/products/sextoys" aria-current="page"
                     onClick={handleMenuItemClick}
                   >Sex Toys</NavLink>
                 </li>
@@ -103,7 +103,7 @@ export default function Header() {
 
             {/* Icons: Search, Cart, Wishlist */}
             <div className="justify-content-end " id="iconsContainer">
-              <ul className="navbar-nav mt-2 mt-lg-0 ">
+              <ul className="navbar-nav mt-2 mt-lg-0 d-flex gap-3">
                 <li className="nav-item position-relative">
                   <button
                     className="nav-link active"
@@ -122,12 +122,8 @@ export default function Header() {
                 <li className="nav-item position-relative">
                   <button className="nav-link" onClick={toggleCartPanel}><i className="bi bi-bag-heart"></i>
                     {cart.length > 0 && (
-                      <span className="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle d-flex justify-content-center align-items-center" style={{
-                        width: '20px',
-                        height: '20px',
-                        fontSize: '12px',
-                        color: 'white'
-                      }}> {cart.length}
+                      <span className="badge-counter">
+                        {cart.length}
                         <span className="visually-hidden">Articoli nel carrello</span>
                       </span>
                     )}
@@ -137,12 +133,7 @@ export default function Header() {
                   <NavLink className="nav-link" to="/wishlist">
                     <i className="bi bi-heart"></i>
                     {wishlist.length > 0 && (
-                      <span className="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle d-flex justify-content-center align-items-center" style={{
-                        width: '20px',
-                        height: '20px',
-                        fontSize: '12px',
-                        color: 'white'
-                      }}>
+                      <span className="badge-counter">
                         {wishlist.length}
                         <span className="visually-hidden">Articoli nella wishlist</span>
                       </span>
@@ -186,11 +177,7 @@ export default function Header() {
                     </div>
                     <div>Totale: {(item.price * item.quantity).toFixed(2)}€</div>
                   </div>
-                  <button className="btn btn-sm btn-outline-danger"
-                    onClick={() => {
-                      removeFromCart(item.id);
-                      alert("Hai rimosso il prodotto dal carrello!");
-                    }}>🗑</button>
+                  <button className="btn-icon-mhd btn-wishlist-mhd" onClick={() => { removeFromCart(item.id); alert("Hai rimosso il prodotto dal carrello!"); }}><i className="bi bi-trash"></i></button>
                 </div>
               ))}
               <hr />
@@ -199,10 +186,10 @@ export default function Header() {
                 <span>{cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}€</span>
               </div>
               <Link to="/checkout">
-                <button className="btn btn-general w-100 mt-3" onClick={toggleCartPanel}>Procedi al Checkout</button>
+                <button className="btn-base btn-primary-mhd w-100 mt-3" onClick={toggleCartPanel}>Procedi al Checkout</button>
               </Link>
               <Link to="/cart">
-                <button className="btn btn-general w-100 mt-3" onClick={toggleCartPanel}>Vai alla pagina del carrello</button>
+                <button className="btn-base btn-outline-primary-mhd w-100 mt-3" onClick={toggleCartPanel}>Vai alla pagina del carrello</button>
               </Link>
             </div>
           )}

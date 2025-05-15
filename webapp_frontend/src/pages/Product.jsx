@@ -68,22 +68,22 @@ export default function Product() {
                   <input
                     type="number"
                     id="quantity"
-                    className="form-control d-inline-block w-auto"
+                    className="form-control d-inline-block w-auto input-quantity"
                     min={1}
                     value={quantity}
                     onChange={(e) => setQuantity(parseInt(e.target.value))}
                     disabled={isInCart} />
                 </div>
 
-                <button className="btn btn-lg add-to-cart" onClick={handleAddToCart} disabled={isInCart}>
+                <button className="btn-base btn-primary-mhd btn-lg-mhd" onClick={handleAddToCart} disabled={isInCart}>
                   Aggiungi al carrello
                 </button>
 
                 <button
                   onClick={handleWishlistClick}
-                  className="btn p-0 border-0 bg-transparent"
+                  className="btn-icon-mhd btn-wishlist-mhd"
                   aria-label="Aggiungi o rimuovi dalla wishlist">
-                  <i className={`bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'} fs-4 text-danger`}></i>
+                  <i className={`bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'} fs-4`}></i>
                 </button>
               </div>
 
@@ -174,7 +174,7 @@ export default function Product() {
                 <input
                   type="number"
                   id="quantity"
-                  className="form-control w-auto"
+                  className="form-control w-auto input-quantity"
                   min={1}
                   value={quantity}
                   onChange={(e) => setQuantity(parseInt(e.target.value))}
@@ -184,7 +184,7 @@ export default function Product() {
               {/* Bottone Aggiungi al carrello */}
               <div className="d-flex align-items-center gap-2">
                 <button
-                  className="btn btn-lg add-to-cart text-nowrap"
+                  className="btn-base btn-primary-mhd btn-lg-mhd"
                   onClick={handleAddToCart}
                   disabled={isInCart} >
                   Aggiungi al carrello
@@ -193,9 +193,9 @@ export default function Product() {
                 {/* Cuore wishlist */}
                 <button
                   onClick={handleWishlistClick}
-                  className="btn p-0 border-0 bg-transparent"
+                  className="btn-icon-mhd btn-wishlist-mhd"
                   aria-label="Aggiungi o rimuovi dalla wishlist">
-                  <i className={`bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'} fs-4 text-danger`}></i>
+                  <i className={`bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'} fs-4`}></i>
                 </button>
               </div>
             </div>
@@ -211,9 +211,9 @@ export default function Product() {
         <div className="container d-flex justify-content-between align-items-center">
           <button
             onClick={handleWishlistClick}
-            className="btn p-0 border-0 bg-transparent"
+            className="btn-icon-mhd btn-wishlist-mhd"
             aria-label="Aggiungi o rimuovi dalla wishlist">
-            <i className={`bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'} fs-4 text-danger`}></i>
+            <i className={`bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'} fs-4`}></i>
           </button>
           <div>
             <h6>{product.name}</h6>
@@ -246,14 +246,14 @@ export default function Product() {
               <input
                 type="number"
                 id="quantity"
-                className="form-control d-inline-block w-auto"
+                className="form-control d-inline-block w-auto input-quantity"
                 min={1}
                 value={quantity}
                 onChange={(e) => setQuantity(parseInt(e.target.value))}
                 disabled={isInCart} />
             </div>
             <button
-              className="btn btn-sm add-to-cart"
+              className="btn-base btn-primary-mhd btn-lg-mhd"
               onClick={handleAddToCart}
               disabled={isInCart}>
               Aggiungi al carrello

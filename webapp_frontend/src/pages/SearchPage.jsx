@@ -1,4 +1,3 @@
-
 // hooks
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
@@ -120,34 +119,11 @@ export default function SearchPage() {
             </div>
 
             {isOpen && (
-              <div className="position-fixed d-xl-none" style={{
-                top: 0,
-                right: 0,
-                zIndex: 1000,
-                width: "500px",
-                height: '100vh',
-                backgroundColor: 'white',
-                paddingTop: '7rem',
-                paddingRight: "1.5rem",
-                paddingLeft: '1.5rem',
-
-              }}>
+              <div className={`filter-panel d-xl-none ${isOpen ? "show" : ""}`}>
                 <button
-                  style={{
-                    position: 'absolute',
-                    top: '10px',
-                    right: '10px',
-                    border: 'none',
-                    background: 'none',
-                    fontSize: '1rem',
-                    cursor: 'pointer',
+                  className="btn-close mb-3"
+                  onClick={() => setIsOpen(false)}></button>
 
-                  }}
-
-                  onClick={() => setIsOpen(false)}
-                >
-                  <i className="bi bi-x-circle"></i>
-                </button>
                 <FilterBox isChecked={isChecked} handleCheck={handleCheck} setCategoryQuery={setCategoryQuery} setSortBy={setSortBy} />
               </div>
             )}
