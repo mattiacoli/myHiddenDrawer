@@ -40,17 +40,29 @@ export default function Homepage() {
 
 
       {/* Jumbotron */}
-      <div className="p-5 mb-5 jumbotron-base jumbotron-home">
-        <div className="container-fluid py-5">
-          <div className="row justify-content-start">
-            <div className="col" style={{ maxWidth: '800px' }}>
-              <h1 className='hero-title'>Prontə ad entrare?</h1>
-              <p className='hero-text'>
-                Apri il cassetto dei tuoi desideri. <br />
-                Scopri prodotti selezionati per il piacere, la protezione e la libertà di esprimerti come vuoi, quando vuoi. <br />
-                Discreti, affidabili, sexy. Proprio come te.
-              </p>
-              <Popup />
+
+      <div className="video-hero-wrapper">
+        <div className="video-background">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/qC0vDKVPCrw?autoplay=1&mute=1&controls=0&loop=1&playlist=qC0vDKVPCrw&modestbranding=1&showinfo=0">
+          </iframe>
+        </div>
+        <div className="hero-content">
+          <div className="p-5 mb-4 jumbotron-base jumbotron-home">
+            <div className="container-fluid py-5">
+              <div className="row justify-content-center">
+                <div className="col" style={{ maxWidth: '800px' }}>
+                  <div className="container text-center">
+                    <h1 className='hero-title'>Prontə ad entrare?</h1>
+                    <p className='hero-text'>
+                      Apri il cassetto dei tuoi desideri. <br />
+                      Scopri prodotti selezionati per il piacere, la protezione e la libertà di esprimerti come vuoi, quando vuoi. <br />
+                      Discreti, affidabili, sexy. Proprio come te.
+                    </p>
+                  </div>
+
+                  <Popup />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -62,7 +74,7 @@ export default function Homepage() {
         {/* Our Products */}
 
         <section className="products_category d-flex flex-column justify-content-center gap-3">
-          <h3 className='text-center fs-1'>I nostri Prodotti</h3>
+          <h3 className='text-center fs-1 mt-5'>I nostri Prodotti</h3>
 
 
           <div className=' mt-4 d-flex gap-2 justify-content-center gap-5'>
