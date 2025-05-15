@@ -9,14 +9,25 @@ export default function Homepage() {
 
   const [latest, setLatest] = useState([])
   const [promo, setPromo] = useState([])
+  const [reviews, setReviews] = useState([])
 
   const productUrl = 'http://localhost:3000/api/v1/products'
+  const reviewsUrl = 'http://localhost:3000/api/v1/reviews'
 
   useEffect(() => {
     fetch(`${productUrl}/promotions`)
       .then(res => res.json())
       .then(data => {
         setPromo(data)
+      })
+      .catch(err => console.error(err))
+  }, [])
+
+  useEffect(() => {
+    fetch(reviewsUrl)
+      .then(res => res.json())
+      .then(data => {
+        setReviews(data)
       })
       .catch(err => console.error(err))
   }, [])
