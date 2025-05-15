@@ -48,10 +48,10 @@ export default function Homepage() {
         </div>
         <div className="hero-content">
           <div className="p-5 mb-4 jumbotron-base jumbotron-home">
-            <div className="container-fluid py-5">
+            <div className="container-fluid">
               <div className="row justify-content-center">
                 <div className="col" style={{ maxWidth: '800px' }}>
-                  <div className="container text-center">
+                  <div className="container d-flex flex-column text-center">
                     <h1 className='hero-title'>Prontə ad entrare?</h1>
                     <p className='hero-text'>
                       Apri il cassetto dei tuoi desideri. <br />
@@ -66,7 +66,7 @@ export default function Homepage() {
             </div>
           </div>
         </div>
-      </div>
+      </div >
 
 
       <div className="container">
