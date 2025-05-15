@@ -15,7 +15,7 @@ export default function Wishlist() {
             {wishedProducts.length === 0 ? (
                 <p className="text-center">Ops! La tua lista dei desideri è vuota... È il momento di riempirla! 🔥</p>
             ) : (
-                <div className="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+                <div className="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 mt-3">
                     {/* Mappa ogni prodotto che è nella wishlist */}
                     {wishedProducts.map(item => (
                         <div key={item.id} className="col">
