@@ -1,3 +1,6 @@
+import style from './ReviewsCard.module.css'
+
+
 export default function ReviewsCard({ item }) {
 
   function printRating(vote) {
@@ -22,8 +25,8 @@ export default function ReviewsCard({ item }) {
   return (
     <div className="col">
 
-      <div className="card text-center h-100" >
-        <div className="card-header">
+      <div className={`card text-center h-100 ${style.card}`} >
+        <div className={`card-header ${style.card_header}`}>
           {printRating(item.vote)}
         </div>
 
@@ -31,7 +34,7 @@ export default function ReviewsCard({ item }) {
           <h5 className="card-title">{item.title}</h5>
           <p className="card-text">{item.text}</p>
         </div>
-        <div className="card-footer text-body-secondary">
+        <div className={`card-footer text-body-secondary ${style.card_header}`}>
           {item.author}
         </div>
       </div>

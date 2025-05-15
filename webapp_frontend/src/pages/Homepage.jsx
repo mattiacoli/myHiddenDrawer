@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 // Component for Product Card
 import ProductCard from '../components/Card/ProductCard'
 import Popup from '../components/Popup/Popup'
-import ReviewsCard from '../components/ReviewsCard'
+import ReviewsCard from '../components/ReviewsCard/ReviewsCard'
 
 export default function Homepage() {
 
