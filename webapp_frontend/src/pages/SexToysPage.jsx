@@ -20,10 +20,9 @@ export default function SexToysPage() {
 
 
     <>
-      <div className="p-5 mb-4 bg-light jumbotron_sextoys">
+      <div className="p-5 mb-4 jumbotron-base jumbotron-sextoys">
         <div className="container-fluid py-5 text-center">
-          <h1>Sex Toys</h1>
-
+          <h1 className="jumbotron-category-title">Sex Toys</h1>
         </div>
       </div>
 

@@ -1,12 +1,15 @@
 @import 'bootstrap';
 @import 'bootstrap-icons';
 
-
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+
+/*Commons*/
 
 :root {
   --mhd-dark: rgb(49, 48, 48);
@@ -18,6 +21,10 @@
   --mhd-secondary: #20a39e;
   --mhd-accent: #3185fc;
 }
+
+
+
+/* Utilities */
 
 .btn-general {
   background-color: var(--mhd-secondary);
@@ -31,11 +38,14 @@
 }
 
 
+/* Body */
+
 body {
 
   h1,
   h2,
-  h3 h4 {
+  h3,
+  h4 {
     font-family: 'Lexend Deca Variable', sans-serif;
     font-weight: 500;
   }
@@ -46,6 +56,19 @@ body {
 
 }
 
+/* #region Header */
+
+/* banner free shipping */
+.shipping-banner {
+  background-color: var(--mhd-primary);
+  color: #fff;
+  font-weight: 600;
+  line-height: 2rem;
+  vertical-align: 2rem;
+}
+
+
+/* header */
 
 header {
   position: sticky;
@@ -56,18 +79,18 @@ header {
 
 }
 
+header.scrolled {
+  background-color: var(--mhd-primary-soft);
+}
+
+
+/* Navbar */
 .navbar-collapse {
   flex-grow: 0;
 }
 
 .navbar-nav {
   padding: 0;
-
-  @media screen and (max-width: 577px) {
-    .nav-link {
-      font-size: 11px;
-    }
-  }
 
   @media screen and (min-width: 576px) and (max-width: 767.9px) {
     .nav-link {
@@ -119,9 +142,11 @@ header {
   }
 }
 
-header.scrolled {
-  background-color: var(--mhd-primary-soft);
-}
+/* #endregion Header*/
+
+
+
+/* cart panel */
 
 .cart-panel {
   position: fixed;
@@ -140,48 +165,30 @@ header.scrolled {
   transform: translateX(0);
 }
 
-.shipping-banner {
-  background-color: var(--mhd-primary);
-  color: #fff;
-  font-weight: 600;
-  line-height: 2rem;
-  vertical-align: 2rem;
-}
 
-.jumbotron-product {
-  margin-top: -80px;
-  /* compensazione dell'header sticky */
-  padding-top: 120px;
-  /* evita che il contenuto venga tagliato */
-  min-height: 600px;
-  background: #E85D75;
-  background: linear-gradient(0deg, rgba(232, 93, 117, 1) 0%, rgba(247, 197, 159, 1) 100%);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: right 30% bottom 20%;
-}
 
-footer {
-  background-color: var(--mhd-primary-soft);
-
-  a,
-  h5 {
-    color: var(--mhd-primary);
-  }
-}
+/* #region main */
 
 main {
-  .jumbotron {
-    min-height: 70vh;
+
+  /* #region Jumbotron */
+
+  /* Classe base comune per tutti i jumbotron */
+  .jumbotron-base {
+    margin-top: -80px;
+    min-height: 50vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-top: 120px;
+  }
+
+  /* Jumbo Homepage */
+  .jumbotron-home {
     background-image:
       url(../public/images/sfonod\ jumbo.png),
       linear-gradient(0deg, rgba(232, 93, 117, 1) 0%, rgba(247, 197, 159, 1) 100%);
-    background-size: cover;
-    background-repeat: no-repeat;
     background-position: right 30% bottom 20%;
-    margin-top: -80px;
-
-
 
     .hero-title {
       font-size: 75px;
@@ -191,33 +198,51 @@ main {
 
     .hero-text {
       font-size: 25px;
-      color: white
+      color: white;
     }
   }
 
-  .jumbotron_condoms {
+  /* Jumbo product-page */
+  .jumbotron-product {
+    background: linear-gradient(0deg, rgba(232, 93, 117, 1) 0%, rgba(247, 197, 159, 1) 100%);
+    background-position: right 30% bottom 20%;
+  }
+
+  /* Jumbo condoms-page */
+  .jumbotron-condoms {
     background-image: url(https://www.veganok.com/wp-content/uploads/2022/09/Copertine-56.png);
     background-position: right 20% bottom 70%;
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    h1 {
-      font-size: 8rem;
-      color: white;
-      text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.664);
-    }
   }
 
-  .jumbotron_sextoys {
+  /* Jumbo sextoys */
+  .jumbotron-sextoys {
     background-image: url(https://imageproxy.wolt.com/assets/67335e3842b21b5c7ee59883);
-    background-size: cover;
-    background-repeat: no-repeat;
     background-position: right 20% bottom 70%;
+  }
 
-    h1 {
-      font-size: 8rem;
-      color: white;
-      text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.664);
+  /* Stile comune per i titoli dei jumbotron di categoria */
+  .jumbotron-category-title {
+    font-size: 8rem;
+    color: white;
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.664);
+  }
+
+  @media (max-width: 768px) {
+    .jumbotron-base {
+      min-height: 50vh;
+    }
+
+    .jumbotron-home .hero-title {
+      font-size: 3.5rem;
+      padding-top: 40px;
+    }
+
+    .jumbotron-home .hero-text {
+      font-size: 1.2rem;
+    }
+
+    .jumbotron-category-title {
+      font-size: 4rem;
     }
   }
 
@@ -397,6 +422,15 @@ main {
   font-size: 0.85rem;
 }
 
+footer {
+  background-color: var(--mhd-primary-soft);
+
+  a,
+  h5 {
+    color: var(--mhd-primary);
+  }
+}
+
 /* Media query */
 
 /* Stile desktop */
@@ -409,7 +443,7 @@ main {
   .searchbar-dropdown {
     width: 90vw;
     top: 100px;
-    /* Leggermente più in alto su mobile */
+
   }
 }
 
@@ -417,7 +451,7 @@ main {
   .searchbar-dropdown {
     width: 95vw;
     top: 90px;
-    /* Ancora più in alto su schermi piccoli */
+
   }
 }
 
