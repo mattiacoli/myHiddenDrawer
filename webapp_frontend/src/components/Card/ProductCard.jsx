@@ -58,8 +58,8 @@ export default function ProductCard({ item }) {
 
             <>
               <div className={`card-header bg-white position-relative ${style.card_header} `}  >
-                <div className="badge position-absolute m-2 d-flex align-items-center gap-2 z-2">
-                  <div className='discount badge text-bg-danger fs-5'>{parseFloat(item.discount_percentage).toFixed(0)}%
+                <div className="badge position-absolute m-2 d-flex align-items-center gap-2">
+                  <div className='discount badge'>{parseFloat(item.discount_percentage).toFixed(0)}%
                   </div>
                 </div>
                 <img src={item.cover_image.length > 0 ? `${imageUrl}/${item.cover_image}` : `${imageUrl}/placeholder.jpg`} alt="" className='card-img-top' />

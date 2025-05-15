@@ -48,10 +48,10 @@ export default function Homepage() {
         </div>
         <div className="hero-content">
           <div className="p-5 mb-4 jumbotron-base jumbotron-home">
-            <div className="container-fluid py-5">
+            <div className="container-fluid">
               <div className="row justify-content-center">
                 <div className="col" style={{ maxWidth: '800px' }}>
-                  <div className="container text-center">
+                  <div className="container d-flex flex-column text-center">
                     <h1 className='hero-title'>Prontə ad entrare?</h1>
                     <p className='hero-text'>
                       Apri il cassetto dei tuoi desideri. <br />
@@ -66,7 +66,7 @@ export default function Homepage() {
             </div>
           </div>
         </div>
-      </div>
+      </div >
 
 
       <div className="container">
@@ -74,7 +74,7 @@ export default function Homepage() {
         {/* Our Products */}
 
         <section className="products_category d-flex flex-column justify-content-center gap-3">
-          <h3 className='text-center fs-1 mt-5'>I nostri Prodotti</h3>
+          <h3 className='text-center fs-1'>I nostri Prodotti</h3>
 
 
           <div className=' mt-4 d-flex gap-2 justify-content-center gap-5'>
@@ -116,7 +116,7 @@ export default function Homepage() {
 
         {/* promo products */}
         <section className='best_sellers my-4'>
-          <div className="d-flex align-items-center gap-4 mb-3">
+          <div className="d-flex align-items-center justify-content-between gap-4 mb-3">
             <h2 className="m-0">In Offerta</h2>
             <Link to="/promotions/all" className="btn-base btn-outline-primary-mhd">
               Mostra tutti
