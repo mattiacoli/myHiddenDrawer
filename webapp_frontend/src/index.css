@@ -614,10 +614,13 @@ main {
 
     top: 0;
     right: 0;
+    background-color: var(--mhd-secondary);
+    border-radius: 100px;
+    font-size: 12px;
   }
 
   .final_price {
-    color: red !important;
+    color: var(--mhd-secondary) !important;
   }
 }
 

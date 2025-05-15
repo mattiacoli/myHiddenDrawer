@@ -74,7 +74,7 @@ export default function Homepage() {
         {/* Our Products */}
 
         <section className="products_category d-flex flex-column justify-content-center gap-3">
-          <h3 className='text-center fs-1 mt-5'>I nostri Prodotti</h3>
+          <h3 className='text-center fs-1'>I nostri Prodotti</h3>
 
 
           <div className=' mt-4 d-flex gap-2 justify-content-center gap-5'>
@@ -116,7 +116,7 @@ export default function Homepage() {
 
         {/* promo products */}
         <section className='best_sellers my-4'>
-          <div className="d-flex align-items-center gap-4 mb-3">
+          <div className="d-flex align-items-center justify-content-between gap-4 mb-3">
             <h2 className="m-0">In Offerta</h2>
             <Link to="/promotions/all" className="btn-base btn-outline-primary-mhd">
               Mostra tutti
