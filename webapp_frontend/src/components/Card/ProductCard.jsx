@@ -31,7 +31,7 @@ export default function ProductCard({ item }) {
   }
 
   return (
-    <Link to={`/products/${item.slug}`} className=' col-sm-12 col-md-6 col-lg-4 col-xxl-3 text-decoration-none' >
+    <Link to={`/products/${item.slug}`} className='col-sm-6 col-md-6 col-lg-4 col-xxl-3 text-decoration-none' >
 
       <div className={`card position-relative   ${style.card}`}>
 
