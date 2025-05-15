@@ -105,7 +105,7 @@ export default function Homepage() {
         <section className='best_sellers my-4'>
           <div className="d-flex align-items-center gap-4 mb-3">
             <h2 className="m-0">In Offerta</h2>
-            <Link to="/promotions/all" className="btn btn-show-all">
+            <Link to="/promotions/all" className="btn-base btn-outline-primary-mhd">
               Mostra tutti
             </Link>
           </div>

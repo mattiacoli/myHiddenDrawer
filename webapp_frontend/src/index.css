@@ -29,12 +29,111 @@
 .btn-general {
   background-color: var(--mhd-secondary);
   color: white;
+  border: 1px solid var(--mhd-secondary);
+  border-radius: 25px;
+  transition: all 0.3s ease;
 }
 
 .btn-general:hover {
   background-color: white;
   color: var(--mhd-secondary);
+}
+
+/* ===== BUTTON UTILITIES ===== */
+
+/* Button base - proprietà comuni a tutti i bottoni */
+.btn-base {
+  border-radius: 25px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1.25rem;
+}
+
+/* Button primario (teal) */
+.btn-primary-mhd {
+  background-color: var(--mhd-secondary);
+  color: white;
   border: 1px solid var(--mhd-secondary);
+}
+
+.btn-primary-mhd:hover {
+  background-color: white;
+  color: var(--mhd-secondary);
+  box-shadow: 0 2px 5px rgba(32, 163, 158, 0.3);
+}
+
+/* Button secondario (rosa) */
+.btn-secondary-mhd {
+  background-color: var(--mhd-primary);
+  color: white;
+  border: 1px solid var(--mhd-primary);
+}
+
+.btn-secondary-mhd:hover {
+  background-color: white;
+  color: var(--mhd-primary);
+  box-shadow: 0 2px 5px rgba(232, 93, 117, 0.3);
+}
+
+/* Button outline primario */
+.btn-outline-primary-mhd {
+  background-color: transparent;
+  color: var(--mhd-secondary);
+  border: 1px solid var(--mhd-secondary);
+}
+
+.btn-outline-primary-mhd:hover {
+  background-color: var(--mhd-secondary);
+  color: white;
+}
+
+/* Button outline secondario */
+.btn-outline-secondary-mhd {
+  background-color: transparent;
+  color: var(--mhd-primary);
+  border: 1px solid var(--mhd-primary);
+}
+
+.btn-outline-secondary-mhd:hover {
+  background-color: var(--mhd-primary);
+  color: white;
+}
+
+/* Button piccolo */
+.btn-sm-mhd {
+  font-size: 0.85rem;
+  padding: 0.35rem 0.75rem;
+}
+
+/* Button grande */
+.btn-lg-mhd {
+  font-size: 1.25rem;
+  padding: 0.75rem 1.5rem;
+}
+
+/* Button icon */
+.btn-icon-mhd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  transition: transform 0.3s ease;
+}
+
+.btn-icon-mhd:hover {
+  transform: scale(1.2);
+}
+
+/* Button per azioni specifiche */
+.btn-cart-mhd {
+  color: var(--mhd-secondary);
+}
+
+.btn-wishlist-mhd {
+  color: var(--mhd-primary);
 }
 
 

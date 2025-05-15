@@ -38,16 +38,16 @@ export default function ProductCard({ item }) {
         <div className={`position-absolute top-0 start-0 m-2 d-flex gap-2 z-3 actions ${style.actions}`}>
           <button
             onClick={handleCartClick}
-            className="btn btn-cart p-0 border-0 bg-transparent"
-            aria-label="Aggiungi al carrello">
+            className="btn-icon-mhd btn-cart-mhd"
+            aria-label="Aggiungi o rimuovi dal carrello">
             <i className={`bi ${isInCart ? 'bi-bag-check-fill' : 'bi-bag-plus'} fs-4`}></i>
           </button>
 
           <button
             onClick={handleWishlistClick}
-            className="btn btn-wishlist p-0 border-0 bg-transparent"
+            className="btn-icon-mhd btn-wishlist-mhd"
             aria-label="Aggiungi o rimuovi dalla wishlist">
-            <i className={`bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'} fs-4 text-danger`}></i>
+            <i className={`bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'} fs-4`}></i>
           </button>
         </div>
 

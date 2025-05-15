@@ -168,11 +168,7 @@ export default function Header() {
                     </div>
                     <div>Totale: {(item.price * item.quantity).toFixed(2)}€</div>
                   </div>
-                  <button className="btn btn-sm btn-outline-danger"
-                    onClick={() => {
-                      removeFromCart(item.id);
-                      alert("Hai rimosso il prodotto dal carrello!");
-                    }}>🗑</button>
+                  <button className="btn-icon-mhd btn-wishlist-mhd" onClick={() => { removeFromCart(item.id); alert("Hai rimosso il prodotto dal carrello!"); }}><i className="bi bi-trash"></i></button>
                 </div>
               ))}
               <hr />
@@ -181,10 +177,10 @@ export default function Header() {
                 <span>{cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}€</span>
               </div>
               <Link to="/checkout">
-                <button className="btn btn-general w-100 mt-3" onClick={toggleCartPanel}>Procedi al Checkout</button>
+                <button className="btn-base btn-primary-mhd w-100 mt-3" onClick={toggleCartPanel}>Procedi al Checkout</button>
               </Link>
               <Link to="/cart">
-                <button className="btn btn-general w-100 mt-3" onClick={toggleCartPanel}>Vai alla pagina del carrello</button>
+                <button className="btn-base btn-outline-primary-mhd w-100 mt-3" onClick={toggleCartPanel}>Vai alla pagina del carrello</button>
               </Link>
             </div>
           )}
