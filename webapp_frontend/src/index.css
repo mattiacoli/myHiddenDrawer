@@ -599,9 +599,6 @@ main {
       width: 30%;
     }
 
-    &::-webkit-scrollbar {
-      display: none;
-    }
   }
 
   /*Section Reviews*/
@@ -866,6 +863,10 @@ footer {
   .searchbar-dropdown {
     width: 95vw;
     top: 90px;
+  }
+
+  section.hide-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 }
 

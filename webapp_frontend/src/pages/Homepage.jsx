@@ -111,11 +111,11 @@ export default function Homepage() {
         {/* Last Products */}
         <div className="last-products-section">
           <h2 className='pb-4'>Ultimi Arrivi</h2>
-          <section className="last_products my-4">
+          <section className="last_products hide-scrollbar my-4">
 
             <div className="container">
 
-              <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4">
+              <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4 hide-scrollbar">
 
                 {latest.slice(0, 8).map(item => (
 
@@ -133,14 +133,14 @@ export default function Homepage() {
 
       {/* Reviews */}
       <div className="bg_reviews">
-        <div className="container">
+        <div className="container pb-2">
           <h2 className='text-white py-4'>Cosa dicono di noi</h2>
 
           <div className="container">
 
-            <section className='reviews'>
+            <section className='reviews hide-scrollbar'>
               <div className="container">
-                <div className='row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4'>
+                <div className='row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4 hide-scrollbar'>
                   {reviews?.slice(0, 8).map(item => (
                     <ReviewsCard item={item} key={item.id} />
 
@@ -157,7 +157,7 @@ export default function Homepage() {
 
       <div className="container">
         {/* promo products */}
-        <section className='best_sellers my-4'>
+        <section className='best_sellers hide-scrollbar my-4'>
           <div className="d-flex align-items-center justify-content-between gap-4 mb-3">
             <h2 className="pb-4">In Offerta</h2>
             <Link to="/promotions/all" className="btn-base btn-outline-primary-mhd">
@@ -165,7 +165,7 @@ export default function Homepage() {
             </Link>
           </div>
           <div className="container">
-            <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4">
+            <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4 hide-scrollbar">
               {promo.map(item => (
                 <ProductCard item={item} key={item.id} />
               ))}
