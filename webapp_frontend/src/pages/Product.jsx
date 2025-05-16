@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useGlobalContext } from '../contexts/GlobalContext'
 import RelatedProducts from '../components/RelatedProducts'
+import ReviewsCard from '../components/ReviewsCard/ReviewsCard'
 
 export default function Product() {
 
@@ -9,9 +10,13 @@ export default function Product() {
   const [quantity, setQuantity] = useState(1);
   const { cart, addToCart, wishlist, addToWishlist, removeFromWishlist } = useGlobalContext()
   const { slug } = useParams()
+  const { reviews = [] } = useGlobalContext()
 
   const isInWishlist = wishlist.includes(product.id)
   const isInCart = cart.some(item => item.id === product.id);
+
+
+
 
   useEffect(() => {
     fetch('http://localhost:3000/api/v1/products/' + slug)
@@ -205,6 +210,24 @@ export default function Product() {
       </div>
 
       <RelatedProducts />
+
+
+      {/* Reviews */}
+
+      <div className="container">
+        <h3>Recensioni</h3>
+        {reviews.length > 0 ? (
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+            {reviews.filter(item => item.product_id === product.id).map(item => (
+              <ReviewsCard item={item} key={item.id} />
+            ))}
+          </div>
+        ) : (
+          <p>Ancora nessuna recensione per questo prodotto</p>
+        )}
+
+
+      </div>
 
       {/* Mobile price banner */}
       <div className="mobile-price">

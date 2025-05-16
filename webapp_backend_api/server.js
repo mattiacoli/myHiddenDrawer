@@ -7,12 +7,13 @@ const notFound = require('./middlewares/notFound');
 const productRouter = require('./routes/products')
 const orderRouter = require('./routes/orders');
 const customerRouter = require('./routes/customers')
+const reviewsRouter = require('./routes/reviews')
 
 // Middleware
 app.use(cors(
-    {
-        origin: process.env.FRONT_URL || 'http://localhost:5173',
-    }
+  {
+    origin: process.env.FRONT_URL || 'http://localhost:5173',
+  }
 ))
 
 // Middleware per parsing JSON
@@ -22,7 +23,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.json({ message: 'Welcome to the API!' });
+  res.json({ message: 'Welcome to the API!' });
 })
 
 // Product router
@@ -34,8 +35,11 @@ app.use('/api/v1/orders', orderRouter)
 // Customer router
 app.use('/api/v1/customers', customerRouter)
 
+//Reviews router
+app.use('/api/v1/reviews', reviewsRouter)
+
 app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+  console.log(`Server is running at http://localhost:${port}`);
 })
 
 

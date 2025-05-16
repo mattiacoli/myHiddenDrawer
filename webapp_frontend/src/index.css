@@ -592,6 +592,17 @@ main {
     }
   }
 
+  /*Section Reviews*/
+
+  .bg_reviews {
+    background-color: #20a39e;
+  }
+
+  .reviews {
+    padding: 1rem;
+    color: white;
+  }
+
   /* btn promo section */
   .btn-show-all {
     color: var(--mhd-secondary);
