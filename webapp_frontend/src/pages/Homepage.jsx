@@ -45,8 +45,17 @@ export default function Homepage() {
 
       <div className="video-hero-wrapper">
         <div className="video-background">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/qC0vDKVPCrw?autoplay=1&mute=1&controls=0&loop=1&playlist=qC0vDKVPCrw&modestbranding=1&showinfo=0">
-          </iframe>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+          >
+            <source src="https://cdn.shopify.com/videos/c/o/v/eb4261f15e8844dbb7692c8d0c7438eb.mp4" type="video/mp4" />
+            Il tuo browser non supporta i video HTML5.
+          </video>
+          <div className="video-overlay"></div>
         </div>
         <div className="hero-content">
           <div className="p-5 mb-4 jumbotron-base jumbotron-home">
@@ -76,7 +85,7 @@ export default function Homepage() {
         {/* Our Products */}
 
         <section className="products_category d-flex flex-column justify-content-center gap-3">
-          <h3 className='text-center fs-1'>I nostri Prodotti</h3>
+          <h3 className='text-center fs-1 pt-5'>I nostri Prodotti</h3>
 
 
           <div className=' mt-4 d-flex gap-2 justify-content-center gap-5'>
@@ -100,56 +109,63 @@ export default function Homepage() {
 
 
         {/* Last Products */}
-        <section className="last_products my-4">
-          <h2>Ultimi Arrivi</h2>
-          <div className="container">
+        <div className="last-products-section">
+          <h2 className='pb-4'>Ultimi Arrivi</h2>
+          <section className="last_products hide-scrollbar my-4">
 
-            <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4">
-
-              {latest.slice(0, 8).map(item => (
-
-                <ProductCard item={item} key={item.id} />
-
-              ))}
-            </div>
-          </div>
-        </section>
-
-      </div>
-
-
-      {/* Reviews */}
-      <div className="bg_reviews py-4">
-        <h2 className='text-center text-white my-4'>Cosa dicono i clienti</h2>
-
-        <div className="container">
-
-          <section className='reviews my-5 py-5'>
             <div className="container">
-              <div className='row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4'>
-                {reviews?.slice(0, 8).map(item => (
-                  <ReviewsCard item={item} key={item.id} />
+
+              <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4 hide-scrollbar">
+
+                {latest.slice(0, 8).map(item => (
+
+                  <ProductCard item={item} key={item.id} />
 
                 ))}
               </div>
             </div>
           </section>
-
         </div>
+
+
+      </div>
+
+
+      {/* Reviews */}
+      <div className="bg_reviews">
+        <div className="container pb-2">
+          <h2 className='text-white py-4'>Cosa dicono di noi</h2>
+
+          <div className="container">
+
+            <section className='reviews hide-scrollbar'>
+              <div className="container">
+                <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 gy-4 flex-nowrap mb-4 hide-scrollbar'>
+                  {reviews?.slice(0, 8).map(item => (
+                    <ReviewsCard item={item} key={item.id} />
+
+                  ))}
+                </div>
+              </div>
+            </section>
+
+          </div>
+        </div>
+
       </div>
 
 
       <div className="container">
         {/* promo products */}
-        <section className='best_sellers my-4'>
+        <section className='best_sellers hide-scrollbar my-4'>
           <div className="d-flex align-items-center justify-content-between gap-4 mb-3">
-            <h2 className="m-0">In Offerta</h2>
+            <h2 className="pb-4">In Offerta</h2>
             <Link to="/promotions/all" className="btn-base btn-outline-primary-mhd">
               Mostra tutti
             </Link>
           </div>
           <div className="container">
-            <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4">
+            <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4 hide-scrollbar">
               {promo.map(item => (
                 <ProductCard item={item} key={item.id} />
               ))}
