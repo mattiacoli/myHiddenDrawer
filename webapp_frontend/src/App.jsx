@@ -22,6 +22,7 @@ import TermsAndConditions from "./pages/TermsAndConditions"
 import ShippingAndReturns from "./pages/ShippingAndReturns"
 import ContactUs from "./pages/ContactUs"
 import Popup from "./components/Popup/Popup"
+import ScrollToTop from "./components/ScrollToTop"
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
   return (
     <GlobalProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Popup />
         <Routes >
           <Route Component={DefaultLayout}>

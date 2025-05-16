@@ -11,10 +11,6 @@ export default function CondomPage() {
   const [condoms, setCondoms] = useState([])
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
-  useEffect(() => {
 
     const condoms = products.filter(product => product.categories === 'condom')
     setCondoms(condoms)

@@ -30,11 +30,6 @@ export default function Product() {
       .catch(err => console.error(err))
   }, [slug])
 
-  //Scroll a inizio pagina all'apertura
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
   //Handle wishlist
   function handleWishlistClick(e) {
     e.preventDefault();
