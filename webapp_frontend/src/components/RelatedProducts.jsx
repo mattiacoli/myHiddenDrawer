@@ -7,6 +7,10 @@ export default function RelatedProducts() {
     const [relatedProducts, setRelatedProducts] = useState([])
     const { slug } = useParams()
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [slug])
+
 
     useEffect(() => {
         fetch(`http://localhost:3000/api/v1/products/${slug}/related/`)
