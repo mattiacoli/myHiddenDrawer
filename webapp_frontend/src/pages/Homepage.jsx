@@ -5,15 +5,16 @@ import { useEffect, useState } from 'react'
 import ProductCard from '../components/Card/ProductCard'
 import Popup from '../components/Popup/Popup'
 import ReviewsCard from '../components/ReviewsCard/ReviewsCard'
+import { useGlobalContext } from '../contexts/GlobalContext'
 
 export default function Homepage() {
 
   const [latest, setLatest] = useState([])
   const [promo, setPromo] = useState([])
-  const [reviews, setReviews] = useState([])
+  const { reviews = [] } = useGlobalContext()
 
   const productUrl = 'http://localhost:3000/api/v1/products'
-  const reviewsUrl = 'http://localhost:3000/api/v1/reviews'
+
 
   useEffect(() => {
     fetch(`${productUrl}/promotions`)
@@ -24,15 +25,6 @@ export default function Homepage() {
       .catch(err => console.error(err))
   }, [])
 
-  useEffect(() => {
-    fetch(reviewsUrl)
-      .then(res => res.json())
-      .then(data => {
-        setReviews(data)
-
-      })
-      .catch(err => console.error(err))
-  }, [])
 
   useEffect(() => {
     fetch(`${productUrl}/latest`)
@@ -105,6 +97,8 @@ export default function Homepage() {
           </div>
         </section>
 
+
+
         {/* Last Products */}
         <section className="last_products my-4">
           <h2>Ultimi Arrivi</h2>
@@ -121,19 +115,31 @@ export default function Homepage() {
           </div>
         </section>
 
-        {/* Reviews */}
-        <section className='reviews my-5'>
-          <h2>Cosa dicono i clienti</h2>
-          <div className='row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4'>
-            {reviews?.slice(0, 8).map(item => (
-              <ReviewsCard item={item} key={item.id} />
-
-            ))}
-          </div>
-        </section>
+      </div>
 
 
+      {/* Reviews */}
+      <div className="bg_reviews">
 
+        <div className="container">
+
+          <section className='reviews my-5 py-5'>
+            <h2 className='text-center mb-4'>Cosa dicono i clienti</h2>
+            <div className="container">
+              <div className='row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4'>
+                {reviews?.slice(0, 8).map(item => (
+                  <ReviewsCard item={item} key={item.id} />
+
+                ))}
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+
+      <div className="container">
         {/* promo products */}
         <section className='best_sellers my-4'>
           <div className="d-flex align-items-center gap-4 mb-3">
@@ -150,10 +156,12 @@ export default function Homepage() {
             </div>
           </div>
         </section>
-
-
-
       </div>
+
+
+
+
+
 
 
 

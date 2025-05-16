@@ -5,9 +5,10 @@ const GlobalContext = createContext()
 
 function GlobalProvider({ children }) {
 
-
+  const reviewsUrl = 'http://localhost:3000/api/v1/reviews'
   const productUrl = 'http://localhost:3000/api/v1/products'
 
+  const [reviews, setReviews] = useState([])
   const [products, setProducts] = useState([])
   const [cart, setCart] = useState([])
   const [wishlist, setWishlist] = useState(() => {
@@ -16,7 +17,7 @@ function GlobalProvider({ children }) {
     return savedWishlist ? JSON.parse(savedWishlist) : [];
   });
 
-
+  // get all products
   useEffect(() => {
 
     fetch(productUrl)
@@ -24,6 +25,17 @@ function GlobalProvider({ children }) {
       .then(data => {
         setProducts(data)
       })
+  }, [])
+
+  // get all reviews
+  useEffect(() => {
+    fetch(reviewsUrl)
+      .then(res => res.json())
+      .then(data => {
+        setReviews(data)
+
+      })
+      .catch(err => console.error(err))
   }, [])
 
   // Salva la wishlist nel localStorage ogni volta che cambia
@@ -77,7 +89,7 @@ function GlobalProvider({ children }) {
 
 
   return (
-    <GlobalContext.Provider value={{ products, cart, setCart, addToCart, removeFromCart, updateQuantity, wishlist, setWishlist, addToWishlist, removeFromWishlist }}>
+    <GlobalContext.Provider value={{ products, cart, setCart, addToCart, removeFromCart, updateQuantity, wishlist, setWishlist, addToWishlist, removeFromWishlist, reviews }}>
       {children}
     </GlobalContext.Provider>
   )
