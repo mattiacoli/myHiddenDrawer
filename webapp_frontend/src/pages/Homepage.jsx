@@ -119,12 +119,12 @@ export default function Homepage() {
 
 
       {/* Reviews */}
-      <div className="bg_reviews">
+      <div className="bg_reviews py-4">
+        <h2 className='text-center text-white my-4'>Cosa dicono i clienti</h2>
 
         <div className="container">
 
           <section className='reviews my-5 py-5'>
-            <h2 className='text-center mb-4'>Cosa dicono i clienti</h2>
             <div className="container">
               <div className='row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4'>
                 {reviews?.slice(0, 8).map(item => (
