@@ -158,7 +158,7 @@ export default function Homepage() {
         <section className='best_sellers hide-scrollbar my-4'>
           <div className="d-flex align-items-center justify-content-between gap-4 mb-3">
             <h2 className="pb-4">In Offerta</h2>
-            <Link to="/promotions/all" className="btn-base btn-outline-primary-mhd">
+            <Link to="/promotions/all" className="show-all btn-base text-decoration-none">
               Mostra tutti
             </Link>
           </div>
