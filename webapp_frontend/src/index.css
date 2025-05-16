@@ -385,6 +385,17 @@ header.scrolled {
     width: 200px;
     height: auto;
   }
+
+  @media screen and (max-width: 440px) {
+    width: 150px;
+    height: auto;
+  }
+
+  @media screen and (max-width: 320px) {
+    width: 120px;
+    height: auto;
+    padding-left: 0.5rem;
+  }
 }
 
 #iconsContainer {
@@ -403,6 +414,48 @@ header.scrolled {
     i {
       font-size: 1rem;
     }
+  }
+}
+
+/* Aggiungi media query per navbar-toggler */
+@media screen and (max-width: 440px) {
+  .navbar-toggler {
+    padding: 0.35rem 0.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .navbar-toggler {
+    padding: 0.25rem 0.4rem;
+    font-size: 0.65rem;
+  }
+
+  #iconsContainer .navbar-nav {
+    gap: 0;
+  }
+
+  #iconsContainer .nav-item {
+    padding: 0 2px;
+
+    i {
+      font-size: 0.85rem;
+    }
+  }
+
+  /* Ridimensiona anche il banner di spedizione */
+  .shipping-banner {
+    font-size: 0.75rem;
+    line-height: 1.5rem;
+  }
+
+  /* Ridimensiona il badge counter */
+  .badge-counter {
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+    top: 10px;
+    right: -2px;
   }
 }
 
@@ -455,21 +508,30 @@ main {
 
   /* Jumbo Homepage */
   .jumbotron-home {
-    /*  background-image:
-      url(../public/images/sfonod\ jumbo.png),
-      linear-gradient(0deg, rgba(232, 93, 117, 1) 0%, rgba(247, 197, 159, 1) 100%); */
     background-position: right 30% bottom 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .hero-content {
+      text-align: center;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
 
     .hero-title {
       font-size: clamp(2.5rem, 6vw, 5rem);
       color: white;
+      margin-bottom: 1rem;
     }
 
     .hero-text {
       font-size: clamp(1rem, 2.5vw, 1.8rem);
       color: white;
+      margin: 0 auto;
     }
-
   }
 
   /* CSS per visualizzazione video */
