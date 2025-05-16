@@ -14,8 +14,6 @@ export default function Product() {
   const { cart, addToCart, wishlist, addToWishlist, removeFromWishlist } = useGlobalContext()
   const { slug } = useParams()
   const { reviews = [] } = useGlobalContext()
-  console.log(reviews);
-
 
   const isInWishlist = wishlist.includes(product.id)
   const isInCart = cart.some(item => item.id === product.id);
