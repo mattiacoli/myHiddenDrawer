@@ -231,7 +231,7 @@ export default function Product() {
         </div>
 
         {isOpen && (
-          <ReviewsForm setIsOpen={setIsOpen} />
+          <ReviewsForm setIsOpen={setIsOpen} product_id={product.id} />
 
         )}
 
