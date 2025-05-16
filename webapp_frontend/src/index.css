@@ -603,6 +603,8 @@ main {
 
   /*Section Reviews*/
 
+
+
   .bg_reviews {
     background-color: #20a39e;
   }
@@ -610,6 +612,12 @@ main {
   .reviews {
     padding: 1rem;
     color: white;
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--mhd-lighter);
+      border-radius: 50rem;
+      width: 30%;
+    }
   }
 
   /* btn promo section */
