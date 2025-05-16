@@ -2,7 +2,7 @@ export default function PrivacyPolicy() {
 
     return (
         <div className="container py-5">
-            <h1 className="mb-4 text-center">🕵️‍♀️ Privacy Policy</h1>
+            <h1 className="mb-4 text-center">Privacy Policy</h1>
             <p className="lead text-center mb-5">
                 La tua privacy è sacra. Proprio come il tuo cassetto segreto.
             </p>

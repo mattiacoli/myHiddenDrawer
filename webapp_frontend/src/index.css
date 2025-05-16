@@ -755,6 +755,13 @@ main {
   }
 }
 
+/* Contact page */
+.contact {
+  h1 {
+    color: var(--mhd-secondary);
+  }
+}
+
 /* footer */
 footer {
   background-color: var(--mhd-primary-soft);

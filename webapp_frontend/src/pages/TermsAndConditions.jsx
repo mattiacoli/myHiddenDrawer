@@ -1,7 +1,7 @@
 export default function TermsAndConditions() {
     return (
         <div className="container py-5">
-            <h1 className="mb-4 text-center">📜 Termini e Condizioni</h1>
+            <h1 className="mb-4 text-center">Termini e Condizioni</h1>
             <p className="lead text-center mb-5">
                 Nessuno li legge davvero... ma noi li abbiamo resi interessanti (forse).
             </p>

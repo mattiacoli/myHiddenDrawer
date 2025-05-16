@@ -3,7 +3,7 @@ import React from "react";
 export default function ShippingAndReturns() {
     return (
         <div className="container my-5">
-            <h1 className="mb-4 text-center">🚚 Spedizioni & 🔁 Resi</h1>
+            <h1 className="mb-4 text-center">Spedizioni & Resi</h1>
 
             {/* SPEDIZIONI */}
             <div className="mb-5">
@@ -36,7 +36,9 @@ export default function ShippingAndReturns() {
             <div className="mb-5">
                 <h3>📬 Come avviare un reso?</h3>
                 <ol className="list-group list-group-numbered mb-3">
-                    <li className="list-group-item">Scrivici a <strong>info@myhiddendrawer.it</strong> con numero ordine e motivo del reso.</li>
+                    <li className="list-group-item">
+                        Scrivici a <a href="mailto:info@myhiddendrawer.it">info@myhiddendrawer.it</a> con numero ordine e motivo del reso.
+                    </li>
                     <li className="list-group-item">Attendi la nostra conferma e le istruzioni.</li>
                     <li className="list-group-item">Spedisci il prodotto in confezione originale, non usato e non aperto.</li>
                 </ol>
