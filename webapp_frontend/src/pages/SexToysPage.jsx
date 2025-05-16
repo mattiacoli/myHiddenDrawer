@@ -9,6 +9,10 @@ export default function SexToysPage() {
   const [sextoys, setSextoys] = useState([])
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
 
     const sextoys = products.filter(product => product.categories === 'sex-toys')
     setSextoys(sextoys)
