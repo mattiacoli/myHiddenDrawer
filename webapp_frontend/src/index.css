@@ -593,6 +593,13 @@ main {
     }
   }
 
+  .reviews {
+    padding: 1rem;
+    border-radius: 10px;
+    color: white;
+    background-color: var(--mhd-secondary);
+  }
+
   /* btn promo section */
   .btn-show-all {
     color: var(--mhd-secondary);

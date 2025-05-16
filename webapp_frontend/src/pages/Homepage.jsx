@@ -122,7 +122,7 @@ export default function Homepage() {
         </section>
 
         {/* Reviews */}
-        <section className='my-5'>
+        <section className='reviews my-5'>
           <h2>Cosa dicono i clienti</h2>
           <div className='row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4'>
             {reviews?.slice(0, 8).map(item => (
