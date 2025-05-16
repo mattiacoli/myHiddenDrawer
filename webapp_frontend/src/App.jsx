@@ -19,6 +19,7 @@ import About from "./pages/About"
 import FAQ from "./pages/Faq"
 import PrivacyPolicy from "./pages/PrivacyPolicy"
 import TermsAndConditions from "./pages/TermsAndConditions"
+import ShippingAndReturns from "./pages/ShippingAndReturns"
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
             <Route path="/faq" Component={FAQ} />
             <Route path="/privacy-policy" Component={PrivacyPolicy} />
             <Route path="/terms" Component={TermsAndConditions} />
+            <Route path="/shipping-returns" Component={ShippingAndReturns} />
             <Route path="*" Component={NotFound} />
 
           </Route>
