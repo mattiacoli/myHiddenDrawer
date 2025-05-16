@@ -63,6 +63,21 @@ export default function Product() {
 
             <div className="d-flex col-md-12 col-lg-6 flex-column justify-content-center align-items-start">
               <h1 className="display-5 fw-bold">{product.name}</h1>
+              {product.reviews_count > 0 && (
+                <div className="review-summary d-flex align-items-center gap-1 mb-2">
+                  {Array.from({ length: 5 }, (_, i) => {
+                    const filled = i < Math.floor(product.average_rating);
+                    const half = i < product.average_rating && i >= Math.floor(product.average_rating);
+                    return (
+                      <i
+                        key={i}
+                        className={`bi ${filled ? 'bi-star-fill' : half ? 'bi-star-half' : 'bi-star'} text-warning`}
+                      ></i>
+                    );
+                  })}
+                  <span className="text-muted small">({product.reviews_count})</span>
+                </div>
+              )}
               <p className="fs-4">
                 {product.description}
               </p>
@@ -142,6 +157,21 @@ export default function Product() {
               ))}
             </h4>
             <h2>{product.name}</h2>
+            {product.reviews_count > 0 && (
+              <div className="review-summary d-flex align-items-center gap-1 mb-2">
+                {Array.from({ length: 5 }, (_, i) => {
+                  const filled = i < Math.floor(product.average_rating);
+                  const half = i < product.average_rating && i >= Math.floor(product.average_rating);
+                  return (
+                    <i
+                      key={i}
+                      className={`bi ${filled ? 'bi-star-fill' : half ? 'bi-star-half' : 'bi-star'} text-warning`}
+                    ></i>
+                  );
+                })}
+                <span className="text-muted small">({product.reviews_count})</span>
+              </div>
+            )}
             <p>{product.description}</p>
 
             {product.discount_percentage != 0 ? (
@@ -253,6 +283,22 @@ export default function Product() {
               <>
                 <div className='fw-bold'>{product.price}€</div>
               </>
+            )}
+
+            {product.reviews_count > 0 && (
+              <div className="review-summary d-flex align-items-center gap-1 mb-2">
+                {Array.from({ length: 5 }, (_, i) => {
+                  const filled = i < Math.floor(product.average_rating);
+                  const half = i < product.average_rating && i >= Math.floor(product.average_rating);
+                  return (
+                    <i
+                      key={i}
+                      className={`bi ${filled ? 'bi-star-fill' : half ? 'bi-star-half' : 'bi-star'} text-warning`}
+                    ></i>
+                  );
+                })}
+                <span className="text-muted small">({product.reviews_count})</span>
+              </div>
             )}
 
           </div>

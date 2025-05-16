@@ -69,6 +69,21 @@ export default function ProductCard({ item }) {
                 <p className="small mb-2">
                   {item.description}
                 </p>
+                {item.reviews_count > 0 && (
+                  <div className="review-summary d-flex align-items-center gap-1 mb-2">
+                    {Array.from({ length: 5 }, (_, i) => {
+                      const filled = i < Math.floor(item.average_rating);
+                      const half = i < item.average_rating && i >= Math.floor(item.average_rating);
+                      return (
+                        <i
+                          key={i}
+                          className={`bi ${filled ? 'bi-star-fill' : half ? 'bi-star-half' : 'bi-star'} text-warning`}
+                        ></i>
+                      );
+                    })}
+                    <span className="text-muted small">({item.reviews_count})</span>
+                  </div>
+                )}
                 <div className="pricing d-flex gap-2 mt-2 fs-4">
                   <p className='old_price'><s>{item.price} &#8364;</s></p>
                   <p className='final_price fw-bold'>{item.final_price} &#8364;</p>
@@ -86,6 +101,21 @@ export default function ProductCard({ item }) {
                 <p className="small mb-2">
                   {item.description}
                 </p>
+                {item.reviews_count > 0 && (
+                  <div className="review-summary d-flex align-items-center gap-1 mb-2">
+                    {Array.from({ length: 5 }, (_, i) => {
+                      const filled = i < Math.floor(item.average_rating);
+                      const half = i < item.average_rating && i >= Math.floor(item.average_rating);
+                      return (
+                        <i
+                          key={i}
+                          className={`bi ${filled ? 'bi-star-fill' : half ? 'bi-star-half' : 'bi-star'} text-warning`}
+                        ></i>
+                      );
+                    })}
+                    <span className="text-muted small">({item.reviews_count})</span>
+                  </div>
+                )}
                 <p className='fs-4 mt-2'><strong>{item.price} &#8364;</strong></p>
               </div>
             </>
