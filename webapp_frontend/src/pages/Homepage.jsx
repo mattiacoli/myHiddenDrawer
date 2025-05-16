@@ -76,7 +76,7 @@ export default function Homepage() {
         {/* Our Products */}
 
         <section className="products_category d-flex flex-column justify-content-center gap-3">
-          <h3 className='text-center fs-1'>I nostri Prodotti</h3>
+          <h3 className='text-center fs-1 pt-5'>I nostri Prodotti</h3>
 
 
           <div className=' mt-4 d-flex gap-2 justify-content-center gap-5'>
@@ -100,42 +100,49 @@ export default function Homepage() {
 
 
         {/* Last Products */}
-        <section className="last_products my-4">
-          <h2>Ultimi Arrivi</h2>
-          <div className="container">
+        <div className="last-products-section">
+          <h2 className='pb-5'>Ultimi Arrivi</h2>
+          <section className="last_products my-4">
 
-            <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4">
-
-              {latest.slice(0, 8).map(item => (
-
-                <ProductCard item={item} key={item.id} />
-
-              ))}
-            </div>
-          </div>
-        </section>
-
-      </div>
-
-
-      {/* Reviews */}
-      <div className="bg_reviews py-4">
-        <h2 className='text-center text-white my-4'>Cosa dicono i clienti</h2>
-
-        <div className="container">
-
-          <section className='reviews my-5 py-5'>
             <div className="container">
-              <div className='row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4'>
-                {reviews?.slice(0, 8).map(item => (
-                  <ReviewsCard item={item} key={item.id} />
+
+              <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4">
+
+                {latest.slice(0, 8).map(item => (
+
+                  <ProductCard item={item} key={item.id} />
 
                 ))}
               </div>
             </div>
           </section>
-
         </div>
+
+
+      </div>
+
+
+      {/* Reviews */}
+      <div className="bg_reviews">
+        <div className="container">
+          <h2 className='text-white py-4'>Cosa dicono i clienti</h2>
+
+          <div className="container">
+
+            <section className='reviews'>
+              <div className="container">
+                <div className='row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4'>
+                  {reviews?.slice(0, 8).map(item => (
+                    <ReviewsCard item={item} key={item.id} />
+
+                  ))}
+                </div>
+              </div>
+            </section>
+
+          </div>
+        </div>
+
       </div>
 
 
