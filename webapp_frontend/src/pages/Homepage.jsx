@@ -20,6 +20,7 @@ export default function Homepage() {
     fetch(`${productUrl}/promotions`)
       .then(res => res.json())
       .then(data => {
+        console.log('PROMO DATA:', data);
         setPromo(data)
       })
       .catch(err => console.error(err))
@@ -30,7 +31,7 @@ export default function Homepage() {
     fetch(`${productUrl}/latest`)
       .then(res => res.json())
       .then(data => {
-
+        console.log('LATEST DATA:', data);
         setLatest(data)
       })
       .catch(err => console.error(err))
@@ -115,7 +116,7 @@ export default function Homepage() {
 
               <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4 hide-scrollbar">
 
-                {latest.slice(0, 8).map(item => (
+                {Array.isArray(latest) && latest.slice(0, 8).map(item => (
 
                   <ProductCard item={item} key={item.id} />
 
@@ -164,7 +165,7 @@ export default function Homepage() {
           </div>
           <div className="container">
             <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4 hide-scrollbar">
-              {promo.map(item => (
+              {Array.isArray(promo) && promo.map(item => (
                 <ProductCard item={item} key={item.id} />
               ))}
             </div>

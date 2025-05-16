@@ -2,14 +2,19 @@ const connection = require('../data/db.js')
 
 // Index all products
 function index(req, res) {
-    const sql = `SELECT products.* , GROUP_CONCAT(categories.name) as categories
-        FROM products
-        LEFT JOIN category_product ON products.id = category_product.product_id
-        LEFT JOIN categories ON category_product.category_id = categories.id
-        GROUP BY products.id`
+    const sql = `
+    SELECT 
+      products.*,
+      GROUP_CONCAT(categories.name) as categories,
+      (SELECT CAST(COALESCE(AVG(r.vote), 0) AS DECIMAL(3,2)) FROM reviews r WHERE r.product_id = products.id) AS average_rating,
+      (SELECT COUNT(*) FROM reviews r WHERE r.product_id = products.id) AS reviews_count
+    FROM products
+    LEFT JOIN category_product ON products.id = category_product.product_id
+    LEFT JOIN categories ON category_product.category_id = categories.id
+    GROUP BY products.id
+    `;
 
     connection.query(sql, (err, results) => {
-
         if (err) return res.status(500).json({ err: "Database query failed" });
         res.json(results);
     })
@@ -26,20 +31,56 @@ function allPromotions(req, res) {
 
 // Get 4 products with promotions
 function promotions(req, res) {
-    const sql = `SELECT * FROM products WHERE discount_percentage > 0 LIMIT 4`;
+    const sql = `
+    SELECT 
+      p.id,
+      p.name,
+      p.description,
+      p.final_price,
+      p.price,
+      COALESCE(p.cover_image, 'placeholder.jpg') AS cover_image,
+      COALESCE(p.discount_percentage, 0) AS discount_percentage,
+      p.slug,
+      (SELECT CAST(COALESCE(AVG(r.vote), 0) AS DECIMAL(3,2)) FROM reviews r WHERE r.product_id = p.id) AS average_rating,
+      (SELECT COUNT(*) FROM reviews r WHERE r.product_id = p.id) AS reviews_count
+    FROM products p
+    WHERE p.discount_percentage > 0
+    LIMIT 4
+    `;
 
     connection.query(sql, (err, results) => {
-        if (err) return res.status(500).json({ err: "Database query failed" });
+        if (err) {
+            console.error("SQL Error in PROMOTIONS:", err);
+            return res.status(500).json({ err: "Database query failed" });
+        }
         res.json(results);
     })
 }
 
 // Get latest product
 function latestProduct(req, res) {
-    const sql = 'SELECT * FROM products ORDER BY updated_at DESC';
+    const sql = `
+    SELECT 
+      p.id,
+      p.name,
+      p.description,
+      p.final_price,
+      p.price,
+      COALESCE(p.cover_image, 'placeholder.jpg') AS cover_image,
+      COALESCE(p.discount_percentage, 0) AS discount_percentage,
+      p.slug,
+      (SELECT CAST(COALESCE(AVG(r.vote), 0) AS DECIMAL(3,2)) FROM reviews r WHERE r.product_id = p.id) AS average_rating,
+      (SELECT COUNT(*) FROM reviews r WHERE r.product_id = p.id) AS reviews_count
+    FROM products p
+    ORDER BY p.updated_at DESC
+    LIMIT 8
+    `;
 
     connection.query(sql, (err, results) => {
-        if (err) return res.status(500).json({ error: 'Database query failed' })
+        if (err) {
+            console.error("SQL Error in LATEST PRODUCT:", err);
+            return res.status(500).json({ error: 'Database query failed' })
+        }
         res.json(results);
     })
 }
@@ -47,7 +88,14 @@ function latestProduct(req, res) {
 // Show single product
 function show(req, res) {
     const slug = req.params.slug; // Ottieni lo slug dalla richiesta
-    const sqlProduct = 'SELECT * FROM products WHERE slug = ?'; // Cerca il prodotto usando lo slug
+    const sqlProduct = `
+  SELECT 
+    p.*,
+    (SELECT CAST(COALESCE(AVG(r.vote), 0) AS DECIMAL(3,2)) FROM reviews r WHERE r.product_id = p.id) AS average_rating,
+    (SELECT COUNT(*) FROM reviews r WHERE r.product_id = p.id) AS reviews_count
+  FROM products p
+  WHERE p.slug = ?
+`;
     const sqlImages = 'SELECT * FROM images WHERE product_id = ?'; // Cerca le immagini usando product_id
     const sqlCategories = `
     SELECT c.*
@@ -98,7 +146,9 @@ function related(req, res) {
         cp.category_id,
         c.name AS category_name,
         GROUP_CONCAT(DISTINCT pt.tag_id) AS tag_ids,
-        GROUP_CONCAT(DISTINCT t.name) AS tag_names
+        GROUP_CONCAT(DISTINCT t.name) AS tag_names,
+        (SELECT CAST(COALESCE(AVG(r.vote), 0) AS DECIMAL(3,2)) FROM reviews r WHERE r.product_id = p.id) AS average_rating,
+        (SELECT COUNT(*) FROM reviews r WHERE r.product_id = p.id) AS reviews_count
     FROM products p
     JOIN category_product cp ON cp.product_id = p.id
     JOIN categories c ON c.id = cp.category_id
@@ -139,7 +189,11 @@ function related(req, res) {
 function search(req, res) {
     const { name, category, minPrice, maxPrice, createdAfter, createdBefore } = req.query;
     let query = `
-        SELECT DISTINCT p.*, c.name AS category
+        SELECT DISTINCT 
+          p.*,
+          c.name AS category,
+          (SELECT CAST(COALESCE(AVG(r.vote), 0) AS DECIMAL(3,2)) FROM reviews r WHERE r.product_id = p.id) AS average_rating,
+          (SELECT COUNT(*) FROM reviews r WHERE r.product_id = p.id) AS reviews_count
         FROM products p
         JOIN category_product cp ON p.id = cp.product_id
         JOIN categories c ON cp.category_id = c.id
