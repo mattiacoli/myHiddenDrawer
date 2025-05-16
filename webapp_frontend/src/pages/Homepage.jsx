@@ -140,7 +140,7 @@ export default function Homepage() {
 
             <section className='reviews hide-scrollbar'>
               <div className="container">
-                <div className='row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4 hide-scrollbar'>
+                <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 gy-4 flex-nowrap mb-4 hide-scrollbar'>
                   {reviews?.slice(0, 8).map(item => (
                     <ReviewsCard item={item} key={item.id} />
 
