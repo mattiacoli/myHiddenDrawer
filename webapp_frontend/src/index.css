@@ -188,7 +188,7 @@
   border: 2px solid var(--mhd-secondary);
 
   &:focus {
-    box-shadow: 0 0 10px 10px #2bbdb898;
+    box-shadow: 0 0 5px 5px #2bbdb898;
   }
 
 }
@@ -198,7 +198,7 @@
 
 
   &:valid:focus {
-    box-shadow: 0 0 10px 10px #2bbdb898;
+    box-shadow: 0 0 5px 5px #2bbdb898;
     border: 2px solid var(--mhd-secondary);
   }
 }

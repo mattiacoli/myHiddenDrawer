@@ -59,7 +59,7 @@ export default function ReviewsForm({ setIsOpen, product_id }) {
               <label htmlFor="reviewerName" className="form-label">Nome</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control search_form"
                 id="reviewerName"
                 placeholder="Inserisci il tuo nome"
                 value={formData.author}
@@ -72,7 +72,7 @@ export default function ReviewsForm({ setIsOpen, product_id }) {
               <label htmlFor="reviewVote" className="form-label">Voto</label>
               <input
                 type="number"
-                className="form-control"
+                className="form-control search_form"
                 id="reviewVote"
                 min="1"
                 max="5"
@@ -87,7 +87,7 @@ export default function ReviewsForm({ setIsOpen, product_id }) {
             <label htmlFor="reviewTitle" className="form-label">Titolo</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control search_form"
               id="reviewTitle"
               placeholder="Inserisci un titolo per la tua recensione"
               value={formData.title}
@@ -99,7 +99,7 @@ export default function ReviewsForm({ setIsOpen, product_id }) {
           <div className="mb-3">
             <label htmlFor="reviewText" className="form-label">Recensione</label>
             <textarea
-              className="form-control"
+              className="form-control search_form"
               id="reviewText"
               rows="3"
               placeholder="Condividi la tua esperienza con questo prodotto"
