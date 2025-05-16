@@ -45,8 +45,17 @@ export default function Homepage() {
 
       <div className="video-hero-wrapper">
         <div className="video-background">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/qC0vDKVPCrw?autoplay=1&mute=1&controls=0&loop=1&playlist=qC0vDKVPCrw&modestbranding=1&showinfo=0">
-          </iframe>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+          >
+            <source src="https://cdn.shopify.com/videos/c/o/v/eb4261f15e8844dbb7692c8d0c7438eb.mp4" type="video/mp4" />
+            Il tuo browser non supporta i video HTML5.
+          </video>
+          <div className="video-overlay"></div>
         </div>
         <div className="hero-content">
           <div className="p-5 mb-4 jumbotron-base jumbotron-home">
@@ -101,7 +110,7 @@ export default function Homepage() {
 
         {/* Last Products */}
         <div className="last-products-section">
-          <h2 className='pb-5'>Ultimi Arrivi</h2>
+          <h2 className='pb-4'>Ultimi Arrivi</h2>
           <section className="last_products my-4">
 
             <div className="container">
@@ -125,7 +134,7 @@ export default function Homepage() {
       {/* Reviews */}
       <div className="bg_reviews">
         <div className="container">
-          <h2 className='text-white py-4'>Cosa dicono i clienti</h2>
+          <h2 className='text-white py-4'>Cosa dicono di noi</h2>
 
           <div className="container">
 
@@ -150,7 +159,7 @@ export default function Homepage() {
         {/* promo products */}
         <section className='best_sellers my-4'>
           <div className="d-flex align-items-center justify-content-between gap-4 mb-3">
-            <h2 className="m-0">In Offerta</h2>
+            <h2 className="pb-4">In Offerta</h2>
             <Link to="/promotions/all" className="btn-base btn-outline-primary-mhd">
               Mostra tutti
             </Link>
