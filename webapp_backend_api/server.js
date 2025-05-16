@@ -10,11 +10,7 @@ const customerRouter = require('./routes/customers')
 const reviewsRouter = require('./routes/reviews')
 
 // Middleware
-app.use(cors(
-  {
-    origin: process.env.FRONT_URL || 'http://localhost:5173',
-  }
-))
+app.use(cors())  // Consente tutte le origini in sviluppo
 
 // Middleware per parsing JSON
 app.use(express.json());
