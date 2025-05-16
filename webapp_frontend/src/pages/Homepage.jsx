@@ -112,7 +112,7 @@ export default function Homepage() {
           <h2 className='pb-4'>Ultimi Arrivi</h2>
           <section className="last_products hide-scrollbar my-4">
 
-            <div className="container">
+            <div className="container py-4">
 
               <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gy-4 flex-nowrap mb-4 hide-scrollbar">
 
