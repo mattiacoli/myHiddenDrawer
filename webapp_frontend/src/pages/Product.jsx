@@ -3,11 +3,14 @@ import { useParams } from 'react-router-dom'
 import { useGlobalContext } from '../contexts/GlobalContext'
 import RelatedProducts from '../components/RelatedProducts'
 import ReviewsCard from '../components/ReviewsCard/ReviewsCard'
+import ReviewsForm from '../components/ReviewsForm'
 
 export default function Product() {
 
   const [product, setProduct] = useState({})
   const [quantity, setQuantity] = useState(1);
+  const [isOpen, setIsOpen] = useState(false)
+
   const { cart, addToCart, wishlist, addToWishlist, removeFromWishlist } = useGlobalContext()
   const { slug } = useParams()
   const { reviews = [] } = useGlobalContext()
@@ -205,6 +208,7 @@ export default function Product() {
               </div>
             </div>
 
+
           </div>
         </div>
       </div>
@@ -215,18 +219,37 @@ export default function Product() {
       {/* Reviews */}
 
       <div className="container">
-        <h3>Recensioni</h3>
-        {reviews.length > 0 ? (
-          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-            {reviews.filter(item => item.product_id === product.id).map(item => (
-              <ReviewsCard item={item} key={item.id} />
-            ))}
-          </div>
-        ) : (
-          <p>Ancora nessuna recensione per questo prodotto</p>
+
+        <div className='d-flex align-items-center justify-content-between gap-4 mb-3'>
+
+          <h3>Recensioni</h3>
+          <button
+            className='btn-base btn-outline-primary-mhd'
+            onClick={() => setIsOpen(!isOpen)}>
+            Aggiungi una recensione
+          </button>
+        </div>
+
+        {isOpen && (
+          <ReviewsForm setIsOpen={setIsOpen} product_id={product.id} />
+
         )}
 
+        {(() => {
+          const filteredReviews = reviews.filter(item => item.product_id === product.id);
 
+          if (filteredReviews.length > 0) {
+            return (
+              <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                {filteredReviews.map(item => (
+                  <ReviewsCard item={item} key={item.id} />
+                ))}
+              </div>
+            );
+          } else {
+            return <p>Ancora nessuna recensione per questo prodotto</p>;
+          }
+        })()}
       </div>
 
       {/* Mobile price banner */}
