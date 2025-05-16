@@ -9,14 +9,14 @@ export default function ContactUs() {
 
     const [submitted, setSubmitted] = useState(false);
 
-    const handleChange = (e) => {
+    function handleChange(e) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+    }
 
-    const handleSubmit = (e) => {
+    function handleSubmit(e) {
         e.preventDefault();
         setSubmitted(true);
-    };
+    }
 
     return (
         <div className="contact container my-5">

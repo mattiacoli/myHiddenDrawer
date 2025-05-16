@@ -47,6 +47,7 @@
   font-weight: 500;
   transition: all 0.3s ease;
   padding: 0.5rem 1.25rem;
+  white-space: nowrap;
 }
 
 /* Button primario (teal) */
@@ -134,6 +135,12 @@
 
 .btn-wishlist-mhd {
   color: var(--mhd-primary);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 /* ===== LAYOUT UTILITIES ===== */
@@ -567,7 +574,7 @@ main {
       border-bottom: 3px solid #20a39e;
       color: #20a39e;
       font-weight: 500;
-      scale: 1.2;
+      transform: scale(1.2);
     }
   }
 
@@ -768,19 +775,6 @@ main {
   h2 {
     color: var(--mhd-secondary);
   }
-
-  .faq-item {
-    background-color: var(--mhd-primary-soft);
-    border-radius: 25px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    transition: all 0.3s ease;
-
-    &:hover {
-      transform: scale(1.02);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-  }
 }
 
 /* Contact page */
@@ -797,6 +791,10 @@ footer {
   a,
   h5 {
     color: var(--mhd-primary);
+  }
+
+  a:hover {
+    color: var(--mhd-light);
   }
 }
 

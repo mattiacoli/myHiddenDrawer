@@ -70,8 +70,6 @@ export default function Homepage() {
                       Discreti, affidabili, sexy. Proprio come te.
                     </p>
                   </div>
-
-                  <Popup />
                 </div>
               </div>
             </div>

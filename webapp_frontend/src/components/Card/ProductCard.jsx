@@ -35,7 +35,7 @@ export default function ProductCard({ item }) {
 
       <div className={`card position-relative   ${style.card}`}>
 
-        <div className={`position-absolute top-0 start-0 m-2 d-flex gap-2 z-3 actions ${style.actions}`}>
+        <div className={`position-absolute top-0 start-0 m-2 d-flex gap-2 actions ${style.actions}`}>
           <button
             onClick={handleCartClick}
             className="btn-icon-mhd btn-cart-mhd"

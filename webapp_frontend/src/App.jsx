@@ -21,6 +21,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy"
 import TermsAndConditions from "./pages/TermsAndConditions"
 import ShippingAndReturns from "./pages/ShippingAndReturns"
 import ContactUs from "./pages/ContactUs"
+import Popup from "./components/Popup/Popup"
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
   return (
     <GlobalProvider>
       <BrowserRouter>
+        <Popup />
         <Routes >
           <Route Component={DefaultLayout}>
 
