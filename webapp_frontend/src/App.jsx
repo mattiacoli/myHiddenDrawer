@@ -16,6 +16,11 @@ import OrderConfirmation from "./pages/OrderConfirmation"
 import Promotions from "./pages/Promotions"
 import NotFound from "./pages/NotFound"
 import About from "./pages/About"
+import FAQ from "./pages/Faq"
+import PrivacyPolicy from "./pages/PrivacyPolicy"
+import TermsAndConditions from "./pages/TermsAndConditions"
+import ShippingAndReturns from "./pages/ShippingAndReturns"
+import ContactUs from "./pages/ContactUs"
 
 function App() {
 
@@ -37,6 +42,11 @@ function App() {
             <Route path="/order-confirmation" Component={OrderConfirmation} />
             <Route path="/promotions/all" Component={Promotions} />
             <Route path="/about" Component={About} />
+            <Route path="/faq" Component={FAQ} />
+            <Route path="/privacy-policy" Component={PrivacyPolicy} />
+            <Route path="/terms" Component={TermsAndConditions} />
+            <Route path="/shipping-returns" Component={ShippingAndReturns} />
+            <Route path="/contact" Component={ContactUs} />
             <Route path="*" Component={NotFound} />
 
           </Route>
