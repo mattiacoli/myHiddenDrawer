@@ -47,6 +47,7 @@
   font-weight: 500;
   transition: all 0.3s ease;
   padding: 0.5rem 1.25rem;
+  white-space: nowrap;
 }
 
 /* Button primario (teal) */
@@ -134,6 +135,12 @@
 
 .btn-wishlist-mhd {
   color: var(--mhd-primary);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 /* ===== LAYOUT UTILITIES ===== */
