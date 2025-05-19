@@ -103,7 +103,7 @@ export default function Header() {
 
             {/* Icons: Search, Cart, Wishlist */}
             <div className="justify-content-end " id="iconsContainer">
-              <ul className="navbar-nav mt-2 mt-lg-0 d-flex gap-3">
+              <ul className="navbar-nav mt-2 mt-lg-0 d-flex gap-1">
                 <li className="nav-item position-relative">
                   <button
                     className="nav-link active"

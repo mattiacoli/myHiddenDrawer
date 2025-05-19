@@ -719,7 +719,7 @@ main {
   }
 
   .reviews {
-    padding: 1rem;
+    padding: 0.8rem;
     color: white;
 
     &::-webkit-scrollbar-thumb {
