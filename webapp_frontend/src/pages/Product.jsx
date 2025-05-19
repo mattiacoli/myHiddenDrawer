@@ -293,7 +293,7 @@ export default function Product() {
                 <div className="price d-flex align-items-center gap-1">
                   <p className='final_price fw-bold '>{product.final_price} &#8364;</p>
                   <p className='old_price text-secondary'><s>{product.price} &#8364;</s></p>
-                  <p className='discount badge text-bg-danger'>{parseFloat(product.discount_percentage).toFixed(0)}%</p>
+                  {/* <p className='discount badge text-bg-danger'>{parseFloat(product.discount_percentage).toFixed(0)}%</p> */}
                 </div>
 
               </>
@@ -340,7 +340,7 @@ export default function Product() {
                 disabled={isInCart} />
             </div>
             <button
-              className="btn-base btn-primary-mhd btn-lg-mhd"
+              className="btn-mobile btn-primary-mhd"
               onClick={handleAddToCart}
               disabled={isInCart}>
               Aggiungi al carrello
