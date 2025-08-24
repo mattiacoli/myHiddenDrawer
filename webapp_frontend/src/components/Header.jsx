@@ -91,7 +91,7 @@ export default function Header() {
                 </li>
                 <li className="nav-item">
                   <NavLink className="nav-link fs-5" to="/products/sextoys" aria-current="page"
-                    onClick={handleMenuItemClick}
+                    onClick={handleMenuItemClick} 
                   >Sex Toys</NavLink>
                 </li>
 
