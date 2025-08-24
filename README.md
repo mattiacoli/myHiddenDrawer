@@ -51,7 +51,7 @@ My Hidden Drawer è un e-commerce specializzato nella vendita di prodotti intimi
 
 
 #### carello
-<img src="screenshots/carrello.png" width='750' >
+<img src="screenshots/carrello.png" >
 
 
 #### wishlist
