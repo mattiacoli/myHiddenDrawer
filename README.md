@@ -1,3 +1,5 @@
+<img src="screenshots/my_hidden_drawer_logo.png">
+
 # My Hidden Drawer - E-commerce di Prodotti Intimi
 
 Un e-commerce moderno per prodotti intimi con focus sulla discrezione, inclusività e facilità d'uso. Questa applicazione è composta da un frontend React e un backend API con Node.js ed Express.
@@ -5,6 +7,9 @@ Un e-commerce moderno per prodotti intimi con focus sulla discrezione, inclusivi
 ## 🌐 Panoramica
 
 My Hidden Drawer è un e-commerce specializzato nella vendita di prodotti intimi come preservativi e sex toys. Il sito si distingue per il suo approccio inclusivo, discreto e user-friendly, con un design moderno e una narrativa di brand che abbatte i tabù intorno alla sessualità.
+
+<img src="screenshots/homepage.png" width='750'>
+
 
 ## 📋 Funzionalità
 
@@ -32,6 +37,10 @@ My Hidden Drawer è un e-commerce specializzato nella vendita di prodotti intimi
 - ✅ **Cart Panel** - Pannello laterale per visualizzare e gestire il carrello
 - ✅ **Popup** - Popup per iscrizione alla newsletter
 
+#### popup
+<img src="screenshots/popup.png" width='750' >
+
+
 #### Funzionalità utente:
 - ✅ **Carrello** - Aggiunta/rimozione prodotti, aggiornamento quantità
 - ✅ **Wishlist** - Salvataggio prodotti preferiti in localStorage
@@ -39,6 +48,20 @@ My Hidden Drawer è un e-commerce specializzato nella vendita di prodotti intimi
 - ✅ **Conferma ordine** - Email di conferma al cliente e notifica al venditore
 - ✅ **Ricerca prodotti** - Ricerca in tempo reale con dropdown dei risultati
 - ✅ **Recensioni** - Visualizzazione e invio di recensioni sui prodotti
+
+
+#### carello
+<img src="screenshots/carrello.png" width='750' >
+
+
+#### wishlist
+<img src="screenshots/wishlist.png" width='750' >
+
+#### ricerca
+<img src="screenshots/ricerca.png" width='750' >
+
+#### recensioni
+<img src="screenshots/recensione.png" width='750' >
 
 ### Backend (Node.js + Express)
 
